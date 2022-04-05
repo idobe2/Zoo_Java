@@ -92,7 +92,7 @@ public class ZooActions {
 	
 	/**
 	 * Helper function to initialize a Point object
-	 * 
+	 *
 	 * @return initialized Point object
 	 */
 	public static Point initPoint()
@@ -132,7 +132,7 @@ public class ZooActions {
 		String name, tempString;
 		Scanner sc = new Scanner(System.in);
 		do {
-			System.out.println("How many animals?(At least 3)");
+			System.out.println("How many animals? (At least 3)");
 			size = sc.nextInt();
 			if (size < 3)
 				System.out.println("Size must be at least 3!");
@@ -194,6 +194,8 @@ public class ZooActions {
 					break;
 			}
 		}
+		/* for (int i=0 ; i<size; i++) // Show all animals data.
+			System.out.println(animals[i].toString()); */
 		for (int i=0 ; i<size; i++)
 		{
 			if(move(animals[i], initPoint()))

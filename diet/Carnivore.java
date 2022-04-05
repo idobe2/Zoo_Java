@@ -4,6 +4,8 @@ import animals.Animal;
 import animals.Lion;
 import food.EFoodType;
 import food.IEdible;
+import utilities.MessageUtility;
+
 import java.util.Random;
 
 /**
