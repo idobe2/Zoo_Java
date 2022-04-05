@@ -1,9 +1,16 @@
 package mobility;
 
+/**
+ * An abstract class that defines movement in space.
+ *
+ * @version 1.0 05 April 2022
+ * @author	Ido Ben Nun, Bar Cohen
+ * @see Point
+ */
 public abstract class Mobile implements Ilocatable {
 	private Point location;
 	private double totalDistance;
-	
+
 	/**
 	 * Default ctor required for Mobile abstract class.
 	 */
@@ -11,7 +18,9 @@ public abstract class Mobile implements Ilocatable {
 	
 	/**
 	 * A simple ctor of Mobile Point location.
+	 *
 	 * @param location
+	 * 			other Point object
 	 */
 	public Mobile(Point location) {
 		this.totalDistance = 0;
@@ -55,7 +64,7 @@ public abstract class Mobile implements Ilocatable {
 	 * 
 	 * @param distance
 	 * 			(double)distance to be
-	 * 			add to total distance.
+	 * 			added to total distance.
 	 */
 	public void addTotalDistance (double distance){
 		this.totalDistance += distance;
@@ -76,7 +85,7 @@ public abstract class Mobile implements Ilocatable {
 	 * Function to update Point location and total distance.
 	 * 
 	 * @param other
-	 * 			Other Point object.
+	 * 			Point object.
 	 * @return the total distance.
 	 */
 	public double move(Point other){
@@ -87,4 +96,3 @@ public abstract class Mobile implements Ilocatable {
 		return this.totalDistance;
 	}
 }
-

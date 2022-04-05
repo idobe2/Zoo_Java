@@ -20,7 +20,7 @@ public class ZooActions {
 	{
 		double weight = 0;
 		if (animal instanceof Lion)
-			weight = ((Lion) animal).getDiet().eat((Lion) animal, food); // Not sure
+			weight = ((Lion) animal).getDiet().eat((Lion) animal, food);
 		else if (animal instanceof Bear)
 			weight = ((Bear) animal).getDiet().eat((Bear) animal, food);
 		else if (animal instanceof Elephant)

@@ -21,7 +21,7 @@ public abstract class Animal extends Mobile implements IEdible {
 	private double weight;
 	private IDiet diet;
 	
-	/**
+	/**	
 	 * A ctor of animal name and location.
 	 * Using logCtor function to print doc message.
 	 * 

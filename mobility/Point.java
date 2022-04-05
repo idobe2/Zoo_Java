@@ -23,13 +23,28 @@ public class Point {
 		this.x = 0;
 		this.y = 0;
 	}
-	
+
+	/**
+	 * Ctor for X and Y values.
+	 *
+	 * @param x
+	 * 			integer value.
+	 * @param y
+	 * 			integer value.
+	 */
 	public Point(int x, int y)
 	{
 		this.x = x;
 		this.y = y;	
 	}
-	
+
+	/**
+	 * Copy ctor for Point object.
+	 * Use checkBoundaries function
+	 * for testing the point.
+	 *
+	 * @param other other Point object.
+	 */
 	public Point(Point other)
 	{
 		if (checkBoundaries(other))
@@ -38,10 +53,30 @@ public class Point {
 			this.y = other.y;
 		}
 	}
-	
+
+	/**
+	 * A simple getter of X value.
+	 *
+	 * @return the X value as an integer.
+	 */
 	public int getX() {return this.x; }
+
+	/**
+	 * A simple getter of Y value.
+	 *
+	 * @return the Y value as an integer.
+	 */
 	public int getY() {return this.y; }
-	
+
+	/**
+	 * A simple setter of X value.
+	 * Performs a test of the value before update.
+	 *
+	 * @param x
+	 * 			integer value.
+	 * @return true if the value is valid
+	 * 			and update X field, otherwise false.
+	 */
 	public boolean setX(int x) {
 		if (x >=MIN_X && x <= MAX_X)
 		{
@@ -50,7 +85,16 @@ public class Point {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * A simple setter of Y value.
+	 * Performs a test of the value before update.
+	 *
+	 * @param y
+	 * 			integer value.
+	 * @return true if the value is valid
+	 * 			and update Y field, otherwise false.
+	 */
 	public boolean setY(int y) {
 		if (y >= MIN_Y && y <= MAX_Y)
 		{
@@ -59,28 +103,34 @@ public class Point {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * A boolean function to check if the Point object is valid.
+	 *
+	 * @param other
+	 * 			other Point object.
+	 * @return true if the Point object is valid,
+	 * 			otherwise false.
+	 */
 	public static boolean checkBoundaries(Point other)
 	{
-		if (other.getX() >=0 && other.getX() <= 800)
-		{
-			if (other.getY() >=0 && other.getY() <= 600)
-			{
+		if (other.getX() >=MIN_X && other.getX() <= MAX_X)
+			if (other.getY() >=MIN_Y && other.getY() <= MAX_Y)
 				return true;
-			}
-		}
 		return false;
 	}
-	
+
+	/**
+	 * A boolean function to check if this Point object is valid.
+	 *
+	 * @return true if this Point object is valid,
+	 * 			otherwise false.
+	 */
 	public boolean checkPoint()
 	{
-		if (getX() >=0 && getX() <= 800)
-		{
-			if (getY() >=0 && getY() <= 600)
-			{
+		if (getX() >=MIN_X && getX() <= MAX_X)
+			if (getY() >=MIN_Y && getY() <= MAX_Y)
 				return true;
-			}
-		}
 		return false;
 	}
 }
