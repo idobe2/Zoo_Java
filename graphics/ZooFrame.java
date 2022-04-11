@@ -9,6 +9,18 @@ public class ZooFrame extends JFrame { // Main function
     JMenuItem i1, i2, i3, i4, i5;
     ZooFrame(){
         JFrame f= new JFrame("Zoo");
+        f.setLayout(new BorderLayout()); // ?
+
+        //  ZooPanel
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(new JButton("Add Animal"));
+        buttonPanel.add(new JButton("Move Animal"));
+        buttonPanel.add(new JButton("Clear"));
+        buttonPanel.add(new JButton("Food"));
+        buttonPanel.add(new JButton("Info"));
+        buttonPanel.add(new JButton("Exit"));
+
         JMenuBar mb=new JMenuBar();
         File=new JMenu("File");
         Background = new JMenu("Background");
@@ -19,6 +31,7 @@ public class ZooFrame extends JFrame { // Main function
         i3=new JMenuItem("Green");
         i4=new JMenuItem("None");
         i5=new JMenuItem("Help");
+        //f.setLayout(new BoxLayout(f.getContentPane(),  BoxLayout.X_AXIS)); // ?
         File.add(i1);
         Background.add(i2);
         Background.add(i3);
@@ -30,9 +43,17 @@ public class ZooFrame extends JFrame { // Main function
         mb.add(File);
         mb.add(Background);
         mb.add(Help);
+        f.add(buttonPanel, BorderLayout.SOUTH);
         f.setJMenuBar(mb);
         f.setSize(1000,500);
-        f.setLayout(null);
+
+        //f.setLayout(null); // not good
+
+
+
+
+        //f.pack();
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
     }
 
@@ -41,8 +62,6 @@ public class ZooFrame extends JFrame { // Main function
         new ZooFrame();
 //        JFrame frame = new JFrame("Zoo");
 //
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.pack();
-//        frame.setVisible(true);
+//
     }
 }

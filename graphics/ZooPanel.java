@@ -7,15 +7,26 @@ import graphics.ZooFrame;
 
 import java.awt.*;
 
-public class ZooPanel extends JPanel  { // implements Runnable
+public class ZooPanel extends JPanel implements Runnable { // implements Runnable
 
-//    JPanel zooPanel = new JPanel();
-//        zooPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-//        f.add(zooPanel, BorderLayout.SOUTH);
-//        zooPanel.setPreferredSize(new Dimension(f.getWidth(), 16));
-//        zooPanel.setLayout(new BoxLayout(zooPanel, BoxLayout.X_AXIS));
-//    JLabel statusLabel = new JLabel("status");
-//        statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
-//        zooPanel.add(statusLabel);
+
+
+    public void run() {
+
+    }
+
+    public static void main(String[] args)
+    {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
+        panel.add(new JButton("Add Animal"));
+        panel.add(new JButton("Move Animal"));
+        panel.add(new JButton("Clear"));
+        panel.add(new JButton("Food"));
+        panel.add(new JButton("Info"));
+        panel.add(new JButton("Exit"));
+        //Thread zoo = new Thread(new ZooPanel());
+        //zoo.start();
+    }
 
 }
