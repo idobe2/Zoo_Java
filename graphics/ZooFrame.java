@@ -20,6 +20,7 @@ public class ZooFrame extends JFrame { // Main function
         buttonPanel.add(new JButton("Food"));
         buttonPanel.add(new JButton("Info"));
         buttonPanel.add(new JButton("Exit"));
+        //  ZooPanel
 
         JMenuBar mb=new JMenuBar();
         File=new JMenu("File");
@@ -31,7 +32,7 @@ public class ZooFrame extends JFrame { // Main function
         i3=new JMenuItem("Green");
         i4=new JMenuItem("None");
         i5=new JMenuItem("Help");
-        //f.setLayout(new BoxLayout(f.getContentPane(),  BoxLayout.X_AXIS)); // ?
+        // f.setLayout(new BoxLayout(f.getContentPane(),  BoxLayout.X_AXIS));
         File.add(i1);
         Background.add(i2);
         Background.add(i3);
@@ -43,15 +44,13 @@ public class ZooFrame extends JFrame { // Main function
         mb.add(File);
         mb.add(Background);
         mb.add(Help);
-        f.add(buttonPanel, BorderLayout.SOUTH);
         f.setJMenuBar(mb);
         f.setSize(1000,500);
 
-        //f.setLayout(null); // not good
-
-
-
-
+        //  ZooPanel
+        f.add(buttonPanel, BorderLayout.SOUTH);
+        //  ZooPanel
+        // f.setLayout(null); // not good
         //f.pack();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
