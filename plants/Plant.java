@@ -4,6 +4,7 @@ import java.util.Random;
 
 import food.EFoodType;
 import food.IEdible;
+import graphics.IDrawable;
 import mobility.Ilocatable;
 import mobility.Point;
 import utilities.MessageUtility;
@@ -12,7 +13,7 @@ import utilities.MessageUtility;
  * @author baroh
  *
  */
-public abstract class Plant implements IEdible, Ilocatable {
+public abstract class Plant implements IEdible, Ilocatable, IDrawable {
 	/**
 	 * 
 	 */
