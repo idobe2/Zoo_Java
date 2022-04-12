@@ -3,6 +3,8 @@ package graphics;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ZooFrame extends JFrame { // Main function
     JMenu File, Background, Help, submenu;
@@ -34,6 +36,12 @@ public class ZooFrame extends JFrame { // Main function
         mb.add(File);
         mb.add(Background);
         mb.add(Help);
+        i5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Home Work 2\nGUI");
+            }
+        });
         f.setJMenuBar(mb);
         f.setSize(1000,500);
         ZooPanel zooPanel = new ZooPanel();
