@@ -43,7 +43,7 @@ public class ZooFrame extends JFrame { // Main function
             @Override
             public void actionPerformed(ActionEvent e) {
                 //JOptionPane.showMessageDialog(null, "Home Work 2\nGUI");
-                f.setBackground(Color.GREEN);
+                f.getContentPane().setBackground(Color.GREEN);
             }
         });
         mb.add(Help);
