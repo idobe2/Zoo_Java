@@ -7,10 +7,20 @@ import graphics.ZooFrame;
 
 import java.awt.*;
 
-public class ZooPanel extends JPanel implements Runnable { // implements Runnable
+public class ZooPanel extends JPanel implements Runnable {
 
-    public void run() {
+    JPanel buttonPanel = new JPanel();
 
+    public void run() {}
+
+    ZooPanel() {
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(new JButton("Add Animal"));
+        buttonPanel.add(new JButton("Move Animal"));
+        buttonPanel.add(new JButton("Clear"));
+        buttonPanel.add(new JButton("Food"));
+        buttonPanel.add(new JButton("Info"));
+        buttonPanel.add(new JButton("Exit"));
     }
 
     public static void main(String[] args)
