@@ -1,10 +1,14 @@
 package graphics;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 
 public class ZooFrame extends JFrame { // Main function
     JMenu File, Background, Help, submenu;
@@ -35,6 +39,13 @@ public class ZooFrame extends JFrame { // Main function
         */
         mb.add(File);
         mb.add(Background);
+        i3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //JOptionPane.showMessageDialog(null, "Home Work 2\nGUI");
+                f.setBackground(Color.GREEN);
+            }
+        });
         mb.add(Help);
         i5.addActionListener(new ActionListener() {
             @Override
