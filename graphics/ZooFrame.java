@@ -1,6 +1,7 @@
 package graphics;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 
 public class ZooFrame extends JFrame { // Main function
@@ -37,10 +38,21 @@ public class ZooFrame extends JFrame { // Main function
         f.setSize(1000,500);
         ZooPanel zooPanel = new ZooPanel();
         f.add(zooPanel.buttonPanel, BorderLayout.SOUTH);
+
         /*
-        // f.setLayout(null);
-        //f.pack();
+        JPanel statusPanel = new JPanel();
+        statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        f.add(statusPanel, BorderLayout.SOUTH);
+        statusPanel.setPreferredSize(new Dimension(f.getWidth(), 16));
+        statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
+        JLabel statusLabel = new JLabel("status");
+        statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        statusPanel.add(statusLabel);
+
+        f.setLayout(null);
+        f.pack();
         */
+
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
     }
