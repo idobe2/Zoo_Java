@@ -46,7 +46,6 @@ public class ZooFrame extends JFrame { // Main function
         f.setSize(1000,500);
         ZooPanel zooPanel = new ZooPanel();
         f.add(zooPanel.buttonPanel, BorderLayout.SOUTH);
-
         /*
         JPanel statusPanel = new JPanel();
         statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
@@ -60,7 +59,6 @@ public class ZooFrame extends JFrame { // Main function
         f.setLayout(null);
         f.pack();
         */
-
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
     }
