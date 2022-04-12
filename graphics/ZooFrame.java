@@ -1,9 +1,7 @@
 package graphics;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import java.awt.*;
-import graphics.ZooPanel;
 
 public class ZooFrame extends JFrame { // Main function
     JMenu File, Background, Help, submenu;
