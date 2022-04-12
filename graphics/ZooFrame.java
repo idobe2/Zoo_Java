@@ -47,9 +47,6 @@ public class ZooFrame extends JFrame { // Main function
 
     public static void main(String[] args)
     {
-        ZooFrame mainFrame = new ZooFrame();
-//        JFrame frame = new JFrame("Zoo");
-//
-//
+        new ZooFrame();
     }
 }

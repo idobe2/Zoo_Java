@@ -21,7 +21,7 @@ import java.awt.image.BufferedImage;
  * @author Ido Ben Nun, Bar Cohen
  * @see Mobile
  */
-public abstract class Animal extends Mobile implements IEdible{
+public abstract class Animal extends Mobile implements IEdible {
 
 	private final int EAT_DISTANCE = 10;
 	private int size;
