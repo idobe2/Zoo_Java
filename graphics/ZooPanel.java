@@ -13,8 +13,16 @@ public class ZooPanel extends JPanel implements Runnable {
 
     ZooPanel() {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JButton addAnimalButton = new JButton("Add Animal");
         JButton exitButton = new JButton("Exit");
-        buttonPanel.add(new JButton("Add Animal"));
+        buttonPanel.add(addAnimalButton);
+        addAnimalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("test");
+                new AddAnimalDialog();
+            }
+        });
         buttonPanel.add(new JButton("Move Animal"));
         buttonPanel.add(new JButton("Clear"));
         buttonPanel.add(new JButton("Food"));

@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ZooFrame extends JFrame { // Main function
+public class ZooFrame extends JFrame {
     JFrame f= new JFrame("Zoo");
     JMenu File, Background, Help, submenu;
     JMenuItem i1, i2, i3, i4, i5;
@@ -33,20 +33,24 @@ public class ZooFrame extends JFrame { // Main function
         i4=new JMenuItem("None");
         i5=new JMenuItem("Help");
         File.add(i1);
+        i1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
         Background.add(i2);
         i2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                paint(f.getContentPane().getGraphics());
+                paintComponent(f.getContentPane().getGraphics());
             }
         });
         Background.add(i3);
         Background.add(i4);
         i4.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                f.getContentPane().setBackground(color); // default background color
-            }
+            public void actionPerformed(ActionEvent e) { f.getContentPane().setBackground(color); }
         });
         Help.add(i5);
         /*
@@ -77,14 +81,23 @@ public class ZooFrame extends JFrame { // Main function
         f.setVisible(true);
     }
 
-    public void paint(Graphics g)
-    {
-        ZooFrame.super.paint(g);
-        g.drawImage(backgroundImage,0,0,getWidth(),getHeight(),this);
-        setSize(1000,500);
-        //setResizable(false);
-        //setVisible(true);
+    public void paintComponent(Graphics g) {
+        super.paintComponents(g) ;
+        if(backgroundImage!=null) {
+            g.drawImage(backgroundImage,0,0,getWidth(),getHeight(), this);
+            setSize(1000,500);
+            setResizable(true);
+        }
     }
+
+//    public void paint(Graphics g)
+//    {
+//        ZooFrame.super.paint(g);
+//        g.drawImage(backgroundImage,0,0,getWidth(),getHeight(),this);
+//        setSize(1000,500);
+//        //setResizable(false);
+//        //setVisible(true);
+//    }
 
     public static void main(String[] args)
     {
