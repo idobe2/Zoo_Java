@@ -17,6 +17,7 @@ public class ZooPanel extends JPanel implements Runnable {
         buttonPanel.add(new JButton("Food"));
         buttonPanel.add(new JButton("Info"));
         buttonPanel.add(new JButton("Exit"));
+
         buttonPanel.setBackground(Color.CYAN);
     }
 }

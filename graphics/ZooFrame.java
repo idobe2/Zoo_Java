@@ -7,16 +7,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 
 public class ZooFrame extends JFrame { // Main function
+    JFrame f= new JFrame("Zoo");
     JMenu File, Background, Help, submenu;
     JMenuItem i1, i2, i3, i4, i5;
     JMenuBar mb=new JMenuBar();
+    BufferedImage backgroundImage;
 
     ZooFrame(){
-        JFrame f= new JFrame("Zoo");
+        try {
+            backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
+        } catch (IOException ex) {System.out.println("Cannot load image");}
         f.setLayout(new BorderLayout()); // ?
         File=new JMenu("File");
         Background = new JMenu("Background");
@@ -29,6 +35,12 @@ public class ZooFrame extends JFrame { // Main function
         i5=new JMenuItem("Help");
         File.add(i1);
         Background.add(i2);
+        i2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                paint(f.getGraphics());
+            }
+        });
         Background.add(i3);
         Background.add(i4);
         Help.add(i5);
@@ -42,8 +54,7 @@ public class ZooFrame extends JFrame { // Main function
         i3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //JOptionPane.showMessageDialog(null, "Home Work 2\nGUI");
-                f.getContentPane().setBackground(Color.GREEN);
+               f.getContentPane().setBackground(Color.GREEN);
             }
         });
         mb.add(Help);
@@ -74,6 +85,24 @@ public class ZooFrame extends JFrame { // Main function
         f.setVisible(true);
     }
 
+    public void paint(Graphics g)
+    {
+        ZooFrame.super.paint(g);
+        g.drawImage(backgroundImage,0,0,getWidth(),getHeight(),this);
+        setSize(1000,500);
+        setResizable(false);
+        //setVisible(true);
+    }
+    @Override
+    public Dimension getPreferredSize() {
+        if (backgroundImage != null) {
+            int w = backgroundImage.getWidth();
+            int h = backgroundImage.getHeight();
+            return new Dimension(w, h);
+        } else {
+            return super.getPreferredSize();
+        }
+    }
     public static void main(String[] args)
     {
         new ZooFrame();
