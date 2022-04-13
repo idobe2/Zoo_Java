@@ -2,7 +2,6 @@ package graphics;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +9,6 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.swing.ImageIcon;
 
 public class ZooFrame extends JFrame { // Main function
     JFrame f= new JFrame("Zoo");
@@ -38,7 +36,7 @@ public class ZooFrame extends JFrame { // Main function
         i2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                paint(f.getGraphics());
+                paint(f.getContentPane().getGraphics());
             }
         });
         Background.add(i3);
@@ -68,19 +66,7 @@ public class ZooFrame extends JFrame { // Main function
         f.setSize(1000,500);
         ZooPanel zooPanel = new ZooPanel();
         f.add(zooPanel.buttonPanel, BorderLayout.SOUTH);
-        /*
-        JPanel statusPanel = new JPanel();
-        statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
-        f.add(statusPanel, BorderLayout.SOUTH);
-        statusPanel.setPreferredSize(new Dimension(f.getWidth(), 16));
-        statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
-        JLabel statusLabel = new JLabel("status");
-        statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        statusPanel.add(statusLabel);
 
-        f.setLayout(null);
-        f.pack();
-        */
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
     }
@@ -90,21 +76,13 @@ public class ZooFrame extends JFrame { // Main function
         ZooFrame.super.paint(g);
         g.drawImage(backgroundImage,0,0,getWidth(),getHeight(),this);
         setSize(1000,500);
-        setResizable(false);
+        //setResizable(false);
         //setVisible(true);
     }
-    @Override
-    public Dimension getPreferredSize() {
-        if (backgroundImage != null) {
-            int w = backgroundImage.getWidth();
-            int h = backgroundImage.getHeight();
-            return new Dimension(w, h);
-        } else {
-            return super.getPreferredSize();
-        }
-    }
+
     public static void main(String[] args)
     {
         new ZooFrame();
     }
 }
+
