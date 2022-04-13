@@ -2,6 +2,8 @@ package graphics;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ZooPanel extends JPanel implements Runnable {
 
@@ -11,12 +13,19 @@ public class ZooPanel extends JPanel implements Runnable {
 
     ZooPanel() {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JButton exitButton = new JButton("Exit");
         buttonPanel.add(new JButton("Add Animal"));
         buttonPanel.add(new JButton("Move Animal"));
         buttonPanel.add(new JButton("Clear"));
         buttonPanel.add(new JButton("Food"));
         buttonPanel.add(new JButton("Info"));
-        buttonPanel.add(new JButton("Exit"));
-        buttonPanel.setBackground(Color.CYAN);
+        buttonPanel.add(exitButton);
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+                buttonPanel.setBackground(Color.CYAN);
     }
 }
