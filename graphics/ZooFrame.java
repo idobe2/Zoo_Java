@@ -16,6 +16,7 @@ public class ZooFrame extends JFrame { // Main function
     JMenuItem i1, i2, i3, i4, i5;
     JMenuBar mb=new JMenuBar();
     BufferedImage backgroundImage;
+    Color color = UIManager.getColor ( "Panel.background" ); // default background color
 
     ZooFrame(){
         try {
@@ -41,6 +42,12 @@ public class ZooFrame extends JFrame { // Main function
         });
         Background.add(i3);
         Background.add(i4);
+        i4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.getContentPane().setBackground(color); // default background color
+            }
+        });
         Help.add(i5);
         /*
         submenu.add(i4);
@@ -66,7 +73,6 @@ public class ZooFrame extends JFrame { // Main function
         f.setSize(1000,500);
         ZooPanel zooPanel = new ZooPanel();
         f.add(zooPanel.buttonPanel, BorderLayout.SOUTH);
-
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
     }
