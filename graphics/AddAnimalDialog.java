@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 
 public class AddAnimalDialog extends JDialog {
     private final InputsPanel inputs;
-    //private final JDialog d = new JDialog();
     private final JFrame f = new JFrame("Add Animal");
+    //private final JDialog d = new JDialog();
 
     private static class InputsPanel extends JPanel {
         private final JTextField tbSize, tbHspeed, tbVspeed;
