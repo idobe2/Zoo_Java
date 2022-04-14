@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 public class AddAnimalDialog extends JDialog {
     private final InputsPanel inputs;
     private final JFrame f = new JFrame("Add Animal");
+    private final String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
+    private final JComboBox cb = new JComboBox(animals);
+    private final JLabel label = new JLabel();
     //private final JDialog d = new JDialog();
 
     private static class InputsPanel extends JPanel {
@@ -22,16 +25,28 @@ public class AddAnimalDialog extends JDialog {
             this.add(new JLabel("Vertical speed:"));
             this.add(tbVspeed = new JTextField());
         }
+
+        public double getWeight(String animal) {
+            if (animal.equals("Elephant"))
+                return Integer.parseInt(tbSize.getText()) * 10;
+            else if (animal.equals("Giraffe"))
+                return Integer.parseInt(tbSize.getText()) * 2.2;
+            else if (animal.equals("Bear"))
+                return Integer.parseInt(tbSize.getText()) * 1.5;
+            else if (animal.equals("Lion"))
+                return Integer.parseInt(tbSize.getText()) * 0.8;
+            else if (animal.equals("Turtle"))
+                return Integer.parseInt(tbSize.getText()) * 0.5;
+            return 0;
+        }
     }
 
     public AddAnimalDialog() {
-            final JLabel label = new JLabel();
             label.setHorizontalAlignment(JLabel.CENTER);
             label.setSize(400, 100);
-            JButton b = new JButton("Show");
+            JButton b = new JButton("Select");
             b.setBounds(200, 100, 75, 20);
-            String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
-            final JComboBox cb = new JComboBox(animals);
+            //String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
             cb.setBounds(50, 100, 90, 20);
             this.add(cb);
             this.add(label);
