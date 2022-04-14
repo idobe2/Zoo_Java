@@ -5,11 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ZooPanel extends JPanel implements Runnable {
+public class ZooPanel extends JPanel { // implements Runnable
 
     JPanel buttonPanel = new JPanel();
 
-    public void run() {}
+    //public void run() {}
 
     ZooPanel() {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -19,7 +19,6 @@ public class ZooPanel extends JPanel implements Runnable {
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("test");
                 new AddAnimalDialog();
             }
         });
