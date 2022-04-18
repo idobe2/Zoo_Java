@@ -21,24 +21,116 @@ import java.awt.image.BufferedImage;
  * @author Ido Ben Nun, Bar Cohen
  * @see Mobile
  */
-public abstract class Animal extends Mobile implements IEdible { // ,IDrawable, IAnimalBehavior
+public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnimalBehavior { //
 
 	private final int EAT_DISTANCE = 10;
 	private int size;
+
+	public String getColor() { //TODO
+		if (col == null) return "None";
+		return col.toString();
+	}
+
+	public void setCol(Color col) {
+		this.col = col;
+	}
+
+	public String getAnimalName() {
+		return this.name;
+	}
+
+	public void eatInc() {
+		this.eatCount++;
+	}
+
+	public int getEatCount() {
+		return this.eatCount;
+	}
+
+	public boolean getChanges() { //TODO
+		return false;
+	}
+
+	public void setChanges(boolean state) { //TODO
+	}
+
 	private Color col;
 	private int horSpeed;
 	private int verSpeed;
 	private boolean coordChanged;
 	private Thread thread;
+
+	public int getX_dir() {
+		return x_dir;
+	}
+
+	public void setX_dir(int x_dir) {
+		this.x_dir = x_dir;
+	}
+
+	public int getY_dir() {
+		return y_dir;
+	}
+
+	public void setY_dir(int y_dir) {
+		this.y_dir = y_dir;
+	}
+
 	private int x_dir;
 	private int y_dir;
 	private int eatCount;
-	private ZooPanel pan;
-	private BufferedImage img1, img2;
+	private ZooPanel pan; // JPanel
+	protected BufferedImage img1 = null, img2 = null;
 
 	private String name;
 	private double weight;
 	private IDiet diet;
+
+	public boolean setSize(int size)
+	{
+		this.size = size;
+		return true;
+	}
+
+	public int getSize()
+	{
+		return this.size;
+	}
+
+	public boolean setPan(ZooPanel pan)
+	{
+		this.pan = pan;
+		return true;
+	}
+
+	public ZooPanel getPan()
+	{
+		return this.pan;
+	}
+
+	public void drawObject (Graphics g)
+	{
+		g.setColor(col);
+		if(getX_dir()==1) // giraffe goes to the right side
+			g.drawImage(img1, getLocation().getX()-getSize()/2, getLocation().getY()-getSize()/10, getSize()/2, getSize(), getPan());
+		else // giraffe goes to the left side
+			g.drawImage(img2, getLocation().getX(), getLocation().getY()-getSize()/10, getSize()/2, getSize(), getPan());
+	}
+
+	public Animal(String name, int size, int horSpeed, int verSpeed, String color)	{
+		//super(location);
+		this.name = name;
+		this.size = size;
+		this.horSpeed = horSpeed;
+		this.verSpeed = verSpeed;
+		if (color.equals("Blue"))
+			this.col = Color.BLUE;
+		else if (color.equals("None"))
+			this.col = null;
+		else if (color.equals("Red"))
+			this.col = Color.RED;
+		//MessageUtility.logConstractor(getClass().getSimpleName(), getName());
+	}
 
 	/**	
 	 * A ctor of animal name and location.

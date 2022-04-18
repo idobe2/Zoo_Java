@@ -4,6 +4,12 @@ import diet.Herbivore;
 import mobility.Point;
 import utilities.MessageUtility;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Giraffe class - Herbivore animal.
  * The neck length of Giraffes can be 
@@ -14,7 +20,6 @@ import utilities.MessageUtility;
  * @see Chew
  */
 public class Giraffe extends Chew {
-	
 	private double neckLength;
 	
 	/**
@@ -31,6 +36,13 @@ public class Giraffe extends Chew {
 		this.neckLength = 1.5;
 		setWeight(450);
 		setDiet(new Herbivore());
+		if (getColor().equals("Blue"))
+			loadImages("b");
+		else if (getColor().equals("None"))
+			loadImages("n");
+		else if (getColor().equals("Red"))
+			loadImages("r");
+		drawObject(getPan().getGraphics());
 	}
 	
 	/**
@@ -87,5 +99,14 @@ public class Giraffe extends Chew {
 	 */
 	public void chew() {
 		MessageUtility.logSound(this.getName(), "Bleats and Stomps its legs, then chews");
+	}
+
+	public void loadImages(String nm)
+	{
+		// Read image file
+		try {
+			img1 = ImageIO.read(new File("assignment2_pictures/grf_" + nm + "_1"));
+			img2 = ImageIO.read(new File("assignment2_pictures/grf_"+ nm + "_2"));
+		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 }

@@ -11,18 +11,50 @@ import java.io.File;
 import java.io.IOException;
 
 public class ZooFrame extends JFrame {
-    JFrame f= new JFrame("Zoo");
+    //mainPanel mainP = new mainPanel();
+    JPanel mainP = new JPanel();
     JMenu File, Background, Help, submenu;
     JMenuItem i1, i2, i3, i4, i5;
     JMenuBar mb=new JMenuBar();
-    BufferedImage backgroundImage;
+
     Color color = UIManager.getColor ( "Panel.background" ); // default background color
+    ZooPanel zooPanel = new ZooPanel();
+
+//    private static class mainPanel extends JPanel
+//    {
+//        Color color = UIManager.getColor ( "Panel.background" ); // default background color
+//        BufferedImage backgroundImage = null;
+//
+//        mainPanel()
+//        {
+//            // Read image file
+//            try {
+//                backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
+//            } catch (IOException ex) {System.out.println("Cannot load image");}
+//            //setBackground(color);
+//
+//        }
+//
+////        public void paintComponent(Graphics g) {
+////            super.paintComponents(g) ;
+////            if(backgroundImage!=null) {
+////                g.drawImage(backgroundImage,0,0,getWidth(),getHeight(), this);
+////                //setSize(1000,500);
+////                //setResizable(true);
+////            }
+////        }
+
+//    }
+    BufferedImage backgroundImage = null;
 
     ZooFrame(){
+
+        // Read image file
         try {
             backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
         } catch (IOException ex) {System.out.println("Cannot load image");}
-        f.setLayout(new BorderLayout()); // ?
+
+        this.setLayout(new BorderLayout()); // ?
         File=new JMenu("File");
         Background = new JMenu("Background");
         Help = new JMenu("Help");
@@ -39,18 +71,18 @@ public class ZooFrame extends JFrame {
                 System.exit(0);
             }
         });
-        Background.add(i2);
+        Background.add(i2); // TODO image
         i2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                paintComponent(f.getContentPane().getGraphics());
+                paintImg();
             }
         });
         Background.add(i3);
         Background.add(i4);
         i4.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { f.getContentPane().setBackground(color); }
+            public void actionPerformed(ActionEvent e) { paintClr(color); }
         });
         Help.add(i5);
         /*
@@ -63,7 +95,7 @@ public class ZooFrame extends JFrame {
         i3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               f.getContentPane().setBackground(Color.GREEN);
+                paintClr(Color.GREEN);
             }
         });
         mb.add(Help);
@@ -73,31 +105,37 @@ public class ZooFrame extends JFrame {
                 JOptionPane.showMessageDialog(null, "Home Work 2\nGUI");
             }
         });
-        f.setJMenuBar(mb);
-        f.setSize(1000,500);
-        ZooPanel zooPanel = new ZooPanel();
-        f.add(zooPanel.buttonPanel, BorderLayout.SOUTH);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);
+        this.setJMenuBar(mb);
+        this.setSize(1000,500);
+
+        // ZooPanel
+        this.add(mainP, BorderLayout.CENTER);
+        this.add(zooPanel, BorderLayout.SOUTH);
+
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponents(g) ;
-        if(backgroundImage!=null) {
-            g.drawImage(backgroundImage,0,0,getWidth(),getHeight(), this);
-            setSize(1000,500);
-            setResizable(true);
-        }
-    }
-
-//    public void paint(Graphics g)
-//    {
-//        ZooFrame.super.paint(g);
-//        g.drawImage(backgroundImage,0,0,getWidth(),getHeight(),this);
-//        setSize(1000,500);
-//        //setResizable(false);
-//        //setVisible(true);
+//    public void paintComponent(Graphics g) {
+//        super.paintComponents(g) ;
+//        if(backgroundImage!=null) {
+//            g.drawImage(backgroundImage,0,0,getWidth(),getHeight(), this);
+//            //setSize(1000,500);
+//            //setResizable(true);
+//        }
 //    }
+
+    public void paintImg()
+    {
+        //zooPanel.paintImg();
+        this.mainP.getGraphics().drawImage(backgroundImage,0,0,getWidth(),getHeight(), mainP);
+    }
+
+    public void paintClr(Color color)
+    {
+        this.mainP.setBackground(color);
+    }
 
     public static void main(String[] args)
     {
