@@ -16,39 +16,11 @@ public class ZooFrame extends JFrame {
     JMenu File, Background, Help, submenu;
     JMenuItem i1, i2, i3, i4, i5;
     JMenuBar mb=new JMenuBar();
-
     Color color = UIManager.getColor ( "Panel.background" ); // default background color
     ZooPanel zooPanel = new ZooPanel();
-
-//    private static class mainPanel extends JPanel
-//    {
-//        Color color = UIManager.getColor ( "Panel.background" ); // default background color
-//        BufferedImage backgroundImage = null;
-//
-//        mainPanel()
-//        {
-//            // Read image file
-//            try {
-//                backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
-//            } catch (IOException ex) {System.out.println("Cannot load image");}
-//            //setBackground(color);
-//
-//        }
-//
-////        public void paintComponent(Graphics g) {
-////            super.paintComponents(g) ;
-////            if(backgroundImage!=null) {
-////                g.drawImage(backgroundImage,0,0,getWidth(),getHeight(), this);
-////                //setSize(1000,500);
-////                //setResizable(true);
-////            }
-////        }
-
-//    }
     BufferedImage backgroundImage = null;
 
-    ZooFrame(){
-
+    ZooFrame() {
         // Read image file
         try {
             backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
@@ -107,12 +79,9 @@ public class ZooFrame extends JFrame {
         });
         this.setJMenuBar(mb);
         this.setSize(1000,500);
-
         // ZooPanel
         this.add(mainP, BorderLayout.CENTER);
         this.add(zooPanel, BorderLayout.SOUTH);
-
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

@@ -3,6 +3,9 @@ package animals;
 import diet.Herbivore;
 import mobility.Point;
 import utilities.MessageUtility;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Turtle class - Herbivore animal.
@@ -16,6 +19,20 @@ import utilities.MessageUtility;
 public class Turtle extends Chew {
 	
 	private int Age;
+
+	public Turtle(String name, int size, int horSpeed, int verSpeed, String color) {
+		super(name, size, horSpeed, verSpeed, color);
+		this.Age = 1;
+		this.setWeight(1);
+		this.setDiet(new Herbivore());
+		if (getColor().equals("None"))
+			loadImages("n");
+		else if (getColor().equals("Blue"))
+			loadImages("b");
+		else if (getColor().equals("Red"))
+			loadImages("r");
+		drawObject(getPan().getGraphics());
+	}
 	
 	/**
 	 * A ctor of turtle name and location.
@@ -88,5 +105,13 @@ public class Turtle extends Chew {
 	 */
 	public void chew() {
 		MessageUtility.logSound(this.getName(), "Retracts its head in then eats quietly");
+	}
+
+	public void loadImages(String nm)
+	{	// Read image file
+		try {
+			img1 = ImageIO.read(new File("assignment2_pictures/trt_" + nm + "_1"));
+			img2 = ImageIO.read(new File("assignment2_pictures/trt_"+ nm + "_2"));
+		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 }

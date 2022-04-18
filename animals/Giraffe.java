@@ -5,8 +5,6 @@ import mobility.Point;
 import utilities.MessageUtility;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,7 +19,21 @@ import java.io.IOException;
  */
 public class Giraffe extends Chew {
 	private double neckLength;
-	
+
+	public Giraffe(String name, int size, int horSpeed, int verSpeed, String color) {
+		super(name, size, horSpeed, verSpeed, color);
+		this.neckLength = 1.5;
+		setWeight(450);
+		setDiet(new Herbivore());
+		if (getColor().equals("None"))
+			loadImages("n");
+		else if (getColor().equals("Blue"))
+			loadImages("b");
+		else if (getColor().equals("Red"))
+			loadImages("r");
+		drawObject(getPan().getGraphics());
+	}
+
 	/**
 	 * A ctor of giraffe name and location.
 	 * 
@@ -36,13 +48,6 @@ public class Giraffe extends Chew {
 		this.neckLength = 1.5;
 		setWeight(450);
 		setDiet(new Herbivore());
-		if (getColor().equals("Blue"))
-			loadImages("b");
-		else if (getColor().equals("None"))
-			loadImages("n");
-		else if (getColor().equals("Red"))
-			loadImages("r");
-		drawObject(getPan().getGraphics());
 	}
 	
 	/**
@@ -102,8 +107,7 @@ public class Giraffe extends Chew {
 	}
 
 	public void loadImages(String nm)
-	{
-		// Read image file
+	{	// Read image filev
 		try {
 			img1 = ImageIO.read(new File("assignment2_pictures/grf_" + nm + "_1"));
 			img2 = ImageIO.read(new File("assignment2_pictures/grf_"+ nm + "_2"));

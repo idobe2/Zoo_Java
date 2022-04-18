@@ -9,19 +9,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class AddAnimalDialog extends JDialog {
-    private final InputsPanel inputs;
     //private final JFrame f = new JFrame("Add Animal");
+    //private final JDialog d = new JDialog();
+    private final InputsPanel inputs;
     private final String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
     private final JComboBox cb = new JComboBox(animals);
     private final JLabel label = new JLabel();
-    //private final JDialog d = new JDialog();
-
     private static class InputsPanel extends JPanel {
         private final JTextField tbSize, tbHspeed, tbVspeed;
         private final JLabel label = new JLabel();
         private final String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
         private final JComboBox cb = new JComboBox(animals);
-
 
         public InputsPanel() {
             this.setLayout(new GridLayout(5, 2));
@@ -45,6 +43,22 @@ public class AddAnimalDialog extends JDialog {
                     String data = "Animal Selected: "
                             + cb.getItemAt(cb.getSelectedIndex());
                     label.setText(data);
+                    boolean flag = true;
+                    if (Integer.parseInt(tbSize.getText()) <= 50 || Integer.parseInt(tbSize.getText()) >= 300)
+                    {
+                        flag = false;
+                        JOptionPane.showMessageDialog(null, "Size should be between 50 and 300");
+                    }
+                    if (Integer.parseInt(tbHspeed.getText()) <= 1 || Integer.parseInt(tbHspeed.getText()) >= 10)
+                    {
+                        flag = false;
+                        JOptionPane.showMessageDialog(null, "Speed should be between 1 and 10");
+                    }
+                    if (Integer.parseInt(tbVspeed.getText()) <= 1 || Integer.parseInt(tbVspeed.getText()) >= 10)
+                    {
+                        flag = false;
+                        JOptionPane.showMessageDialog(null, "Speed should be between 1 and 10");
+                    }
 
                     //System.out.println(cb.getItemAt(cb.getSelectedIndex())); // String of animal
                 }
@@ -66,7 +80,7 @@ public class AddAnimalDialog extends JDialog {
         }
     }
 
-    public AddAnimalDialog(ArrayList<Animal> animals, JPanel mainP)
+    public AddAnimalDialog(ArrayList<Animal> animalArrayList, JPanel mainP)//
     {
         inputs = new InputsPanel();
         inputs.add(mainP);
@@ -76,7 +90,6 @@ public class AddAnimalDialog extends JDialog {
         this.setSize(350, 350);
         //this.pack();
         this.setVisible(true);
-
         }
     }
 

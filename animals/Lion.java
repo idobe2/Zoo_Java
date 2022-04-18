@@ -3,6 +3,9 @@ package animals;
 import diet.Carnivore;
 import mobility.Point;
 import utilities.MessageUtility;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Lion class - Carnivore animal.
@@ -17,7 +20,21 @@ import utilities.MessageUtility;
 public class Lion extends Roar {
 	
 	private int scarCount;
-	
+
+	public Lion(String name, int size, int horSpeed, int verSpeed, String color) {
+		super(name, size, horSpeed, verSpeed, color);
+		this.scarCount = 0;
+		this.setWeight(408.2);
+		this.setDiet(new Carnivore());
+		if (getColor().equals("None"))
+			loadImages("n");
+		else if (getColor().equals("Blue"))
+			loadImages("b");
+		else if (getColor().equals("Red"))
+			loadImages("r");
+		drawObject(getPan().getGraphics());
+	}
+
 	/**
 	 * A ctor of lion name and location.
 	 * 
@@ -93,5 +110,13 @@ public class Lion extends Roar {
 	public void roar()
 	{
 		MessageUtility.logSound(this.getName(), "Roars, then stretches and shakes its mane");
+	}
+
+	public void loadImages(String nm)
+	{	// Read image file
+		try {
+			img1 = ImageIO.read(new File("assignment2_pictures/lio_" + nm + "_1"));
+			img2 = ImageIO.read(new File("assignment2_pictures/lio_"+ nm + "_2"));
+		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 }

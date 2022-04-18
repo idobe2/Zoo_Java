@@ -1,8 +1,13 @@
 package animals;
 
 import diet.Herbivore;
+import diet.Omnivore;
 import mobility.Point;
 import utilities.MessageUtility;
+
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Elephant class - Herbivore animal.
@@ -16,7 +21,21 @@ import utilities.MessageUtility;
 public class Elephant extends Chew {
 	
 	private double trunkLength;
-	
+
+	public Elephant(String name, int size, int horSpeed, int verSpeed, String color) {
+		super(name, size, horSpeed, verSpeed, color);
+		this.trunkLength = 1;
+		this.setWeight(500);
+		this.setDiet(new Herbivore());
+		if (getColor().equals("None"))
+			loadImages("n");
+		else if (getColor().equals("Blue"))
+			loadImages("b");
+		else if (getColor().equals("Red"))
+			loadImages("r");
+		drawObject(getPan().getGraphics());
+	}
+
 	/**
 	 * A ctor of elephant name and location.
 	 * 
@@ -90,4 +109,11 @@ public class Elephant extends Chew {
 		MessageUtility.logSound(this.getName(), "Trumpets with joy while flapping its ears, then chews");
 	}
 
+	public void loadImages(String nm)
+	{	// Read image file
+		try {
+			img1 = ImageIO.read(new File("assignment2_pictures/elf_" + nm + "_1"));
+			img2 = ImageIO.read(new File("assignment2_pictures/elf_"+ nm + "_2"));
+		} catch (IOException ex) {System.out.println("Cannot load image");}
+	}
 }

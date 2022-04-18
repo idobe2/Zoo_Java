@@ -1,5 +1,7 @@
 package graphics;
 
+import animals.Animal;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -8,13 +10,13 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ZooPanel extends JPanel { // implements Runnable
-
+    ArrayList<Animal> animalArrayList = new ArrayList<>();
     //public void run() {}
 
     ZooPanel() {
-
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         JButton addAnimalButton = new JButton("Add Animal");
         JButton exitButton = new JButton("Exit");
@@ -22,7 +24,7 @@ public class ZooPanel extends JPanel { // implements Runnable
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddAnimalDialog();
+                new AddAnimalDialog(animalArrayList, new JPanel()); // TODO
             }
         });
         this.add(new JButton("Move Animal"));
@@ -37,7 +39,5 @@ public class ZooPanel extends JPanel { // implements Runnable
             }
         });
         this.setBackground(Color.CYAN);
-
-
     }
-    }
+}

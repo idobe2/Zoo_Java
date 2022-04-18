@@ -11,7 +11,11 @@ import mobility.Point;
  * @see Roar
  */
 public abstract class Chew extends Animal{
-	
+
+	public Chew(String name, int size, int horSpeed, int verSpeed, String color)	{
+		super(name, size, horSpeed, verSpeed, color);
+	}
+
 	/**
 	 * An easy ctor to init an animal object.
 	 * 

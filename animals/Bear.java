@@ -3,6 +3,9 @@ package animals;
 import diet.Omnivore;
 import mobility.Point;
 import utilities.MessageUtility;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Bear class - Omnivore animal.
@@ -14,9 +17,23 @@ import utilities.MessageUtility;
  * @see Roar
  */
 public class Bear extends Roar {
-	
+
 	private String furColor;
-	
+
+	public Bear(String name, int size, int horSpeed, int verSpeed, String color) {
+		super(name, size, horSpeed, verSpeed, color);
+		this.furColor = new String("GRAY");
+		this.setWeight(308.2);
+		this.setDiet(new Omnivore());
+		if (getColor().equals("None"))
+			loadImages("n");
+		else if (getColor().equals("Blue"))
+			loadImages("b");
+		else if (getColor().equals("Red"))
+			loadImages("r");
+		drawObject(getPan().getGraphics());
+	}
+
 	/**
 	 * A ctor of bear name and location.
 	 * 
@@ -92,6 +109,12 @@ public class Bear extends Roar {
 	{
 		MessageUtility.logSound(this.getName(), "Stands on its hind legs, roars and scratches its belly");
 	}
-	
 
+	public void loadImages(String nm)
+	{	// Read image file
+		try {
+			img1 = ImageIO.read(new File("assignment2_pictures/bea_" + nm + "_1"));
+			img2 = ImageIO.read(new File("assignment2_pictures/bea_"+ nm + "_2"));
+		} catch (IOException ex) {System.out.println("Cannot load image");}
+	}
 }

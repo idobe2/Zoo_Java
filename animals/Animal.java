@@ -9,7 +9,6 @@ import graphics.ZooPanel;
 import mobility.Mobile;
 import mobility.Point;
 import utilities.MessageUtility;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -25,6 +24,19 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 
 	private final int EAT_DISTANCE = 10;
 	private int size;
+	private Color col;
+	private int horSpeed;
+	private int verSpeed;
+	private boolean coordChanged;
+	private Thread thread;
+	private int x_dir;
+	private int y_dir;
+	private int eatCount;
+	private ZooPanel pan; // JPanel
+	protected BufferedImage img1 = null, img2 = null;
+	private String name;
+	private double weight;
+	private IDiet diet;
 
 	public String getColor() { //TODO
 		if (col == null) return "None";
@@ -51,40 +63,18 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return false;
 	}
 
-	public void setChanges(boolean state) { //TODO
-	}
+	public void setChanges(boolean state) { } //TODO
 
-	private Color col;
-	private int horSpeed;
-	private int verSpeed;
-	private boolean coordChanged;
-	private Thread thread;
+	public int getX_dir() { return x_dir; }
 
-	public int getX_dir() {
-		return x_dir;
-	}
-
-	public void setX_dir(int x_dir) {
+	public boolean setX_dir(int x_dir) {
 		this.x_dir = x_dir;
+		return true;
 	}
 
-	public int getY_dir() {
-		return y_dir;
-	}
+	public int getY_dir() { return y_dir; }
 
-	public void setY_dir(int y_dir) {
-		this.y_dir = y_dir;
-	}
-
-	private int x_dir;
-	private int y_dir;
-	private int eatCount;
-	private ZooPanel pan; // JPanel
-	protected BufferedImage img1 = null, img2 = null;
-
-	private String name;
-	private double weight;
-	private IDiet diet;
+	public boolean setY_dir(int y_dir) { this.y_dir = y_dir; return true; }
 
 	public boolean setSize(int size)
 	{
@@ -92,10 +82,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return true;
 	}
 
-	public int getSize()
-	{
-		return this.size;
-	}
+	public int getSize() { return this.size; }
 
 	public boolean setPan(ZooPanel pan)
 	{
@@ -103,10 +90,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return true;
 	}
 
-	public ZooPanel getPan()
-	{
-		return this.pan;
-	}
+	public ZooPanel getPan() { return this.pan; }
 
 	public void drawObject (Graphics g)
 	{
