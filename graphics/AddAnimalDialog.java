@@ -59,8 +59,12 @@ public class AddAnimalDialog extends JDialog {
                         flag = false;
                         JOptionPane.showMessageDialog(null, "Speed should be between 1 and 10");
                     }
-
-                    //System.out.println(cb.getItemAt(cb.getSelectedIndex())); // String of animal
+//                    if (flag) {
+//                        if (cb.getItemAt(cb.getSelectedIndex()).equals("Elephant")
+//
+//                        }
+//                    }
+                    System.out.println(cb.getItemAt(cb.getSelectedIndex())); // String of animal
                 }
             });
         }
@@ -93,18 +97,3 @@ public class AddAnimalDialog extends JDialog {
         }
     }
 
-//    AddAnimalDialog() {
-//        d.setLayout( new FlowLayout() );
-//        JCheckBox checkBoxElephant = new JCheckBox("Elephant");
-//        JCheckBox checkBoxLion = new JCheckBox("Lion");
-//        JCheckBox checkBoxGiraffe = new JCheckBox("Giraffe");
-//        JCheckBox checkBoxTurtle = new JCheckBox("Turtle");
-//        JCheckBox checkBoxBear = new JCheckBox("Bear");
-//        d.add(checkBoxElephant);
-//        d.add(checkBoxLion);
-//        d.add(checkBoxGiraffe);
-//        d.add(checkBoxTurtle);
-//        d.add(checkBoxBear);
-//        d.setSize(300,300);
-//        d.setVisible(true);
-//    }
