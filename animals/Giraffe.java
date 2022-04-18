@@ -20,8 +20,8 @@ import java.io.IOException;
 public class Giraffe extends Chew {
 	private double neckLength;
 
-	public Giraffe(String name, int size, int horSpeed, int verSpeed, String color) {
-		super(name, size, horSpeed, verSpeed, color);
+	public Giraffe(int size, int horSpeed, int verSpeed, String color) {
+		super(size, horSpeed, verSpeed, color);
 		this.neckLength = 1.5;
 		setWeight(450);
 		setDiet(new Herbivore());

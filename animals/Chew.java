@@ -12,8 +12,8 @@ import mobility.Point;
  */
 public abstract class Chew extends Animal{
 
-	public Chew(String name, int size, int horSpeed, int verSpeed, String color)	{
-		super(name, size, horSpeed, verSpeed, color);
+	public Chew(int size, int horSpeed, int verSpeed, String color) {
+		super(size, horSpeed, verSpeed, color);
 	}
 
 	/**

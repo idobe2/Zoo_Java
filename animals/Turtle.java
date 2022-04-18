@@ -20,8 +20,8 @@ public class Turtle extends Chew {
 	
 	private int Age;
 
-	public Turtle(String name, int size, int horSpeed, int verSpeed, String color) {
-		super(name, size, horSpeed, verSpeed, color);
+	public Turtle(int size, int horSpeed, int verSpeed, String color) {
+		super(size, horSpeed, verSpeed, color);
 		this.Age = 1;
 		this.setWeight(1);
 		this.setDiet(new Herbivore());

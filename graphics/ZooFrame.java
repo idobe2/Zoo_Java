@@ -11,16 +11,16 @@ import java.io.File;
 import java.io.IOException;
 
 public class ZooFrame extends JFrame {
-    //mainPanel mainP = new mainPanel();
-    JPanel mainP = new JPanel();
-    JMenu File, Background, Help, submenu;
-    JMenuItem i1, i2, i3, i4, i5;
-    JMenuBar mb=new JMenuBar();
-    Color color = UIManager.getColor ( "Panel.background" ); // default background color
-    ZooPanel zooPanel = new ZooPanel();
-    BufferedImage backgroundImage = null;
+    private JPanel mainP = new JPanel();
+    private final JMenu File, Background, Help, submenu;
+    private final JMenuItem i1, i2, i3, i4, i5;
+    private final JMenuBar mb=new JMenuBar();
+    private final Color color = UIManager.getColor ( "Panel.background" ); // default background color
+    private final ZooPanel zooPanel = new ZooPanel();
+    private BufferedImage backgroundImage = null;
 
     ZooFrame() {
+        this.setTitle("Zoo");
         // Read image file
         try {
             backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
@@ -93,6 +93,10 @@ public class ZooFrame extends JFrame {
 //            //setSize(1000,500);
 //            //setResizable(true);
 //        }
+//    }
+
+//    public ZooPanel getZooPanel() {
+//        return zooPanel;
 //    }
 
     public void paintImg()

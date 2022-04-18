@@ -43,7 +43,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return col.toString();
 	}
 
-	public void setCol(Color col) {
+	public void setColor(Color col) {
 		this.col = col;
 	}
 
@@ -96,21 +96,21 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	{
 		g.setColor(col);
 		if(getX_dir()==1) // giraffe goes to the right side
-			g.drawImage(img1, getLocation().getX()-getSize()/2, getLocation().getY()-getSize()/10, getSize()/2, getSize(), getPan());
+			g.drawImage(img1, getLocation().getX()-size/2, getLocation().getY()-size/10, size/2, size, pan);
 		else // giraffe goes to the left side
-			g.drawImage(img2, getLocation().getX(), getLocation().getY()-getSize()/10, getSize()/2, getSize(), getPan());
+			g.drawImage(img2, getLocation().getX(), getLocation().getY()-size/10, size/2, size, pan);
 	}
 
-	public Animal(String name, int size, int horSpeed, int verSpeed, String color)	{
+	public Animal(int size, int horSpeed, int verSpeed, String color)	{
 		//super(location);
-		this.name = name;
+		//this.name = name;
 		this.size = size;
 		this.horSpeed = horSpeed;
 		this.verSpeed = verSpeed;
-		if (color.equals("Blue"))
-			this.col = Color.BLUE;
-		else if (color.equals("None"))
+		if (color.equals("None"))
 			this.col = null;
+		else if (color.equals("Blue"))
+			this.col = Color.BLUE;
 		else if (color.equals("Red"))
 			this.col = Color.RED;
 		//MessageUtility.logConstractor(getClass().getSimpleName(), getName());

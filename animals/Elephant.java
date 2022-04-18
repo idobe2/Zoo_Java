@@ -22,18 +22,19 @@ public class Elephant extends Chew {
 	
 	private double trunkLength;
 
-	public Elephant(String name, int size, int horSpeed, int verSpeed, String color) {
-		super(name, size, horSpeed, verSpeed, color);
+	public Elephant(int size, int horSpeed, int verSpeed, String color) {
+		super(size, horSpeed, verSpeed, color);
 		this.trunkLength = 1;
-		this.setWeight(500);
+		//this.setWeight(500);
 		this.setDiet(new Herbivore());
-		if (getColor().equals("None"))
-			loadImages("n");
-		else if (getColor().equals("Blue"))
-			loadImages("b");
-		else if (getColor().equals("Red"))
-			loadImages("r");
-		drawObject(getPan().getGraphics());
+//		if (getColor().equals("None"))
+//			loadImages("n");
+//		else if (getColor().equals("Blue"))
+//			loadImages("b");
+//		else if (getColor().equals("Red"))
+//			loadImages("r");
+		if (getPan() != null)
+			drawObject(getPan().getGraphics());
 	}
 
 	/**
