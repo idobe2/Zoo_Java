@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ZooPanel extends JPanel { // implements Runnable // public void run() {}
     ArrayList<Animal> animalArrayList = new ArrayList<>();
 
-    ZooPanel() {
+    ZooPanel(JPanel mainP) {
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         JButton addAnimalButton = new JButton("Add Animal");
         JButton exitButton = new JButton("Exit");
@@ -18,7 +18,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddAnimalDialog(animalArrayList, new JPanel()); // TODO
+                new AddAnimalDialog(animalArrayList, mainP); // TODO
             }
         });
         this.add(new JButton("Move Animal"));

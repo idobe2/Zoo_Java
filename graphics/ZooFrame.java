@@ -16,8 +16,10 @@ public class ZooFrame extends JFrame {
     private final JMenuItem i1, i2, i3, i4, i5;
     private final JMenuBar mb=new JMenuBar();
     private final Color color = UIManager.getColor ( "Panel.background" ); // default background color
-    private final ZooPanel zooPanel = new ZooPanel();
+    private final ZooPanel zooPanel = new ZooPanel(mainP);
     private BufferedImage backgroundImage = null;
+
+    //public JPanel getMainPanel() { return mainP; }
 
     ZooFrame() {
         this.setTitle("Zoo");
