@@ -20,10 +20,11 @@ import java.io.IOException;
 public class Giraffe extends Chew {
 	private double neckLength;
 
-	public Giraffe(int size, int horSpeed, int verSpeed, String color) {
+	public Giraffe(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color);
 		this.neckLength = 1.5;
-		setWeight(450);
+		this.setWeight(weight);
+		//this.setWeight(450);
 		setDiet(new Herbivore());
 		if (getColor().equals("None"))
 			loadImages("n");
@@ -31,7 +32,8 @@ public class Giraffe extends Chew {
 			loadImages("b");
 		else if (getColor().equals("Red"))
 			loadImages("r");
-		drawObject(getPan().getGraphics());
+		if (getPan() != null)
+			drawObject(getPan().getGraphics());
 	}
 
 	/**

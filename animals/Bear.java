@@ -20,10 +20,11 @@ public class Bear extends Roar {
 
 	private String furColor;
 
-	public Bear(int size, int horSpeed, int verSpeed, String color) {
+	public Bear(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color);
 		this.furColor = new String("GRAY");
-		this.setWeight(308.2);
+		this.setWeight(weight);
+		//this.setWeight(308.2);
 		this.setDiet(new Omnivore());
 		if (getColor().equals("None"))
 			loadImages("n");
@@ -31,7 +32,8 @@ public class Bear extends Roar {
 			loadImages("b");
 		else if (getColor().equals("Red"))
 			loadImages("r");
-		drawObject(getPan().getGraphics());
+		if (getPan() != null)
+			drawObject(getPan().getGraphics());
 	}
 
 	/**

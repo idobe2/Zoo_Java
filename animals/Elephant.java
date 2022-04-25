@@ -2,10 +2,12 @@ package animals;
 
 import diet.Herbivore;
 import diet.Omnivore;
+import graphics.ZooPanel;
 import mobility.Point;
 import utilities.MessageUtility;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -28,12 +30,15 @@ public class Elephant extends Chew {
 		this.setWeight(weight);
 		//this.setWeight(500);
 		this.setDiet(new Herbivore());
-//		if (getColor().equals("None"))
-//			loadImages("n");
-//		else if (getColor().equals("Blue"))
-//			loadImages("b");
-//		else if (getColor().equals("Red"))
-//			loadImages("r");
+		if (getColor().equals("None"))
+			loadImages("n");
+		else if (getColor().equals("Blue"))
+			loadImages("b");
+		else if (getColor().equals("Red"))
+			loadImages("r");
+//		JPanel panel = new JPanel();
+//		drawObject(panel.getGraphics());
+//		setPan(panel);
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
 	}

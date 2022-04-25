@@ -1,7 +1,6 @@
 package graphics;
 
-import animals.Animal;
-import animals.Elephant;
+import animals.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,22 +72,53 @@ public class AddAnimalDialog extends JDialog {
                         //String animal = new String(cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString());
                         switch (cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString()) {
                             case "Elephant":
-                                Animal animal = new Elephant(Integer.parseInt(tbSize.getText()), Integer.parseInt(tbHspeed.getText()),
-                                        Integer.parseInt(tbVspeed.getText()), cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
-                                        getWeight(("Elephant"), Integer.parseInt(tbSize.getText())));
-                                animalArrayList.add(animal);
+                                animalArrayList.add(new Elephant(Integer.parseInt(tbSize.getText()),
+                                        Integer.parseInt(tbHspeed.getText()),
+                                        Integer.parseInt(tbVspeed.getText()),
+                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
+                                        getWeight(("Elephant"), Integer.parseInt(tbSize.getText()))));
+                                //mainP.add(animal.getPan());
                                 System.out.println(animalArrayList);
 //                                animal.setPan(new ZooPanel());
 //                                animal.drawObject(animal.getPan().getGraphics());
                                 System.out.println("Test");
+                                //mainP.add(animalArrayList.get(animalArrayList.size()-1).getPan());
                                 break;
                             case "Lion":
+                                animalArrayList.add(new Lion(Integer.parseInt(tbSize.getText()),
+                                        Integer.parseInt(tbHspeed.getText()),
+                                        Integer.parseInt(tbVspeed.getText()),
+                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
+                                        getWeight(("Lion"), Integer.parseInt(tbSize.getText()))));
+                                //mainP.add(animal.getPan());
+                                System.out.println(animalArrayList);
                                 break;
                             case "Giraffe":
+                                animalArrayList.add(new Giraffe(Integer.parseInt(tbSize.getText()),
+                                        Integer.parseInt(tbHspeed.getText()),
+                                        Integer.parseInt(tbVspeed.getText()),
+                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
+                                        getWeight(("Giraffe"), Integer.parseInt(tbSize.getText()))));
+                                //mainP.add(animal.getPan());
+                                System.out.println(animalArrayList);
                                 break;
                             case "Turtle":
+                                animalArrayList.add(new Turtle(Integer.parseInt(tbSize.getText()),
+                                        Integer.parseInt(tbHspeed.getText()),
+                                        Integer.parseInt(tbVspeed.getText()),
+                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
+                                        getWeight(("Turtle"), Integer.parseInt(tbSize.getText()))));
+                                //mainP.add(animal.getPan());
+                                System.out.println(animalArrayList);
                                 break;
                             case "Bear":
+                                animalArrayList.add(new Bear(Integer.parseInt(tbSize.getText()),
+                                        Integer.parseInt(tbHspeed.getText()),
+                                        Integer.parseInt(tbVspeed.getText()),
+                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
+                                        getWeight(("Bear"), Integer.parseInt(tbSize.getText()))));
+                                //mainP.add(animal.getPan());
+                                System.out.println(animalArrayList);
                                 break;
                         }
                     }
