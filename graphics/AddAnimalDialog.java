@@ -25,7 +25,7 @@ public class AddAnimalDialog extends JDialog {
         private final JComboBox cbAnimals = new JComboBox(animals);
         private final JComboBox cbColors = new JComboBox(colors);
 
-        public InputsPanel() {
+        public InputsPanel(ArrayList<Animal> animalArrayList, JPanel mainP) {
             this.setLayout(new GridLayout(6, 2));
             cbAnimals.setBounds(50, 100, 90, 20);
             this.add(cbAnimals);
@@ -74,7 +74,10 @@ public class AddAnimalDialog extends JDialog {
                         switch (cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString()) {
                             case "Elephant":
                                 Animal animal = new Elephant(Integer.parseInt(tbSize.getText()), Integer.parseInt(tbHspeed.getText()),
-                                        Integer.parseInt(tbVspeed.getText()), cbColors.getItemAt(cbColors.getSelectedIndex()).toString());
+                                        Integer.parseInt(tbVspeed.getText()), cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
+                                        getWeight(("Elephant"), Integer.parseInt(tbSize.getText())));
+                                animalArrayList.add(animal);
+                                System.out.println(animalArrayList);
 //                                animal.setPan(new ZooPanel());
 //                                animal.drawObject(animal.getPan().getGraphics());
                                 System.out.println("Test");
@@ -96,17 +99,17 @@ public class AddAnimalDialog extends JDialog {
             });
         }
 
-        public double getWeight(String animal) {
+        public double getWeight(String animal, int size) {
             if (animal.equals("Elephant"))
-                return Integer.parseInt(tbSize.getText()) * 10;
+                return size * 10;
             else if (animal.equals("Giraffe"))
-                return Integer.parseInt(tbSize.getText()) * 2.2;
+                return size * 2.2;
             else if (animal.equals("Bear"))
-                return Integer.parseInt(tbSize.getText()) * 1.5;
+                return size * 1.5;
             else if (animal.equals("Lion"))
-                return Integer.parseInt(tbSize.getText()) * 0.8;
+                return size * 0.8;
             else if (animal.equals("Turtle"))
-                return Integer.parseInt(tbSize.getText()) * 0.5;
+                return size * 0.5;
             return 0;
         }
     }
@@ -114,7 +117,7 @@ public class AddAnimalDialog extends JDialog {
     public AddAnimalDialog(ArrayList<Animal> animalArrayList, JPanel mainP)//
     {
         this.setTitle("Add Animal");
-        inputs = new InputsPanel();
+        inputs = new InputsPanel(animalArrayList,mainP);
         inputs.add(mainP);
         this.add(inputs);
         //this.add(new CalculatePanel());
