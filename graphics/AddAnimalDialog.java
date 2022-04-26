@@ -23,6 +23,7 @@ public class AddAnimalDialog extends JDialog {
         private final String colors[] = {"Red", "Blue", "Natural"};
         private final JComboBox cbAnimals = new JComboBox(animals);
         private final JComboBox cbColors = new JComboBox(colors);
+        private boolean flag = true;
 
         public InputsPanel(ArrayList<Animal> animalArrayList, JPanel mainP) {
             this.setLayout(new GridLayout(6, 2));
@@ -46,6 +47,7 @@ public class AddAnimalDialog extends JDialog {
             this.add(b);
             b.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+
                     String dataAnimal = "Animal Selected: "
                             + cbAnimals.getItemAt(cbAnimals.getSelectedIndex());
                     labelAnimal.setText(dataAnimal);
@@ -55,16 +57,15 @@ public class AddAnimalDialog extends JDialog {
                     if (tbSize.getText().isEmpty() || tbHspeed.getText().isEmpty() || tbVspeed.getText().isEmpty())
                         JOptionPane.showMessageDialog(null, "All text fields should be filled");
                     else {
-                        boolean flag = true;
-                        if (Integer.parseInt(tbSize.getText()) <= 50 || Integer.parseInt(tbSize.getText()) >= 300) {
+                        if (Integer.parseInt(tbSize.getText()) < 50 || Integer.parseInt(tbSize.getText()) > 300) {
                             flag = false;
                             JOptionPane.showMessageDialog(null, "Size should be between 50 and 300");
                         }
-                        if (Integer.parseInt(tbHspeed.getText()) <= 1 || Integer.parseInt(tbHspeed.getText()) >= 10) {
+                        if (Integer.parseInt(tbHspeed.getText()) < 1 || Integer.parseInt(tbHspeed.getText()) > 10) {
                             flag = false;
                             JOptionPane.showMessageDialog(null, "Speed should be between 1 and 10");
                         }
-                        if (Integer.parseInt(tbVspeed.getText()) <= 1 || Integer.parseInt(tbVspeed.getText()) >= 10) {
+                        if (Integer.parseInt(tbVspeed.getText()) < 1 || Integer.parseInt(tbVspeed.getText()) > 10) {
                             flag = false;
                             JOptionPane.showMessageDialog(null, "Speed should be between 1 and 10");
                         }
@@ -123,6 +124,8 @@ public class AddAnimalDialog extends JDialog {
                         }
                     }
                     }
+                    if (flag)
+                        setVisible(false);
 //                    System.out.println(cbAnimals.getItemAt(cbAnimals.getSelectedIndex())); // Test - String of animal
 //                    System.out.println(cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString());
                     }

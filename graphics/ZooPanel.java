@@ -18,7 +18,11 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddAnimalDialog(animalArrayList, mainP); // TODO
+                if (animalArrayList.size() < 10)
+                    new AddAnimalDialog(animalArrayList, mainP); // TODO
+                else
+                    JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
+
             }
         });
         this.add(new JButton("Move Animal"));
