@@ -27,18 +27,16 @@ public class Elephant extends Chew {
 	public Elephant(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
 		this.trunkLength = 1;
-		//this.setWeight(weight);
 		//this.setWeight(500);
 		this.setDiet(new Herbivore());
+		//this.setPan(pan);
 		if (getColor().equals("None"))
 			loadImages("n");
 		else if (getColor().equals("Blue"))
 			loadImages("b");
 		else if (getColor().equals("Red"))
 			loadImages("r");
-//		JPanel panel = new JPanel();
-//		drawObject(panel.getGraphics());
-//		setPan(panel);
+
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
 	}

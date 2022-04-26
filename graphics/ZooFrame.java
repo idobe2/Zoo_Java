@@ -16,10 +16,8 @@ public class ZooFrame extends JFrame {
     private final JMenuItem i1, i2, i3, i4, i5;
     private final JMenuBar mb=new JMenuBar();
     private final Color color = UIManager.getColor ( "Panel.background" ); // default background color
-    private final ZooPanel zooPanel = new ZooPanel(mainP);
+    private final ZooPanel zooPanel = new ZooPanel(mainP); // Main middle panel
     private BufferedImage backgroundImage = null;
-
-    //public JPanel getMainPanel() { return mainP; }
 
     ZooFrame() {
         this.setTitle("Zoo");
@@ -88,19 +86,6 @@ public class ZooFrame extends JFrame {
         this.setVisible(true);
     }
 
-//    public void paintComponent(Graphics g) {
-//        super.paintComponents(g) ;
-//        if(backgroundImage!=null) {
-//            g.drawImage(backgroundImage,0,0,getWidth(),getHeight(), this);
-//            //setSize(1000,500);
-//            //setResizable(true);
-//        }
-//    }
-
-//    public ZooPanel getZooPanel() {
-//        return zooPanel;
-//    }
-
     public void paintImg()
     {
         //zooPanel.paintImg();
@@ -117,4 +102,3 @@ public class ZooFrame extends JFrame {
         new ZooFrame();
     }
 }
-

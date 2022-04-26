@@ -106,6 +106,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public Animal(int size, int horSpeed, int verSpeed, String color, double weight)	{
 		//super(location);
 		//this.name = name;
+		System.out.println("Color: " + color);
 		setWeight(weight);
 		this.size = size;
 		this.horSpeed = horSpeed;
