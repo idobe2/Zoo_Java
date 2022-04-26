@@ -21,9 +21,9 @@ public class Turtle extends Chew {
 	private int Age;
 
 	public Turtle(int size, int horSpeed, int verSpeed, String color, double weight) {
-		super(size, horSpeed, verSpeed, color);
+		super(size, horSpeed, verSpeed, color, weight);
 		this.Age = 1;
-		this.setWeight(weight);
+		//this.setWeight(weight);
 		//this.setWeight(1);
 		this.setDiet(new Herbivore());
 		if (getColor().equals("None"))

@@ -12,8 +12,8 @@ import mobility.Point;
  */
 public abstract class Roar extends Animal{
 
-	public Roar(int size, int horSpeed, int verSpeed, String color)	{
-		super(size, horSpeed, verSpeed, color);
+	public Roar(int size, int horSpeed, int verSpeed, String color, double weight)	{
+		super(size, horSpeed, verSpeed, color, weight);
 	}
 
 	/**

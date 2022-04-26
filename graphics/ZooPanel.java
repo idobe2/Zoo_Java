@@ -22,7 +22,6 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                     new AddAnimalDialog(animalArrayList, mainP); // TODO
                 else
                     JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
-
             }
         });
         this.add(new JButton("Move Animal"));
@@ -37,5 +36,10 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
             }
         });
         this.setBackground(Color.CYAN);
+    }
+
+    @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
     }
 }

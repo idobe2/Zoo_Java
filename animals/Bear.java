@@ -21,9 +21,9 @@ public class Bear extends Roar {
 	private String furColor;
 
 	public Bear(int size, int horSpeed, int verSpeed, String color, double weight) {
-		super(size, horSpeed, verSpeed, color);
+		super(size, horSpeed, verSpeed, color, weight);
 		this.furColor = new String("GRAY");
-		this.setWeight(weight);
+		//this.setWeight(weight);
 		//this.setWeight(308.2);
 		this.setDiet(new Omnivore());
 		if (getColor().equals("None"))

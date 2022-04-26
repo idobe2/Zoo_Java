@@ -22,9 +22,9 @@ public class Lion extends Roar {
 	private int scarCount;
 
 	public Lion(int size, int horSpeed, int verSpeed, String color, double weight) {
-		super(size, horSpeed, verSpeed, color);
+		super(size, horSpeed, verSpeed, color, weight);
 		this.scarCount = 0;
-		this.setWeight(weight);
+		//this.setWeight(weight);
 		//this.setWeight(408.2);
 		this.setDiet(new Carnivore());
 		if (getColor().equals("None"))

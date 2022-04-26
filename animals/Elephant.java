@@ -25,9 +25,9 @@ public class Elephant extends Chew {
 	private double trunkLength;
 
 	public Elephant(int size, int horSpeed, int verSpeed, String color, double weight) {
-		super(size, horSpeed, verSpeed, color);
+		super(size, horSpeed, verSpeed, color, weight);
 		this.trunkLength = 1;
-		this.setWeight(weight);
+		//this.setWeight(weight);
 		//this.setWeight(500);
 		this.setDiet(new Herbivore());
 		if (getColor().equals("None"))

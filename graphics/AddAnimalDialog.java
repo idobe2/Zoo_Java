@@ -47,7 +47,6 @@ public class AddAnimalDialog extends JDialog {
             this.add(b);
             b.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-
                     String dataAnimal = "Animal Selected: "
                             + cbAnimals.getItemAt(cbAnimals.getSelectedIndex());
                     labelAnimal.setText(dataAnimal);
@@ -78,12 +77,12 @@ public class AddAnimalDialog extends JDialog {
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Elephant"), Integer.parseInt(tbSize.getText()))));
-                                //mainP.add(animal.getPan());
+                                //animalArrayList.get(animalArrayList.size()-1).setPan());
+                                //mainP.add(animalArrayList.get(animalArrayList.size()-1).getPan());
                                 System.out.println(animalArrayList);
 //                                animal.setPan(new ZooPanel());
 //                                animal.drawObject(animal.getPan().getGraphics());
                                 System.out.println("Test");
-                                //mainP.add(animalArrayList.get(animalArrayList.size()-1).getPan());
                                 break;
                             case "Lion":
                                 animalArrayList.add(new Lion(Integer.parseInt(tbSize.getText()),
