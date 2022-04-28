@@ -38,9 +38,11 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private double weight;
 	private IDiet diet;
 
-	public String getColor() { //TODO
-		if (col == null) return "None";
-		return col.toString();
+	public String getColor() {
+		if (col == null) return "Natural";
+		if (col.equals(Color.red)) return "Red";
+		if (col.equals(Color.blue)) return "Blue";
+		return "None";
 	}
 
 	public void setColor(Color col) {
@@ -108,7 +110,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		this.weight = weight;
 		this.horSpeed = horSpeed;
 		this.verSpeed = verSpeed;
-		if (color.equals("None"))
+		if (color.equals("Natural"))
 			this.col = null;
 		else if (color.equals("Blue"))
 			this.col = Color.BLUE;

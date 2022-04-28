@@ -22,12 +22,14 @@ public class MoveAnimalDialog extends JDialog {
 
     public MoveAnimalDialog(ArrayList<Animal> animalArrayList) {
         {
+            // TESTING-start
             animalArrayList.add(new Elephant(65, 5, 5, "None", 500));
             animalArrayList.add(new Lion(75,8,8,"Red",400));
+            // TESTING-end
             this.setTitle("Move Animal");
             String[] animalClasses = new String[animalArrayList.size()];
             for (int i=0; i<animalArrayList.size(); i++)
-                animalClasses[i] = new String(animalArrayList.get(i).getClass().getSimpleName());
+                animalClasses[i] = new String(animalArrayList.get(i).getClass().getSimpleName() + "-" + animalArrayList.get(i).getColor());
             //System.out.println("Animal[" + i + "]: " + animalClasses[i]);
             JComboBox cbAnimals = new JComboBox(animalClasses);
             this.setLayout(new GridLayout(4, 5));
@@ -66,11 +68,10 @@ public class MoveAnimalDialog extends JDialog {
                             JOptionPane.showMessageDialog(null, "Y coordinate should be between 0 and 600");
                         }
                         if (flag) {
-                            //cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).getClass().getSimpleName();
-                            //System.out.println("Test:" + cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).getClass().getSimpleName());
                             animalArrayList.get(cbAnimals.getSelectedIndex()).setX_dir(Integer.parseInt(tbX.getText()));
                             animalArrayList.get(cbAnimals.getSelectedIndex()).setY_dir(Integer.parseInt(tbY.getText()));
-                            //System.out.println("X: " + animalArrayList.get(cbAnimals.getSelectedIndex()).getX_dir() + "\nY: " + animalArrayList.get(cbAnimals.getSelectedIndex()).getY_dir());
+                            //System.out.println("X: " + animalArrayList.get(cbAnimals.getSelectedIndex()).getX_dir()
+                            // + "\nY: " + animalArrayList.get(cbAnimals.getSelectedIndex()).getY_dir());
                         }
                     }
                 }

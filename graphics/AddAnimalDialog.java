@@ -122,6 +122,7 @@ public class AddAnimalDialog extends JDialog {
                     }
                     }
                     if (flag)
+                        JOptionPane.showMessageDialog(null, "Animal is added successfully");
                         setVisible(false);
 //                    System.out.println(cbAnimals.getItemAt(cbAnimals.getSelectedIndex())); // Test - String of animal
 //                    System.out.println(cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString());
