@@ -9,8 +9,6 @@ import graphics.ZooPanel;
 import mobility.Mobile;
 import mobility.Point;
 import utilities.MessageUtility;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -34,7 +32,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private int x_dir;
 	private int y_dir;
 	private int eatCount;
-	private ZooPanel pan;
+	private ZooPanel pan; // JPanel
 	protected BufferedImage img1 = null, img2 = null;
 	private String name;
 	private double weight;
@@ -106,9 +104,8 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public Animal(int size, int horSpeed, int verSpeed, String color, double weight)	{
 		//super(location);
 		//this.name = name;
-		System.out.println("Color: " + color);
-		setWeight(weight);
 		this.size = size;
+		this.weight = weight;
 		this.horSpeed = horSpeed;
 		this.verSpeed = verSpeed;
 		if (color.equals("None"))
@@ -117,8 +114,6 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 			this.col = Color.BLUE;
 		else if (color.equals("Red"))
 			this.col = Color.RED;
-		//loadImages(color);
-		//drawObject(getPan().getGraphics());
 		//MessageUtility.logConstractor(getClass().getSimpleName(), getName());
 	}
 

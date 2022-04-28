@@ -23,8 +23,7 @@ public class Turtle extends Chew {
 	public Turtle(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
 		this.Age = 1;
-		//this.setWeight(weight);
-		//this.setWeight(1);
+		this.setWeight(weight);
 		this.setDiet(new Herbivore());
 		if (getColor().equals("None"))
 			loadImages("n");

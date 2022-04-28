@@ -29,14 +29,15 @@ public class Elephant extends Chew {
 		this.trunkLength = 1;
 		//this.setWeight(500);
 		this.setDiet(new Herbivore());
-		//this.setPan(pan);
 		if (getColor().equals("None"))
 			loadImages("n");
 		else if (getColor().equals("Blue"))
 			loadImages("b");
 		else if (getColor().equals("Red"))
 			loadImages("r");
-
+//		JPanel panel = new JPanel();
+//		drawObject(panel.getGraphics());
+//		setPan(panel);
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
 	}
