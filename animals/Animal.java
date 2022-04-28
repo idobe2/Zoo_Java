@@ -217,7 +217,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * @return animal weight.
 	 */
 	public double getWeight() { 
-		MessageUtility.logGetter(getName(), "getWeight", this.weight);
+		//MessageUtility.logGetter(getName(), "getWeight", this.weight);
 		return this.weight; }
 	
 	/**

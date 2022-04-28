@@ -13,8 +13,6 @@ public class AddAnimalDialog extends JDialog {
     //private final JDialog d = new JDialog();
     private final InputsPanel inputs;
     private final String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
-    private final JComboBox cb = new JComboBox(animals);
-    private final JLabel label = new JLabel();
     private static class InputsPanel extends JPanel {
         private final JTextField tbSize, tbHspeed, tbVspeed;
         private final JLabel labelAnimal = new JLabel();
@@ -26,7 +24,7 @@ public class AddAnimalDialog extends JDialog {
         private boolean flag = true;
 
         public InputsPanel(ArrayList<Animal> animalArrayList, JPanel mainP) {
-            this.setLayout(new GridLayout(6, 2));
+            this.setLayout(new GridLayout(6, 5 ));
             cbAnimals.setBounds(50, 100, 90, 20);
             this.add(cbAnimals);
             labelAnimal.setHorizontalAlignment(JLabel.CENTER);
@@ -146,7 +144,7 @@ public class AddAnimalDialog extends JDialog {
         }
     }
 
-    public AddAnimalDialog(ArrayList<Animal> animalArrayList, JPanel mainP)//
+    public AddAnimalDialog(ArrayList<Animal> animalArrayList, JPanel mainP)
     {
         this.setTitle("Add Animal");
         inputs = new InputsPanel(animalArrayList,mainP);
