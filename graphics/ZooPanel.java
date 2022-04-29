@@ -44,12 +44,9 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame foodFrame = new JFrame("Food for animals");
+                JPanel panel = new JPanel();
                 //foodFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                Container myPanel = foodFrame.getContentPane();
-                GroupLayout groupLayout = new GroupLayout(myPanel);
-                groupLayout.setAutoCreateGaps(true);
-                groupLayout.setAutoCreateContainerGaps(true);
-                myPanel.setLayout(groupLayout);
+                GroupLayout layout = new GroupLayout(panel);
                 JLabel lF = new JLabel("Please choose food");
                 lF.setSize(400, 200);
                 lF.setHorizontalAlignment(JLabel.CENTER);
@@ -57,15 +54,16 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                 JButton b1 = new JButton("Lettuce");
                 JButton b2 = new JButton("Cabbage");
                 JButton b3 = new JButton("Meat");
-
-                groupLayout.setHorizontalGroup(groupLayout.createSequentialGroup()
-                        .addGroup(groupLayout.createParallelGroup(LEADING).addComponent(b1).addComponent(b3))
-                        .addGroup(groupLayout.createParallelGroup(TRAILING).addComponent(b2)));
-
-                groupLayout.setVerticalGroup(groupLayout.createSequentialGroup()
-                        .addGroup(groupLayout.createParallelGroup(BASELINE).addComponent(b1).addComponent(b2))
-                        .addGroup(groupLayout.createParallelGroup(BASELINE).addComponent(b3)));
-
+                GroupLayout.SequentialGroup leftToRight = layout.createSequentialGroup();
+                leftToRight.addComponent(b1);
+                leftToRight.addComponent(b2);
+                leftToRight.addComponent(b3);
+                GroupLayout.ParallelGroup rowBottom = layout.createParallelGroup();
+                rowBottom.addComponent(b1);
+                rowBottom.addComponent(b2);
+                rowBottom.addComponent(b3);
+                layout.setHorizontalGroup(leftToRight);
+                foodFrame.add(panel, BorderLayout.PAGE_END);
                 foodFrame.setSize(400,200);
                 foodFrame.setVisible(true);
                 b1.addActionListener(new ActionListener() {
