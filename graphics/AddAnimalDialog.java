@@ -53,8 +53,10 @@ public class AddAnimalDialog extends JDialog {
                     String dataColors = "Color Selected: "
                             + cbColors.getItemAt(cbColors.getSelectedIndex());
                     labelColor.setText(dataColors);
-                    if (tbSize.getText().isEmpty() || tbHspeed.getText().isEmpty() || tbVspeed.getText().isEmpty())
+                    if (tbSize.getText().isEmpty() || tbHspeed.getText().isEmpty() || tbVspeed.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "All text fields should be filled");
+                        flag = false;
+                    }
                     else {
                         if (Integer.parseInt(tbSize.getText()) < 50 || Integer.parseInt(tbSize.getText()) > 300) {
                             flag = false;
@@ -80,7 +82,6 @@ public class AddAnimalDialog extends JDialog {
 
                                 System.out.println(animalArrayList);
                                 System.out.println("Test");
-
                                 break;
                             case "Lion":
                                 animalArrayList.add(new Lion(Integer.parseInt(tbSize.getText()),
@@ -119,11 +120,11 @@ public class AddAnimalDialog extends JDialog {
                                 System.out.println(animalArrayList);
                                 break;
                         }
+                        JOptionPane.showMessageDialog(null, "The animal was added successfully");
+                        tbSize.setText(""); tbHspeed.setText(""); tbVspeed.setText("");
                     }
                     }
-                    if (flag)
-                        setVisible(false);
-                    }
+                }
             });
         }
 

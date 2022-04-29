@@ -134,8 +134,6 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                 infoFrame.setSize(500,350);
                 infoFrame.setVisible(true);
                 // Testing-start
-                    System.out.println(animalArrayList.get(0));
-                    System.out.println(animalArrayList.get(1));
                     for (int i = 0; i < animalArrayList.size(); i++) {
                         for (int j = 0; j < 6; j++)
                             System.out.print(animalsData[i][j] + " ");
