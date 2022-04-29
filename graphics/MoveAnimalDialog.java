@@ -24,18 +24,17 @@ public class MoveAnimalDialog extends JDialog {
     public MoveAnimalDialog(ArrayList<Animal> animalArrayList) {
         {
             // TESTING-start
-            animalArrayList.add(new Elephant(56, 7, 8, "None", 500));
+            animalArrayList.add(new Elephant(56, 7, 8, "Natural", 500));
             animalArrayList.add(new Lion(75,4,3,"Red",250));
             animalArrayList.add(new Giraffe(34,5,6,"Blue",350));
             System.out.println("Size: " + animalArrayList.size());
             // TESTING-end
 
             this.setTitle("Move Animal");
-            String[] animalClasses = new String[animalArrayList.size()];
+            String[] animalsClassName = new String[animalArrayList.size()];
             for (int i=0; i<animalArrayList.size(); i++)
-                animalClasses[i] = new String(animalArrayList.get(i).getClass().getSimpleName() + "-" + animalArrayList.get(i).getColor());
-            //System.out.println("Animal[" + i + "]: " + animalClasses[i]);
-            JComboBox cbAnimals = new JComboBox(animalClasses);
+                animalsClassName[i] = new String(animalArrayList.get(i).getClass().getSimpleName() + "-" + animalArrayList.get(i).getColorToString());
+            JComboBox cbAnimals = new JComboBox(animalsClassName);
             this.setLayout(new GridLayout(4, 5));
             this.add(lA);
             //lA.setHorizontalAlignment(JLabel.CENTER);

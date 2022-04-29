@@ -79,9 +79,6 @@ public class AddAnimalDialog extends JDialog {
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Elephant"), Integer.parseInt(tbSize.getText()))));
-
-                                System.out.println(animalArrayList);
-                                System.out.println("Test");
                                 break;
                             case "Lion":
                                 animalArrayList.add(new Lion(Integer.parseInt(tbSize.getText()),
@@ -90,7 +87,6 @@ public class AddAnimalDialog extends JDialog {
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Lion"), Integer.parseInt(tbSize.getText()))));
                                 //mainP.add(animal.getPan());
-                                System.out.println(animalArrayList);
                                 break;
                             case "Giraffe":
                                 animalArrayList.add(new Giraffe(Integer.parseInt(tbSize.getText()),
@@ -99,7 +95,6 @@ public class AddAnimalDialog extends JDialog {
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Giraffe"), Integer.parseInt(tbSize.getText()))));
                                 //mainP.add(animal.getPan());
-                                System.out.println(animalArrayList);
                                 break;
                             case "Turtle":
                                 animalArrayList.add(new Turtle(Integer.parseInt(tbSize.getText()),
@@ -108,7 +103,6 @@ public class AddAnimalDialog extends JDialog {
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Turtle"), Integer.parseInt(tbSize.getText()))));
                                 //mainP.add(animal.getPan());
-                                System.out.println(animalArrayList);
                                 break;
                             case "Bear":
                                 animalArrayList.add(new Bear(Integer.parseInt(tbSize.getText()),
@@ -117,7 +111,6 @@ public class AddAnimalDialog extends JDialog {
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Bear"), Integer.parseInt(tbSize.getText()))));
                                 //mainP.add(animal.getPan());
-                                System.out.println(animalArrayList);
                                 break;
                         }
                         JOptionPane.showMessageDialog(null, "The animal was added successfully");

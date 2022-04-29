@@ -4,6 +4,7 @@ import diet.Omnivore;
 import mobility.Point;
 import utilities.MessageUtility;
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -25,11 +26,11 @@ public class Bear extends Roar {
 		this.furColor = new String("GRAY");
 		this.setLocation(new Point(100,5));
 		this.setDiet(new Omnivore());
-		if (getColor().equals("None"))
+		if (getColor()==null)
 			loadImages("n");
-		else if (getColor().equals("Blue"))
+		else if (getColor()== Color.BLUE)
 			loadImages("b");
-		else if (getColor().equals("Red"))
+		else if (getColor()==Color.RED)
 			loadImages("r");
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());

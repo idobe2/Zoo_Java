@@ -21,11 +21,9 @@ public class ZooFrame extends JFrame {
 
     ZooFrame() {
         this.setTitle("Zoo");
-        // Read image file
-        try {
+        try {   // Read image file
             backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
-        } catch (IOException ex) {System.out.println("Cannot load image");}
-
+        } catch (IOException ex) {System.out.println("Cannot load image"); }
         this.setLayout(new BorderLayout()); // Background color, image not working without it
         File=new JMenu("File");
         Background = new JMenu("Background");

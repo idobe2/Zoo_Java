@@ -10,16 +10,16 @@ import java.util.ArrayList;
 import static javax.swing.GroupLayout.Alignment.*;
 
 public class ZooPanel extends JPanel { // implements Runnable // public void run() {}
-    ArrayList<Animal> animalArrayList = new ArrayList<>();
+    protected ArrayList<Animal> animalArrayList = new ArrayList<>();
+    private final JButton addAnimalButton = new JButton("Add Animal");
+    private final JButton moveAnimalButton = new JButton("Move Animal");
+    private final JButton clearButton = new JButton("Clear");
+    private final JButton foodButton = new JButton("Food");
+    private final JButton infoButton = new JButton("Info");
+    private final JButton exitButton = new JButton("Exit");
 
     ZooPanel() {
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
-        JButton addAnimalButton = new JButton("Add Animal");
-        JButton moveAnimalButton = new JButton("Move Animal");
-        JButton clearButton = new JButton("Clear");
-        JButton foodButton = new JButton("Food");
-        JButton infoButton = new JButton("Info");
-        JButton exitButton = new JButton("Exit");
         this.add(addAnimalButton);
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
@@ -101,7 +101,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                                 animalsData[i][j] = new String(animalArrayList.get(i).getClass().getSimpleName());
                                 break;
                             case 1: // Color
-                                animalsData[i][j] = new String(animalArrayList.get(i).getColor());
+                                animalsData[i][j] = new String(animalArrayList.get(i).getColorToString());
                                 break;
                             case 2: // Weight
                                 animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getWeight()));

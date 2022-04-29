@@ -24,7 +24,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 
 	private final int EAT_DISTANCE = 10;
 	private int size;
-	private Color col;
+	private String col;
 	private int horSpeed;
 	private int verSpeed;
 	private boolean coordChanged;
@@ -43,32 +43,35 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		//this.name = name;
 		this.size = size;
 		this.weight = weight;
-		this.horSpeed = horSpeed;
-		this.verSpeed = verSpeed;
-		if (color.equals("Natural"))
-			this.col = null;
-		else if (color.equals("Blue"))
-			this.col = Color.BLUE;
-		else if (color.equals("Red"))
-			this.col = Color.RED;
+		setHorSpeed(horSpeed);
+		setVerSpeed(verSpeed);
+		setColor(color);
 		//MessageUtility.logConstractor(getClass().getSimpleName(), getName());
 	}
 
-	public String getColor() {
-		if (col == null) return "Natural";
-		if (col.equals(Color.red)) return "Red";
-		if (col.equals(Color.blue)) return "Blue";
-		return "None";
+	public String getColorToString() { return col; }
+
+	public Color getColor() {
+		if (col.equals("Natural")) return null;
+		else if (col.equals("Red")) return Color.RED;
+		else if (col.equals("Blue")) return Color.BLUE;
+		return null;
 	}
 
 	public boolean setHorSpeed(int horSpeed) {
-		if (horSpeed < 0 || horSpeed > 10) return false;
+		if (horSpeed < 0 || horSpeed > 10) {
+			MessageUtility.logSetter(getClass().getSimpleName(), "setHorSpeed", horSpeed, false);
+			return false; }
 		else this.horSpeed = horSpeed;
+		MessageUtility.logSetter(getClass().getSimpleName(), "setHorSpeed", horSpeed, true);
 		return true; }
 
 	public boolean setVerSpeed(int verSpeed) {
-		if (verSpeed < 0 || verSpeed > 10) return false;
+		if (verSpeed < 0 || verSpeed > 10) {
+			MessageUtility.logSetter(getClass().getSimpleName(), "setVerSpeed", verSpeed, false);
+			return false; }
 		else this.verSpeed = verSpeed;
+		MessageUtility.logSetter(getClass().getSimpleName(), "setVerSpeed", verSpeed, true);
 		return true; }
 
 	public boolean setX_dir(int x_dir) {
@@ -90,9 +93,9 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return this.name;
 	}
 
-	public boolean setColor(Color col) {
-		if (col == null || col == Color.BLUE || col == Color.RED) {
-			this.col = col;
+	public boolean setColor(String col) {
+		if (col.equals("Natural") || col.equals("Blue") || col.equals("Red")) {
+			this.col = new String(col);
 			return true; }
 		return false;
 	}
@@ -104,7 +107,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 
 	public void drawObject (Graphics g)
 	{
-		g.setColor(col);
+		g.setColor(getColor());
 		if(getX_dir()==1) // giraffe goes to the right side
 			g.drawImage(img1, getLocation().getX()-size/2, getLocation().getY()-size/10, size/2, size, pan);
 		else // giraffe goes to the left side
@@ -189,7 +192,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public boolean setDiet(IDiet diet)
 	{
 		this.diet = diet;
-		MessageUtility.logSetter(getName(), "setDiet", diet.getClass().getSimpleName(), true);
+		MessageUtility.logSetter(getClass().getSimpleName(), "setDiet", diet.getClass().getSimpleName(), true);
 		return true;
 	}
 

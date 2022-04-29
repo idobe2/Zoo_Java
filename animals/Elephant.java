@@ -8,6 +8,7 @@ import utilities.MessageUtility;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -29,11 +30,11 @@ public class Elephant extends Chew {
 		this.trunkLength = 1;
 		this.setLocation(new Point(50,90));
 		this.setDiet(new Herbivore());
-		if (getColor().equals("None"))
+		if (getColor()==null)
 			loadImages("n");
-		else if (getColor().equals("Blue"))
+		else if (getColor()==Color.BLUE)
 			loadImages("b");
-		else if (getColor().equals("Red"))
+		else if (getColor()==Color.RED)
 			loadImages("r");
 //		JPanel panel = new JPanel();
 //		drawObject(panel.getGraphics());
