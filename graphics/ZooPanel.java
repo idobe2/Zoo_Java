@@ -95,7 +95,8 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
             public void actionPerformed(ActionEvent e) {
                 JFrame infoFrame = new JFrame("Info");
                 String column[] = {"Animal", "Color", "Weight", "Hor. speed", "Ver. speed", "Eat counter"};
-                String[][] animalsData = new String[animalArrayList.size()][6];
+                int totalEatCount = 0;
+                String[][] animalsData = new String[animalArrayList.size()+1][6];
                 for (int i = 0; i < animalArrayList.size(); i++) {
                     for (int j = 0; j < 6; j++) {
                         switch (j) {
@@ -116,6 +117,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                                 break;
                             case 5: // Eat counter
                                 animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getEatCount()));
+                                totalEatCount += animalArrayList.get(i).getEatCount();
                                 break;
                             default:
                                 System.out.println("Error");
@@ -123,13 +125,14 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                         }
                     }
                 }
+                String[] endLine = {"Total", "", "", "", "", String.valueOf(totalEatCount)};
+                animalsData[animalArrayList.size()] = endLine;
                 JTable infoTable = new JTable(animalsData,column);
                 infoTable.setBounds(30,40,200,300);
                 JScrollPane sp=new JScrollPane(infoTable);
                 infoFrame.add(sp);
                 infoFrame.setSize(500,350);
                 infoFrame.setVisible(true);
-
                 // Testing-start
                     System.out.println(animalArrayList.get(0));
                     System.out.println(animalArrayList.get(1));
@@ -139,7 +142,6 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                         System.out.println();
                     }
                 // Testing-end
-
                 }
         });
         this.add(exitButton);
