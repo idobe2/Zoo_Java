@@ -43,7 +43,6 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         foodButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Test");
                 JFrame foodFrame = new JFrame("Food for animals");
                 //foodFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 Container myPanel = foodFrame.getContentPane();

@@ -2,6 +2,7 @@ package graphics;
 
 import animals.Animal;
 import animals.Elephant;
+import animals.Giraffe;
 import animals.Lion;
 
 import javax.swing.*;
@@ -23,10 +24,12 @@ public class MoveAnimalDialog extends JDialog {
     public MoveAnimalDialog(ArrayList<Animal> animalArrayList) {
         {
             // TESTING-start
-            animalArrayList.add(new Elephant(65, 5, 5, "None", 500));
-            animalArrayList.add(new Lion(75,8,8,"Red",400));
+            animalArrayList.add(new Elephant(56, 7, 8, "None", 500));
+            animalArrayList.add(new Lion(75,4,3,"Red",250));
+            animalArrayList.add(new Giraffe(34,5,6,"Blue",350));
             System.out.println("Size: " + animalArrayList.size());
             // TESTING-end
+
             this.setTitle("Move Animal");
             String[] animalClasses = new String[animalArrayList.size()];
             for (int i=0; i<animalArrayList.size(); i++)
