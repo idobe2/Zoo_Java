@@ -38,92 +38,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private double weight;
 	private IDiet diet;
 
-	public int getHorSpeed() { return this.horSpeed; }
-	public int getVerSpeed() { return this.verSpeed; }
-
-	public boolean setHorSpeed(int horSpeed) {
-		if (horSpeed < 0 || horSpeed > 10)
-			return false;
-		else
-			this.horSpeed = horSpeed;
-		return true;
-	}
-
-	public boolean setVerSpeed(int verSpeed) {
-		if (verSpeed < 0 || verSpeed > 10)
-			return false;
-		else
-			this.verSpeed = verSpeed;
-		return true;
-	}
-
-
-	public String getColor() {
-		if (col == null) return "Natural";
-		if (col.equals(Color.red)) return "Red";
-		if (col.equals(Color.blue)) return "Blue";
-		return "None";
-	}
-
-	public void setColor(Color col) {
-		this.col = col;
-	}
-
-	public String getAnimalName() {
-		return this.name;
-	}
-
-	public void eatInc() {
-		this.eatCount++;
-	}
-
-	public int getEatCount() {
-		return this.eatCount;
-	}
-
-	public boolean getChanges() { //TODO
-		return false;
-	}
-
-	public void setChanges(boolean state) { } //TODO
-
-	public int getX_dir() { return x_dir; }
-
-	public boolean setX_dir(int x_dir) {
-		this.x_dir = x_dir;
-		return true;
-	}
-
-	public int getY_dir() { return y_dir; }
-
-	public boolean setY_dir(int y_dir) { this.y_dir = y_dir; return true; }
-
-	public boolean setSize(int size)
-	{
-		this.size = size;
-		return true;
-	}
-
-	public int getSize() { return this.size; }
-
-	public boolean setPan(ZooPanel pan)
-	{
-		this.pan = pan;
-		return true;
-	}
-
-	public ZooPanel getPan() { return this.pan; }
-
-	public void drawObject (Graphics g)
-	{
-		g.setColor(col);
-		if(getX_dir()==1) // giraffe goes to the right side
-			g.drawImage(img1, getLocation().getX()-size/2, getLocation().getY()-size/10, size/2, size, pan);
-		else // giraffe goes to the left side
-			g.drawImage(img2, getLocation().getX(), getLocation().getY()-size/10, size/2, size, pan);
-	}
-
-	public Animal(int size, int horSpeed, int verSpeed, String color, double weight)	{
+	public Animal(int size, int horSpeed, int verSpeed, String color, double weight) {
 		//super(location);
 		//this.name = name;
 		this.size = size;
@@ -139,10 +54,87 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		//MessageUtility.logConstractor(getClass().getSimpleName(), getName());
 	}
 
-	/**	
+	public String getColor() {
+		if (col == null) return "Natural";
+		if (col.equals(Color.red)) return "Red";
+		if (col.equals(Color.blue)) return "Blue";
+		return "None";
+	}
+
+	public boolean setHorSpeed(int horSpeed) {
+		if (horSpeed < 0 || horSpeed > 10) return false;
+		else this.horSpeed = horSpeed;
+		return true; }
+
+	public boolean setVerSpeed(int verSpeed) {
+		if (verSpeed < 0 || verSpeed > 10) return false;
+		else this.verSpeed = verSpeed;
+		return true; }
+
+	public boolean setX_dir(int x_dir) {
+		if (x_dir < 0 || x_dir > 800) return false;
+		else this.x_dir = x_dir;
+		return true; }
+
+	public boolean setY_dir(int y_dir) {
+		if (y_dir < 0 || y_dir > 600) return false;
+		else this.y_dir = y_dir;
+		return true; }
+
+	public boolean setSize(int size) {
+		if (size < 50 || size > 300) return false;
+		else this.size = size;
+		return true; }
+
+	public String getAnimalName() {
+		return this.name;
+	}
+
+	public boolean setColor(Color col) {
+		if (col == null || col == Color.BLUE || col == Color.RED) {
+			this.col = col;
+			return true; }
+		return false;
+	}
+
+	public boolean setPan(ZooPanel pan) {
+		if (pan == null) return false;
+		else this.pan = pan;
+		return true; }
+
+	public void drawObject (Graphics g)
+	{
+		g.setColor(col);
+		if(getX_dir()==1) // giraffe goes to the right side
+			g.drawImage(img1, getLocation().getX()-size/2, getLocation().getY()-size/10, size/2, size, pan);
+		else // giraffe goes to the left side
+			g.drawImage(img2, getLocation().getX(), getLocation().getY()-size/10, size/2, size, pan);
+	}
+
+	public void eatInc() { this.eatCount++; }
+
+	public int getEatCount() { return this.eatCount; }
+
+	public int getHorSpeed() { return this.horSpeed; }
+
+	public int getVerSpeed() { return this.verSpeed; }
+
+	public boolean getChanges() { return false; } //TODO
+
+	public void setChanges(boolean state) { } //TODO
+
+	public int getX_dir() { return x_dir; }
+
+	public int getY_dir() { return y_dir; }
+
+	public int getSize() { return this.size; }
+
+	public ZooPanel getPan() { return this.pan; }
+
+	/**
 	 * A ctor of animal name and location.
 	 * Using logCtor function to print doc message.
-	 * 
+	 *
 	 * @param name
 	 * 			name string of the animal.
 	 * @param location
@@ -153,11 +145,11 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		this.name = name;
 		MessageUtility.logConstractor(getClass().getSimpleName(), getName());
 	}
-	
+
 	/**
 	 * A ctor of animal name only.
 	 * Using logCtor function to print doc message.
-	 * 
+	 *
 	 * @param name
 	 * 			name string of the animal.
 	 */
@@ -165,16 +157,16 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		super();
 		this.name = name;
 		MessageUtility.logConstractor(getClass().getSimpleName(), getName());
-		}
-	
+	}
+
 	/**
 	 * Abstract function required for Roar and Chew abstract classes.
 	 */
 	public abstract void makeSound();
-	
+
 	/**
 	 * A simple function used to perform eating action.
-	 * 
+	 *
 	 * @param food
 	 * 			IEdible food-type.
 	 * @return true or false.
@@ -186,10 +178,10 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 			return true;
 		return false;
 	}
-	
+
 	/**
 	 * Setter of animal diet class.
-	 * 
+	 *
 	 * @param diet
 	 * 			diet class.
 	 * @return true.
@@ -200,10 +192,10 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		MessageUtility.logSetter(getName(), "setDiet", diet.getClass().getSimpleName(), true);
 		return true;
 	}
-	
+
 	/**
 	 * Getter of animal diet class.
-	 * 
+	 *
 	 * @return object of diet class.
 	 */
 	public IDiet getDiet()
@@ -211,41 +203,41 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		MessageUtility.logGetter(getName(), "getDiet", diet.getClass().getSimpleName());
 		return this.diet;
 	}
-	
+
 	/**
 	 * Setter of animal weight.
 	 * Using logSetter function to print doc message.
-	 * 
+	 *
 	 * @param weight
 	 * 			animal weight.
 	 * @return true if weight is positive, otherwise false.
 	 */
-	public boolean setWeight(double weight) 
-	{ 
+	public boolean setWeight(double weight)
+	{
 		if (weight > 0)
 		{
 			MessageUtility.logSetter(getName(), "setWeight", weight, true);
-			this.weight = weight; 
-			return true; 
+			this.weight = weight;
+			return true;
 		}
 		MessageUtility.logSetter(getName(), "setWeight", weight, false);
 		return false;
 	}
-	
+
 	/**
 	 * Getter of animal weight.
 	 * Using logGetter function to print doc message.
-	 * 
+	 *
 	 * @return animal weight.
 	 */
-	public double getWeight() { 
+	public double getWeight() {
 		//MessageUtility.logGetter(getName(), "getWeight", this.weight);
 		return this.weight; }
-	
+
 	/**
 	 * A simple getter of animal food type.
 	 * Using logGetter function to print doc message.
-	 * 
+	 *
 	 * @return EFoodType of this animal.
 	 */
 	public EFoodType getFoodtype()
@@ -256,23 +248,24 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		MessageUtility.logGetter(getName(), "getFoodtype", EFoodType.MEAT);
 		return EFoodType.MEAT;
 	}
-	
+
 	/**
 	 * Getter of animal name.
 	 * We use this getter inside the class.
-	 * 
+	 *
 	 * @return animal name.
 	 */
 	public String getName() {
 		// No need to print that according to the output file.
 		//MessageUtility.logGetter(name, "getName", name);
 		return this.name; }
-	
+
 	/**
 	 * toString function of animal class.
 	 * Using template: [!] animalName: total distance: [distance], weight: [weight]
-	 * 
+	 *
 	 * @return string of the object values.
 	 */
 	public String toString() { return "[!] " + this.name + ": total distance: " + getTotalDistance() + ", weight: " + getWeight(); }
+
 }
