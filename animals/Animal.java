@@ -38,6 +38,26 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private double weight;
 	private IDiet diet;
 
+	public int getHorSpeed() { return this.horSpeed; }
+	public int getVerSpeed() { return this.verSpeed; }
+
+	public boolean setHorSpeed(int horSpeed) {
+		if (horSpeed < 0 || horSpeed > 10)
+			return false;
+		else
+			this.horSpeed = horSpeed;
+		return true;
+	}
+
+	public boolean setVerSpeed(int verSpeed) {
+		if (verSpeed < 0 || verSpeed > 10)
+			return false;
+		else
+			this.verSpeed = verSpeed;
+		return true;
+	}
+
+
 	public String getColor() {
 		if (col == null) return "Natural";
 		if (col.equals(Color.red)) return "Red";

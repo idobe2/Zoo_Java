@@ -13,6 +13,8 @@ public class AddAnimalDialog extends JDialog {
     //private final JDialog d = new JDialog();
     private final InputsPanel inputs;
     private final String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
+    private final JComboBox cb = new JComboBox(animals);
+    private final JLabel label = new JLabel();
     private static class InputsPanel extends JPanel {
         private final JTextField tbSize, tbHspeed, tbVspeed;
         private final JLabel labelAnimal = new JLabel();
@@ -24,7 +26,7 @@ public class AddAnimalDialog extends JDialog {
         private boolean flag = true;
 
         public InputsPanel(ArrayList<Animal> animalArrayList, JPanel mainP) {
-            this.setLayout(new GridLayout(6, 5 ));
+            this.setLayout(new GridLayout(6, 2));
             cbAnimals.setBounds(50, 100, 90, 20);
             this.add(cbAnimals);
             labelAnimal.setHorizontalAlignment(JLabel.CENTER);
@@ -75,12 +77,10 @@ public class AddAnimalDialog extends JDialog {
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Elephant"), Integer.parseInt(tbSize.getText()))));
-                                //animalArrayList.get(animalArrayList.size()-1).setPan());
-                                //mainP.add(animalArrayList.get(animalArrayList.size()-1).getPan());
+
                                 System.out.println(animalArrayList);
-//                                animal.setPan(new ZooPanel());
-//                                animal.drawObject(animal.getPan().getGraphics());
                                 System.out.println("Test");
+
                                 break;
                             case "Lion":
                                 animalArrayList.add(new Lion(Integer.parseInt(tbSize.getText()),
@@ -122,10 +122,7 @@ public class AddAnimalDialog extends JDialog {
                     }
                     }
                     if (flag)
-                        JOptionPane.showMessageDialog(null, "Animal is added successfully");
                         setVisible(false);
-//                    System.out.println(cbAnimals.getItemAt(cbAnimals.getSelectedIndex())); // Test - String of animal
-//                    System.out.println(cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString());
                     }
             });
         }

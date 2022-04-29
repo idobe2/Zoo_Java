@@ -25,6 +25,7 @@ public class MoveAnimalDialog extends JDialog {
             // TESTING-start
             animalArrayList.add(new Elephant(65, 5, 5, "None", 500));
             animalArrayList.add(new Lion(75,8,8,"Red",400));
+            System.out.println("Size: " + animalArrayList.size());
             // TESTING-end
             this.setTitle("Move Animal");
             String[] animalClasses = new String[animalArrayList.size()];

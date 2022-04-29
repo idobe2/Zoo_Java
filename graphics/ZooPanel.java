@@ -18,6 +18,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         JButton moveAnimalButton = new JButton("Move Animal");
         JButton clearButton = new JButton("Clear");
         JButton foodButton = new JButton("Food");
+        JButton infoButton = new JButton("Info");
         JButton exitButton = new JButton("Exit");
         this.add(addAnimalButton);
         addAnimalButton.addActionListener(new ActionListener() {
@@ -88,7 +89,59 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                 });
             }
         });
-        this.add(new JButton("Info"));
+        this.add(infoButton);
+        infoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame infoFrame = new JFrame("Info");
+                String column[] = {"Animal", "Color", "Weight", "Hor. speed", "Ver. speed", "Eat counter"};
+                String[][] animalsData = new String[animalArrayList.size()][6];
+                for (int i = 0; i < animalArrayList.size(); i++) {
+                    for (int j = 0; j < 6; j++) {
+                        switch (j) {
+                            case 0: // Animal
+                                animalsData[i][j] = new String(animalArrayList.get(i).getClass().getSimpleName());
+                                break;
+                            case 1: // Color
+                                animalsData[i][j] = new String(animalArrayList.get(i).getColor());
+                                break;
+                            case 2: // Weight
+                                animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getWeight()));
+                                break;
+                            case 3: // Hor. speed
+                                animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getHorSpeed()));
+                                break;
+                            case 4: // Ver. speed
+                                animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getVerSpeed()));
+                                break;
+                            case 5: // Eat counter
+                                animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getEatCount()));
+                                break;
+                            default:
+                                System.out.println("Error");
+                                break;
+                        }
+                    }
+                }
+                JTable infoTable = new JTable(animalsData,column);
+                infoTable.setBounds(30,40,200,300);
+                JScrollPane sp=new JScrollPane(infoTable);
+                infoFrame.add(sp);
+                infoFrame.setSize(500,350);
+                infoFrame.setVisible(true);
+
+                // Testing-start
+                    System.out.println(animalArrayList.get(0));
+                    System.out.println(animalArrayList.get(1));
+                    for (int i = 0; i < animalArrayList.size(); i++) {
+                        for (int j = 0; j < 6; j++)
+                            System.out.print(animalsData[i][j] + " ");
+                        System.out.println();
+                    }
+                // Testing-end
+
+                }
+        });
         this.add(exitButton);
         exitButton.addActionListener(new ActionListener() {
             @Override
