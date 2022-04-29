@@ -38,8 +38,7 @@ public abstract class Mobile implements Ilocatable {
 	 * 			otherwise false.
 	 */
 	public boolean setLocation(Point other) {
-		this.location.setX(other.getX());
-		this.location.setY(other.getY());
+		this.location = new Point(other.getX(),other.getY());
 		return true;
 	}
 	

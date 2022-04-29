@@ -23,8 +23,8 @@ public class Giraffe extends Chew {
 	public Giraffe(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
 		this.neckLength = 1.5;
-		this.setWeight(weight);
-		setDiet(new Herbivore());
+		this.setLocation(new Point(50,0));
+		this.setDiet(new Herbivore());
 		if (getColor().equals("None"))
 			loadImages("n");
 		else if (getColor().equals("Blue"))

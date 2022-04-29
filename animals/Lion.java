@@ -24,7 +24,7 @@ public class Lion extends Roar {
 	public Lion(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
 		this.scarCount = 0;
-		this.setWeight(weight);
+		this.setLocation(new Point(20,0));
 		this.setDiet(new Carnivore());
 		if (getColor().equals("None"))
 			loadImages("n");
