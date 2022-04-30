@@ -1,6 +1,7 @@
 package animals;
 
 import diet.Herbivore;
+import graphics.IDrawable;
 import mobility.Point;
 import utilities.MessageUtility;
 import javax.imageio.ImageIO;
@@ -107,8 +108,8 @@ public class Turtle extends Chew {
 	public void loadImages(String nm)
 	{	// Read image file
 		try {
-			img1 = ImageIO.read(new File("assignment2_pictures/trt_" + nm + "_1.png"));
-			img2 = ImageIO.read(new File("assignment2_pictures/trt_"+ nm + "_2.png"));
+			img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/trt_" + nm + "_1.png"));
+			img2 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/trt_" + nm + "_2.png"));
 		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 }

@@ -1,6 +1,7 @@
 package plants;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import food.EFoodType;
@@ -16,10 +17,10 @@ import utilities.MessageUtility;
  */
 public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 
-	//public final static String PICTURE_PATH = "assignment2_pictures";
+	protected BufferedImage img = null;
 
 	public void drawObject (Graphics g) {}
-	public Color getColor() { return Color.RED; } // Change it
+	public Color getColor() { return Color.GREEN; } // Change it
 
 	/**
 	 * 

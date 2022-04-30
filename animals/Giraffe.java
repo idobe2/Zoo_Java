@@ -1,6 +1,7 @@
 package animals;
 
 import diet.Herbivore;
+import graphics.IDrawable;
 import mobility.Point;
 import utilities.MessageUtility;
 
@@ -34,8 +35,8 @@ public class Giraffe extends Chew {
 	public void loadImages(String nm)
 	{	// Read image file
 		try {
-			img1 = ImageIO.read(new File("assignment2_pictures/grf_" + nm + "_1.png"));
-			img2 = ImageIO.read(new File("assignment2_pictures/grf_"+ nm + "_2.png"));
+			img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/grf_" + nm + "_1.png"));
+			img2 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/grf_" + nm + "_2.png"));
 		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 

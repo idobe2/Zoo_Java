@@ -2,6 +2,7 @@ package animals;
 
 import diet.Herbivore;
 import diet.Omnivore;
+import graphics.IDrawable;
 import graphics.ZooPanel;
 import mobility.Point;
 import utilities.MessageUtility;
@@ -114,8 +115,8 @@ public class Elephant extends Chew {
 
 	public void loadImages(String nm) {    // Read image file
 			try {
-				img1 = ImageIO.read(new File("assignment2_pictures/elf_" + nm + "_1.png"));
-				img2 = ImageIO.read(new File("assignment2_pictures/elf_" + nm + "_2.png"));
+				img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/elf_" + nm + "_1.png"));
+				img2 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/elf_" + nm + "_2.png"));
 			} catch (IOException ex) {
 				System.out.println("IOException: Cannot load image");
 			}

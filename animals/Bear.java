@@ -1,6 +1,7 @@
 package animals;
 
 import diet.Omnivore;
+import graphics.IDrawable;
 import mobility.Point;
 import utilities.MessageUtility;
 import javax.imageio.ImageIO;
@@ -110,8 +111,8 @@ public class Bear extends Roar {
 	public void loadImages(String nm)
 	{	// Read image file
 		try {
-			img1 = ImageIO.read(new File("assignment2_pictures/bea_" + nm + "_1.png"));
-			img2 = ImageIO.read(new File("assignment2_pictures/bea_"+ nm + "_2.png"));
+			img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/bea_" + nm + "_1.png"));
+			img2 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/bea_"+ nm + "_2.png"));
 		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 }
