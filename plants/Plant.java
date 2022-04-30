@@ -1,5 +1,6 @@
 package plants;
 
+import java.awt.*;
 import java.util.Random;
 
 import food.EFoodType;
@@ -13,7 +14,13 @@ import utilities.MessageUtility;
  * @author baroh
  *
  */
-public abstract class Plant implements IEdible, Ilocatable { // ,IDrawable
+public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
+
+	//public final static String PICTURE_PATH = "assignment2_pictures";
+
+	public void drawObject (Graphics g) {}
+	public Color getColor() { return Color.RED; } // Change it
+
 	/**
 	 * 
 	 */

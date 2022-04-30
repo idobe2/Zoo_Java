@@ -10,4 +10,8 @@ public class Lettuce extends Plant {
 	public Lettuce() {
 		MessageUtility.logConstractor("Lettuce", "Lettuce");
 	}
+
+	public void loadImages(String nm) {
+
+	}
 }

@@ -11,4 +11,8 @@ public class Cabbage extends Plant {
 		MessageUtility.logConstractor("Cabbage", "Cabbage");
 	}
 
+	public void loadImages(String nm) {
+
+	}
+
 }
