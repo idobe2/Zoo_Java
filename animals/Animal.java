@@ -37,6 +37,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private String name;
 	private double weight;
 	private IDiet diet;
+	//private Point location; // Animal is extending Mobile, so it has location already.
 
 	public Animal(int size, int horSpeed, int verSpeed, String color, double weight) {
 		//super(location);

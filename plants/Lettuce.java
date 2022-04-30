@@ -4,6 +4,7 @@ import graphics.IDrawable;
 import utilities.MessageUtility;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -23,4 +24,5 @@ public class Lettuce extends Plant {
 			System.out.println("Cannot load image");
 		}
 	}
+	public Image getImg() { return this.img; }
 }

@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class ZooFrame extends JFrame {
-    private JPanel mainP = new JPanel();
+    protected JPanel mainP = new JPanel();
     private final JMenu File, Background, Help, submenu;
     private final JMenuItem i1, i2, i3, i4, i5; // i1=Exit,i2=Image,i3=Green,i4=None,i5=Help
     private final JMenuBar mb=new JMenuBar();
@@ -45,7 +45,7 @@ public class ZooFrame extends JFrame {
         i2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                paintImg();
+                paintComponent(mainP.getGraphics());
             }
         });
         Background.add(i3);
@@ -97,8 +97,9 @@ public class ZooFrame extends JFrame {
 //        return zooPanel;
 //    }
 
-    public void paintImg()
+    public void paintComponent(Graphics g)
     {
+        super.paintComponents(g);
         //zooPanel.paintImg();
         this.mainP.getGraphics().drawImage(backgroundImage,0,0,getWidth(),getHeight(), mainP);
     }

@@ -1,6 +1,8 @@
 package graphics;
 
 import animals.Animal;
+import plants.Lettuce;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -67,7 +69,17 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Lettuce");
-                        mainP.setBackground(Color.ORANGE);
+                        Lettuce lettuce = new Lettuce();
+                        lettuce.loadImages("nm");
+                        JLabel pic = new JLabel(new ImageIcon(lettuce.getImg()));
+//                        JLabel label = new JLabel("Test Test Test");
+//                        label.setHorizontalAlignment(JLabel.CENTER);
+//                        label.setSize(400, 100);
+                        //pic.setSize(lettuce.getLocation().getX(), lettuce.getLocation().getY());
+                        //pic.setSize(5,5);
+                        mainP.add(pic, BorderLayout.PAGE_END);
+                        //mainP.setVisible(true);
+                        mainP.repaint();
                     }
                 });
                 b2.addActionListener(new ActionListener() {
