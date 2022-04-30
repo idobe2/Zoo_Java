@@ -46,7 +46,23 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		setHorSpeed(horSpeed);
 		setVerSpeed(verSpeed);
 		setColor(color);
+
+		//setPan(new ZooPanel());
+		//drawObject(getPan().getGraphics());
 		//MessageUtility.logConstractor(getClass().getSimpleName(), getName());
+	}
+
+	public String getColorToFile(String color) {
+		switch (color) {
+			case "Natural":
+				return "n";
+			case "Blue":
+				return "b";
+			case "Red":
+				return "r";
+			default:
+				return "Error";
+		}
 	}
 
 	public String getColorToString() { return col; }
@@ -107,7 +123,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 
 	public void drawObject (Graphics g)
 	{
-		g.setColor(getColor());
+		//g.setColor(getColor());
 		if(getX_dir()==1) // giraffe goes to the right side
 			g.drawImage(img1, getLocation().getX()-size/2, getLocation().getY()-size/10, size/2, size, pan);
 		else // giraffe goes to the left side

@@ -18,7 +18,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
     private final JButton infoButton = new JButton("Info");
     private final JButton exitButton = new JButton("Exit");
 
-    ZooPanel() {
+    public ZooPanel() {
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.add(addAnimalButton);
         addAnimalButton.addActionListener(new ActionListener() {

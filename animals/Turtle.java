@@ -26,12 +26,7 @@ public class Turtle extends Chew {
 		this.Age = 1;
 		this.setLocation(new Point(80,0));
 		this.setDiet(new Herbivore());
-		if (color.equals("Natural"))
-			loadImages("n");
-		else if (color.equals("Blue"))
-			loadImages("b");
-		else if (color.equals("Red"))
-			loadImages("r");
+		loadImages(getColorToFile(color));
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
 	}
@@ -112,8 +107,8 @@ public class Turtle extends Chew {
 	public void loadImages(String nm)
 	{	// Read image file
 		try {
-			img1 = ImageIO.read(new File("assignment2_pictures/trt_" + nm + "_1"));
-			img2 = ImageIO.read(new File("assignment2_pictures/trt_"+ nm + "_2"));
+			img1 = ImageIO.read(new File("assignment2_pictures/trt_" + nm + "_1.png"));
+			img2 = ImageIO.read(new File("assignment2_pictures/trt_"+ nm + "_2.png"));
 		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 }

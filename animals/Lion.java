@@ -27,12 +27,7 @@ public class Lion extends Roar {
 		this.scarCount = 0;
 		this.setLocation(new Point(20,0));
 		this.setDiet(new Carnivore());
-		if (color.equals("Natural"))
-			loadImages("n");
-		else if (color.equals("Blue"))
-			loadImages("b");
-		else if (color.equals("Red"))
-			loadImages("r");
+		loadImages(getColorToFile(color));
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
 	}
@@ -117,8 +112,8 @@ public class Lion extends Roar {
 	public void loadImages(String nm)
 	{	// Read image file
 		try {
-			img1 = ImageIO.read(new File("assignment2_pictures/lio_" + nm + "_1"));
-			img2 = ImageIO.read(new File("assignment2_pictures/lio_"+ nm + "_2"));
+			img1 = ImageIO.read(new File("assignment2_pictures/lio_" + nm + "_1.png"));
+			img2 = ImageIO.read(new File("assignment2_pictures/lio_"+ nm + "_2.png"));
 		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 }

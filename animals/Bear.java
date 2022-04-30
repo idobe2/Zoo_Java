@@ -26,12 +26,7 @@ public class Bear extends Roar {
 		this.furColor = new String("GRAY");
 		this.setLocation(new Point(100,5));
 		this.setDiet(new Omnivore());
-		if (color.equals("Natural"))
-			loadImages("n");
-		else if (color.equals("Blue"))
-			loadImages("b");
-		else if (color.equals("Red"))
-			loadImages("r");
+		loadImages(getColorToFile(color));
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
 	}
@@ -115,8 +110,8 @@ public class Bear extends Roar {
 	public void loadImages(String nm)
 	{	// Read image file
 		try {
-			img1 = ImageIO.read(new File("assignment2_pictures/bea_" + nm + "_1"));
-			img2 = ImageIO.read(new File("assignment2_pictures/bea_"+ nm + "_2"));
+			img1 = ImageIO.read(new File("assignment2_pictures/bea_" + nm + "_1.png"));
+			img2 = ImageIO.read(new File("assignment2_pictures/bea_"+ nm + "_2.png"));
 		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 }

@@ -30,12 +30,7 @@ public class Elephant extends Chew {
 		this.trunkLength = 1;
 		this.setLocation(new Point(50,90));
 		this.setDiet(new Herbivore());
-		if (color.equals("Natural"))
-			loadImages("n");
-		else if (color.equals("Blue"))
-			loadImages("b");
-		else if (color.equals("Red"))
-			loadImages("r");
+		loadImages(getColorToFile(color));
 //		JPanel panel = new JPanel();
 //		drawObject(panel.getGraphics());
 //		setPan(panel);
@@ -116,11 +111,12 @@ public class Elephant extends Chew {
 		MessageUtility.logSound(this.getName(), "Trumpets with joy while flapping its ears, then chews");
 	}
 
-	public void loadImages(String nm)
-	{	// Read image file
-		try {
-			img1 = ImageIO.read(new File("assignment2_pictures/elf_" + nm + "_1"));
-			img2 = ImageIO.read(new File("assignment2_pictures/elf_"+ nm + "_2"));
-		} catch (IOException ex) {System.out.println("Cannot load image");}
+	public void loadImages(String nm) {    // Read image file
+			try {
+				img1 = ImageIO.read(new File("assignment2_pictures/elf_" + nm + "_1.png"));
+				img2 = ImageIO.read(new File("assignment2_pictures/elf_" + nm + "_2.png"));
+			} catch (IOException ex) {
+				System.out.println("IOException: Cannot load image");
+			}
+		}
 	}
-}

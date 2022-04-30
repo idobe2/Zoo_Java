@@ -26,14 +26,17 @@ public class Giraffe extends Chew {
 		this.neckLength = 1.5;
 		this.setLocation(new Point(50,0));
 		this.setDiet(new Herbivore());
-		if (color.equals("Natural"))
-			loadImages("n");
-		else if (color.equals("Blue"))
-			loadImages("b");
-		else if (color.equals("Red"))
-			loadImages("r");
+		loadImages(getColorToFile(color));
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
+	}
+
+	public void loadImages(String nm)
+	{	// Read image file
+		try {
+			img1 = ImageIO.read(new File("assignment2_pictures/grf_" + nm + "_1.png"));
+			img2 = ImageIO.read(new File("assignment2_pictures/grf_"+ nm + "_2.png"));
+		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 
 	/**
@@ -108,11 +111,4 @@ public class Giraffe extends Chew {
 		MessageUtility.logSound(this.getName(), "Bleats and Stomps its legs, then chews");
 	}
 
-	public void loadImages(String nm)
-	{	// Read image filev
-		try {
-			img1 = ImageIO.read(new File("assignment2_pictures/grf_" + nm + "_1"));
-			img2 = ImageIO.read(new File("assignment2_pictures/grf_"+ nm + "_2"));
-		} catch (IOException ex) {System.out.println("Cannot load image");}
-	}
 }
