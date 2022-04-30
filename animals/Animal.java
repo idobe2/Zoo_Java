@@ -61,7 +61,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 			case "Red":
 				return "r";
 			default:
-				return "Error";
+				return null;
 		}
 	}
 
