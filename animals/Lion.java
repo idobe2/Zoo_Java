@@ -27,11 +27,11 @@ public class Lion extends Roar {
 		this.scarCount = 0;
 		this.setLocation(new Point(20,0));
 		this.setDiet(new Carnivore());
-		if (getColor()==null)
+		if (color.equals("Natural"))
 			loadImages("n");
-		else if (getColor()== Color.BLUE)
+		else if (color.equals("Blue"))
 			loadImages("b");
-		else if (getColor()==Color.RED)
+		else if (color.equals("Red"))
 			loadImages("r");
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());

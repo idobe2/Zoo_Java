@@ -26,11 +26,11 @@ public class Giraffe extends Chew {
 		this.neckLength = 1.5;
 		this.setLocation(new Point(50,0));
 		this.setDiet(new Herbivore());
-		if (getColor()==null)
+		if (color.equals("Natural"))
 			loadImages("n");
-		else if (getColor()== Color.BLUE)
+		else if (color.equals("Blue"))
 			loadImages("b");
-		else if (getColor()==Color.RED)
+		else if (color.equals("Red"))
 			loadImages("r");
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());

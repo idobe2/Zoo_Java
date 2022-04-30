@@ -26,11 +26,11 @@ public class Bear extends Roar {
 		this.furColor = new String("GRAY");
 		this.setLocation(new Point(100,5));
 		this.setDiet(new Omnivore());
-		if (getColor()==null)
+		if (color.equals("Natural"))
 			loadImages("n");
-		else if (getColor()== Color.BLUE)
+		else if (color.equals("Blue"))
 			loadImages("b");
-		else if (getColor()==Color.RED)
+		else if (color.equals("Red"))
 			loadImages("r");
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
