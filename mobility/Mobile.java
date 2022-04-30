@@ -1,5 +1,7 @@
 package mobility;
 
+import utilities.MessageUtility;
+
 /**
  * An abstract class that defines movement in space.
  *
@@ -14,7 +16,9 @@ public abstract class Mobile implements Ilocatable {
 	/**
 	 * Default ctor required for Mobile abstract class.
 	 */
-	public Mobile() { this.totalDistance = 0; }
+	public Mobile() {
+		this.location = new Point();
+		this.totalDistance = 0; }
 	
 	/**
 	 * A simple ctor of Mobile Point location.
@@ -38,8 +42,13 @@ public abstract class Mobile implements Ilocatable {
 	 * 			otherwise false.
 	 */
 	public boolean setLocation(Point other) {
-		this.location = new Point(other.getX(),other.getY());
-		return true;
+		if (other.checkPoint()) {
+			MessageUtility.logSetter(getClass().getSimpleName(), "setLocation", new String(other.getX()+","+other.getY()), true);
+			this.location = new Point(other.getX(),other.getY());
+			return true;
+		}
+		MessageUtility.logSetter(getClass().getSimpleName(), "setLocation", new String(other.getX()+","+other.getY()), false);
+		return false;
 	}
 	
 	/**

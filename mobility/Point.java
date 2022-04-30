@@ -1,5 +1,7 @@
 package mobility;
 
+import utilities.MessageUtility;
+
 /**
  * A class that uses 2D axis for location estimation.
  * 
@@ -49,8 +51,8 @@ public class Point {
 	{
 		if (checkBoundaries(other))
 		{
-			this.x = other.x;
-			this.y = other.y;
+			this.x = other.getX();
+			this.y = other.getY();
 		}
 	}
 
@@ -59,7 +61,7 @@ public class Point {
 	 *
 	 * @return the X value as an integer.
 	 */
-	public int getX() {return this.x; }
+	public int getX() { return this.x; }
 
 	/**
 	 * A simple getter of Y value.
@@ -80,7 +82,7 @@ public class Point {
 	public boolean setX(int x) {
 		if (x >=MIN_X && x <= MAX_X)
 		{
-			this.x = x; 
+			this.x = x;
 			return true; 
 		}
 		return false;

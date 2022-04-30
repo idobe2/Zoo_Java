@@ -28,12 +28,13 @@ public class Elephant extends Chew {
 	public Elephant(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
 		this.trunkLength = 1;
-		this.setLocation(new Point(50,90));
+		setLocation(new Point(50,90));
 		this.setDiet(new Herbivore());
 		loadImages(getColorToFile(color));
-//		JPanel panel = new JPanel();
-//		drawObject(panel.getGraphics());
-//		setPan(panel);
+
+//		setPan(new ZooPanel());
+//		drawObject(getPan().getGraphics());
+
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
 	}

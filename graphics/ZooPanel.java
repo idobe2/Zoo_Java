@@ -34,7 +34,6 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         moveAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Test");
                 new MoveAnimalDialog(animalArrayList);
             }
         });
