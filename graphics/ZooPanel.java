@@ -7,18 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static javax.swing.GroupLayout.Alignment.*;
-
 public class ZooPanel extends JPanel { // implements Runnable // public void run() {}
     protected ArrayList<Animal> animalArrayList = new ArrayList<>();
-    private final JButton addAnimalButton = new JButton("Add Animal");
-    private final JButton moveAnimalButton = new JButton("Move Animal");
-    private final JButton clearButton = new JButton("Clear");
-    private final JButton foodButton = new JButton("Food");
-    private final JButton infoButton = new JButton("Info");
-    private final JButton exitButton = new JButton("Exit");
 
-    public ZooPanel() {
+    public ZooPanel(JPanel mainP) {
+        JButton addAnimalButton = new JButton("Add Animal");
+        JButton moveAnimalButton = new JButton("Move Animal");
+        JButton clearButton = new JButton("Clear");
+        JButton foodButton = new JButton("Food");
+        JButton infoButton = new JButton("Info");
+        JButton exitButton = new JButton("Exit");
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.add(addAnimalButton);
         addAnimalButton.addActionListener(new ActionListener() {
@@ -69,6 +67,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Lettuce");
+                        mainP.setBackground(Color.ORANGE);
                     }
                 });
                 b2.addActionListener(new ActionListener() {

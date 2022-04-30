@@ -117,8 +117,8 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	}
 
 	public boolean setPan(ZooPanel pan) {
-		if (pan == null) return false;
-		else this.pan = pan;
+		//if (pan == null) return false;
+		this.pan = pan;
 		return true; }
 
 	public void drawObject (Graphics g)

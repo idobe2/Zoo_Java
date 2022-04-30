@@ -32,8 +32,8 @@ public class Elephant extends Chew {
 		this.setDiet(new Herbivore());
 		loadImages(getColorToFile(color));
 
-//		setPan(new ZooPanel());
-//		drawObject(getPan().getGraphics());
+		//setPan(new ZooPanel());
+		//drawObject(getPan().getGraphics());
 
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
