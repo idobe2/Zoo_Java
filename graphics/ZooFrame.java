@@ -78,6 +78,7 @@ public class ZooFrame extends JFrame {
         this.setJMenuBar(mb);
         this.setSize(1000,500);
         // ZooPanel
+        mainP.setSize(1000,500);
         this.add(mainP, BorderLayout.CENTER);
         this.add(zooPanel, BorderLayout.SOUTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

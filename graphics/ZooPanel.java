@@ -1,16 +1,20 @@
 package graphics;
 
 import animals.Animal;
+import plants.Cabbage;
 import plants.Lettuce;
+import plants.Plant;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class ZooPanel extends JPanel { // implements Runnable // public void run() {}
     protected ArrayList<Animal> animalArrayList = new ArrayList<>();
+    private Plant foodType;
 
     public ZooPanel(JPanel mainP) {
         JButton addAnimalButton = new JButton("Add Animal");
@@ -69,17 +73,31 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Lettuce");
+//                        setPlant("Lettuce");
+//                        foodFrame.dispose();
                         Lettuce lettuce = new Lettuce();
-                        lettuce.loadImages("nm");
-                        JLabel pic = new JLabel(new ImageIcon(lettuce.getImg()));
+                        lettuce.loadImages("");
+                        ImageIcon lec = new ImageIcon(lettuce.getImg());
+                        //ImageIcon lec = new ImageIcon(lettuce.getImg());
+                        JLabel pic = new JLabel();
+                        pic.setIcon(lec);
+
+
+//                        pic.setVerticalAlignment(JLabel.CENTER);
+//                        pic.setHorizontalAlignment(JLabel.CENTER);
+                        pic.setBounds(350,100, 250, 100);
+//                        pic.setHorizontalAlignment(JLabel.CENTER);
+//                        pic.setVerticalAlignment(JLabel.CENTER);
 //                        JLabel label = new JLabel("Test Test Test");
 //                        label.setHorizontalAlignment(JLabel.CENTER);
 //                        label.setSize(400, 100);
                         //pic.setSize(lettuce.getLocation().getX(), lettuce.getLocation().getY());
                         //pic.setSize(5,5);
-                        mainP.add(pic, BorderLayout.PAGE_END);
+                        //pic.setSize();
+                        mainP.add(pic);
                         //mainP.setVisible(true);
                         mainP.repaint();
+                        foodFrame.dispose();
                     }
                 });
                 b2.addActionListener(new ActionListener() {
@@ -158,4 +176,37 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         });
         this.setBackground(Color.CYAN);
     }
+
+    public void setPlant(String food)
+    {
+        switch (food)
+        {
+            case "Cabbage":
+                this.foodType = new Cabbage();
+                this.foodType.loadImages("");
+                foodType.drawObject(foodType.getImg().getGraphics());
+                this.repaint();
+                break;
+            case "Lettuce":
+                this.foodType = new Lettuce();
+                this.foodType.loadImages("");
+                this.repaint();
+                break;
+//            case "Meat":
+//                this.foodType = new Meat();
+//                this.foodType.loadImages("");
+//                this.repaint();
+//                break;
+            default:
+                this.foodType = null;
+
+        }
+    }
+//    public void paintComponent(Graphics g)
+//    {
+//        super.paintComponent(g);
+//        Graphics2D gr = (Graphics2D) g;
+//        gr.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//    }
+
 }

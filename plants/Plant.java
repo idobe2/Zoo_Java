@@ -21,6 +21,8 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 
 	public void drawObject (Graphics g) {}
 	public Color getColor() { return Color.GREEN; } // Change it
+	public Image getImg() { return img; }
+	public BufferedImage setImg(BufferedImage img) { this.img = img; return this.img; }
 
 	/**
 	 * 
