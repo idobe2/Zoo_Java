@@ -123,6 +123,7 @@ public class AddAnimalDialog extends JDialog {
                         tbSize.setText("");
                         tbHspeed.setText("");
                         tbVspeed.setText("");
+                        dispose();
                     }
                 }
             }
