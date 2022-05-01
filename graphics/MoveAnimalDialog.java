@@ -21,12 +21,12 @@ public class MoveAnimalDialog extends JDialog {
     private final JLabel lA = new JLabel("Animal:");
     private boolean flag = true;
 
-    public MoveAnimalDialog(ArrayList<Animal> animalArrayList) {
+    public MoveAnimalDialog(ArrayList<Animal> animalArrayList, JPanel mainP) {
         {
             // TESTING-start
-            animalArrayList.add(new Elephant(56, 7, 8, "Natural", 500));
-//            animalArrayList.add(new Lion(75,4,3,"Red",250));
-//            animalArrayList.add(new Giraffe(34,5,6,"Blue",350));
+            animalArrayList.add(new Elephant(100, 7, 8, "Natural", 500));
+            animalArrayList.add(new Lion(125,4,3,"Red",250));
+            animalArrayList.add(new Giraffe(150,5,6,"Blue",350));
             System.out.println("Size: " + animalArrayList.size());
             // TESTING-end
 

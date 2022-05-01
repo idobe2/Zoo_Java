@@ -32,7 +32,7 @@ public class Elephant extends Chew {
 		setLocation(new Point(50,90));
 		this.setDiet(new Herbivore());
 		loadImages(getColorToFile(color));
-		drawObject(img1.getGraphics());
+		//drawObject(img1.getGraphics());
 		//setPan(new ZooPanel());
 		//drawObject(getPan().getGraphics());
 

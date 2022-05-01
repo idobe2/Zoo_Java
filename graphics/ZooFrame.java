@@ -82,6 +82,7 @@ public class ZooFrame extends JFrame {
         this.add(mainP, BorderLayout.CENTER);
         this.add(zooPanel, BorderLayout.SOUTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
         this.setVisible(true);
     }
 

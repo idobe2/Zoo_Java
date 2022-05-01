@@ -3,6 +3,7 @@ package graphics;
 import animals.Animal;
 import plants.Cabbage;
 import plants.Lettuce;
+import plants.Meat;
 import plants.Plant;
 
 import javax.swing.*;
@@ -11,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import graphics.ZooFrame;
 
 public class ZooPanel extends JPanel { // implements Runnable // public void run() {}
     protected ArrayList<Animal> animalArrayList = new ArrayList<>();
@@ -30,7 +32,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Size:" + animalArrayList.size()); // TEST
                 if (animalArrayList.size() < 10 )
-                    new AddAnimalDialog(animalArrayList, new JPanel()); // TODO which panel to use?
+                    new AddAnimalDialog(animalArrayList, mainP); // TODO which panel to use?
                 else JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
             }
         });
@@ -38,7 +40,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         moveAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MoveAnimalDialog(animalArrayList);
+                new MoveAnimalDialog(animalArrayList, mainP);
             }
         });
         this.add(clearButton);
@@ -73,30 +75,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Lettuce");
-//                        setPlant("Lettuce");
-//                        foodFrame.dispose();
-                        Lettuce lettuce = new Lettuce();
-                        lettuce.loadImages("");
-                        ImageIcon lec = new ImageIcon(lettuce.getImg());
-                        //ImageIcon lec = new ImageIcon(lettuce.getImg());
-                        JLabel pic = new JLabel();
-                        pic.setIcon(lec);
-
-
-//                        pic.setVerticalAlignment(JLabel.CENTER);
-//                        pic.setHorizontalAlignment(JLabel.CENTER);
-                        pic.setBounds(350,100, 250, 100);
-//                        pic.setHorizontalAlignment(JLabel.CENTER);
-//                        pic.setVerticalAlignment(JLabel.CENTER);
-//                        JLabel label = new JLabel("Test Test Test");
-//                        label.setHorizontalAlignment(JLabel.CENTER);
-//                        label.setSize(400, 100);
-                        //pic.setSize(lettuce.getLocation().getX(), lettuce.getLocation().getY());
-                        //pic.setSize(5,5);
-                        //pic.setSize();
-                        mainP.add(pic);
-                        //mainP.setVisible(true);
-                        mainP.repaint();
+                        setPlant("Lettuce", mainP);
                         foodFrame.dispose();
                     }
                 });
@@ -104,12 +83,16 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Cabbage");
+                        setPlant("Cabbage", mainP);
+                        foodFrame.dispose();
                     }
                 });
                 b3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         System.out.println("Meat");
+                        setPlant("Meat", mainP);
+                        foodFrame.dispose();
                     }
                 });
             }
@@ -177,36 +160,50 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         this.setBackground(Color.CYAN);
     }
 
-    public void setPlant(String food)
+    public void setPlant(String food, JPanel mainP)
     {
         switch (food)
         {
             case "Cabbage":
                 this.foodType = new Cabbage();
-                this.foodType.loadImages("");
-                foodType.drawObject(foodType.getImg().getGraphics());
-                this.repaint();
                 break;
             case "Lettuce":
                 this.foodType = new Lettuce();
-                this.foodType.loadImages("");
-                this.repaint();
                 break;
-//            case "Meat":
-//                this.foodType = new Meat();
-//                this.foodType.loadImages("");
-//                this.repaint();
-//                break;
+            case "Meat":
+                this.foodType = new Meat();
+                break;
             default:
                 this.foodType = null;
-
         }
+        this.foodType.loadImages("");
+        Image img = foodType.getImg();
+        //Image resizedImg = img.getScaledInstance(50,50, Image.SCALE_DEFAULT);
+        ImageIcon IconImg = new ImageIcon(img.getScaledInstance(50,50, Image.SCALE_DEFAULT));
+        JLabel pic = new JLabel();
+        pic.setIcon(IconImg);
+        pic.setBounds(450,150, 100, 100);
+        mainP.add(pic);
+        mainP.repaint();
     }
-//    public void paintComponent(Graphics g)
-//    {
-//        super.paintComponent(g);
-//        Graphics2D gr = (Graphics2D) g;
-//        gr.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//    }
 
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        Graphics2D gr = (Graphics2D) g;
+        gr.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    }
+
+    ZooPanel(Animal animal, JPanel mainP)
+    {
+        //animal.setPan();
+//        Image animalImg = animal.getImg();
+//        Image newImg = animalImg.getScaledInstance(animal.getSize(), animal.getSize(), Image.SCALE_DEFAULT);
+//        ImageIcon lec = new ImageIcon(newImg);
+//        JLabel pic = new JLabel();
+//        pic.setIcon(lec);
+//        pic.setBounds(animal.getX_dir(), animal.getY_dir(), 300, 300);
+        mainP.add(animal.getPan());
+        mainP.repaint();
+    }
 }

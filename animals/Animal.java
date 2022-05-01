@@ -131,6 +131,8 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 			g.drawImage(img2, getLocation().getX(), getLocation().getY()-size/10, size/2, size, pan);
 	}
 
+	public Image getImg() { return this.img1; }
+
 	public void eatInc() { this.eatCount++; }
 
 	public int getEatCount() { return this.eatCount; }
