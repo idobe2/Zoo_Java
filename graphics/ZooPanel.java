@@ -42,7 +42,6 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
     }
 
     public void manageZoo() {
-        System.out.println("Manage");
         for (int i = 0; i < this.animals.size(); i++) {
             if (foodType != null) {
                 if (Math.abs(animals.get(i).getLocation().getX() - 450) <= 10
