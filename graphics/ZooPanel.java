@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ZooPanel extends JPanel { // implements Runnable // public void run() {}
     protected ArrayList<Animal> animals = new ArrayList<>();
     protected Plant foodType;
-    BufferedImage backgroundImage = null;
+    protected BufferedImage backgroundImage = null;
 
     public ZooPanel(ArrayList<Animal> animalArrayList, Plant food) {
         animals = animalArrayList;
@@ -44,37 +44,37 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
     public void manageZoo() {
         for (int i = 0; i < this.animals.size(); i++) {
             if (foodType != null) {
-                if (Math.abs(animals.get(i).getLocation().getX() - 450) <= 10
-                        && Math.abs(animals.get(i).getLocation().getY() - 150) <= 10)
+                if (Math.abs(animals.get(i).getLocation().getX() - 450) <= animals.get(i).getEAT_DISTANCE()
+                        && Math.abs(animals.get(i).getLocation().getY() - 150) <= animals.get(i).getEAT_DISTANCE())
                 {
                     animals.get(i).eat(foodType);
                     animals.get(i).eatInc();
                     foodType = null;
-                    this.repaint();
+                    repaint();
                 } else if (animals.get(i).getDiet() instanceof Carnivore && this.foodType instanceof Meat) {
                     animals.get(i).eat(foodType);
                     animals.get(i).eatInc();
                     foodType = null;
-                    this.repaint();
+                    repaint();
                 } else if (animals.get(i).getDiet() instanceof Omnivore) {
                     animals.get(i).eat(foodType);
                     animals.get(i).eatInc();
                     foodType = null;
-                    this.repaint();
+                    repaint();
                 }
             }
         }
-        for (int i = 0; i < this.animals.size(); i++)
-            for (int j = 0; j < this.animals.size(); j++) {
+        for (int i = 0; i < animals.size(); i++)
+            for (int j = 0; j < animals.size(); j++) {
                 if (i != j) {
                     if (animals.get(i).getDiet() instanceof Carnivore || animals.get(i).getDiet() instanceof Omnivore) {
                         if (((animals.get(j).getDiet() instanceof Herbivore) || (animals.get(j).getDiet() instanceof Omnivore))) {
                             if (animals.get(i).getWeight() >= 2 * animals.get(j).getWeight()) {
                                 if (animals.get(i).calcDistance(animals.get(j).getLocation()) < animals.get(j).getSize()) {
-                                    this.animals.get(i).eat(this.animals.get(j));
-                                    this.animals.get(i).eatInc();
+                                    animals.get(i).eat(animals.get(j));
+                                    animals.get(i).eatInc();
                                     animals.remove(j);
-                                    this.repaint();
+                                    repaint();
                                 }
                             }
                         }

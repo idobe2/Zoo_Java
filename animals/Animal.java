@@ -40,23 +40,18 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private IDiet diet;
 	//private Point location; // Animal is extending Mobile, so it has location already.
 
-	public boolean ChangeCoored() {
+	public boolean changeCoored() {
 		if (!coordChanged) return true;
+
 		else return false;
 	}
 
 	public Animal(int size, int horSpeed, int verSpeed, String color, double weight) {
-		//super(location);
-		//this.name = name;
 		this.size = size;
 		this.weight = weight;
 		setHorSpeed(horSpeed);
 		setVerSpeed(verSpeed);
 		setColor(color);
-
-		//setPan(new ZooPanel());
-		//drawObject(getPan().getGraphics());
-		//MessageUtility.logConstractor(getClass().getSimpleName(), getName());
 	}
 
 	public String getColorToFile(String color) {
@@ -296,4 +291,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 */
 	public String toString() { return "[!] " + this.name + ": total distance: " + getTotalDistance() + ", weight: " + getWeight(); }
 
+	public int getEAT_DISTANCE() {
+		return EAT_DISTANCE;
+	}
 }

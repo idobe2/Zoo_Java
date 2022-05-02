@@ -235,7 +235,6 @@ public class ZooFrame extends JFrame {
         });
         this.setBackground(Color.CYAN);
         zooPanel.setSize(1000,500);
-        //mainP.setBackground(new Color(0,0,0,50));
         mainP.setBackground(Color.CYAN);
         this.add(mainP, BorderLayout.SOUTH);
         this.add(zooPanel, BorderLayout.CENTER);
