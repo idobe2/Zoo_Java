@@ -1,10 +1,6 @@
 package graphics;
 
 import animals.Animal;
-import animals.Elephant;
-import animals.Giraffe;
-import animals.Lion;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,13 +20,6 @@ public class MoveAnimalDialog extends JDialog {
 
     public MoveAnimalDialog(ArrayList<Animal> animalArrayList, ZooPanel zooPanel) {
         {
-            // TESTING-start
-//            animalArrayList.add(new Elephant(100, 7, 8, "Natural", 500));
-//            animalArrayList.add(new Lion(125,4,3,"Red",250));
-//            animalArrayList.add(new Giraffe(150,5,6,"Blue",350));
-            System.out.println("Size: " + animalArrayList.size());
-            // TESTING-end
-
             this.setTitle("Move Animal");
             String[] animalsClassName = new String[animalArrayList.size()];
             for (int i=0; i<animalArrayList.size(); i++)
@@ -38,21 +27,17 @@ public class MoveAnimalDialog extends JDialog {
             JComboBox cbAnimals = new JComboBox(animalsClassName);
             this.setLayout(new GridLayout(4, 5));
             this.add(lA);
-            //lA.setHorizontalAlignment(JLabel.CENTER);
             cbAnimals.setBounds(50, 100, 90, 20);
             this.add(cbAnimals);
             animalLabel.setHorizontalAlignment(JLabel.CENTER);
             animalLabel.setSize(400, 100);
             bOK.setBounds(200, 100, 75, 20);
             this.add(lX);
-            //lX.setHorizontalAlignment(JLabel.CENTER);
             this.add(tbX);
             this.add(lY);
-            //lY.setHorizontalAlignment(JLabel.CENTER);
             this.add(tbY);
             this.add(bOK);
             this.add(animalLabel);
-            //this.setLayout(null);
             this.setSize(350, 350);
             this.setVisible(true);
             bOK.addActionListener(new ActionListener() {
@@ -78,13 +63,8 @@ public class MoveAnimalDialog extends JDialog {
                             Point point = new Point((Integer.parseInt(tbX.getText())),Integer.parseInt(tbY.getText()));
                             animalArrayList.get(cbAnimals.getSelectedIndex()).setLocation(point);
                             animalArrayList.get(cbAnimals.getSelectedIndex()).ChangeCoored();
-                            //zooPanel.remove(animalArrayList.get(cbAnimals.getSelectedIndex()).getPan());
-                            //animalArrayList.get(cbAnimals.getSelectedIndex()).setPan(zooPanel);
-                            //animalArrayList.get(cbAnimals.getSelectedIndex()).drawObject(zooPanel.getGraphics());
                             zooPanel.repaint();
                             zooPanel.manageZoo();
-                            //System.out.println("X: " + animalArrayList.get(cbAnimals.getSelectedIndex()).getX_dir()
-                            // + "\nY: " + animalArrayList.get(cbAnimals.getSelectedIndex()).getY_dir());
                         }
                     }
                 }

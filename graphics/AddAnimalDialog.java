@@ -1,8 +1,6 @@
 package graphics;
 
 import animals.*;
-import plants.Lettuce;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,14 +8,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class AddAnimalDialog extends JDialog {
-    //private final JFrame f = new JFrame("Add Animal");
-    //private final JDialog d = new JDialog();
-    //private final InputsPanel inputs;
-
     private final String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
     private final JComboBox cb = new JComboBox(animals);
     private final JLabel label = new JLabel();
-
     private final JTextField tbSize, tbHspeed, tbVspeed;
     private final JLabel labelAnimal = new JLabel();
     private final JLabel labelColor = new JLabel();
@@ -25,7 +18,6 @@ public class AddAnimalDialog extends JDialog {
     private final JComboBox cbAnimals = new JComboBox(animals);
     private final JComboBox cbColors = new JComboBox(colors);
     private boolean flag = true;
-
 
     public AddAnimalDialog(ArrayList<Animal> animalArrayList, ZooPanel zooPanel)
     {
@@ -73,7 +65,6 @@ public class AddAnimalDialog extends JDialog {
                         JOptionPane.showMessageDialog(null, "Speed should be between 1 and 10");
                     }
                     if (flag) {
-                        //String animal = new String(cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString());
                         switch (cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString()) {
                             case "Elephant":
                                 animalArrayList.add(new Elephant(Integer.parseInt(tbSize.getText()),
@@ -88,7 +79,6 @@ public class AddAnimalDialog extends JDialog {
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Lion"), Integer.parseInt(tbSize.getText()))));
-                                //mainP.add(animal.getPan());
                                 break;
                             case "Giraffe":
                                 animalArrayList.add(new Giraffe(Integer.parseInt(tbSize.getText()),
@@ -96,7 +86,6 @@ public class AddAnimalDialog extends JDialog {
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Giraffe"), Integer.parseInt(tbSize.getText()))));
-                                //mainP.add(animal.getPan());
                                 break;
                             case "Turtle":
                                 animalArrayList.add(new Turtle(Integer.parseInt(tbSize.getText()),
@@ -104,7 +93,6 @@ public class AddAnimalDialog extends JDialog {
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Turtle"), Integer.parseInt(tbSize.getText()))));
-                                //mainP.add(animal.getPan());
                                 break;
                             case "Bear":
                                 animalArrayList.add(new Bear(Integer.parseInt(tbSize.getText()),
@@ -112,15 +100,11 @@ public class AddAnimalDialog extends JDialog {
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Bear"), Integer.parseInt(tbSize.getText()))));
-                                //mainP.add(animal.getPan());
                                 break;
                         }
                         animalArrayList.get(animalArrayList.size()-1).setPan(zooPanel);
                         animalArrayList.get(animalArrayList.size()-1).drawObject(zooPanel.getGraphics());
                         zooPanel.repaint();
-                        //ZooPanel zoopanel = new ZooPanel(animalArrayList.get(animalArrayList.size()-1), mainP);
-                        //(animalArrayList.get(animalArrayList.size()-1)).setPan(zoopanel);
-                        //AddAnimal(animalArrayList.get(animalArrayList.size() - 1), mainP);
                         JOptionPane.showMessageDialog(null, "The animal was added successfully");
                         tbSize.setText("");
                         tbHspeed.setText("");
@@ -130,15 +114,8 @@ public class AddAnimalDialog extends JDialog {
                 }
             }
         });
-
         this.setTitle("Add Animal");
-        //inputs = new InputsPanel(animalArrayList,mainP);
-        //inputs.add(mainP);
-        //this.add(inputs);
-        //this.add(new CalculatePanel());
-        //this.setLayout(null);
         this.setSize(350, 350);
-        //this.pack();
         this.setVisible(true);
     }
 

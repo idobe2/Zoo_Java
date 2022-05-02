@@ -22,17 +22,15 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	private ZooPanel pan;
 
 	public boolean setPan(ZooPanel pan) {
-		//if (pan == null) return false;
 		this.pan = pan;
 		return true; }
 
 	public ZooPanel getPan() { return this.pan; }
 
 	public void drawObject (Graphics g) {
-		//g.setColor(getColor());
 			g.drawImage(img, 100, 100, 50, 100, pan);
 	}
-	public Color getColor() { return Color.GREEN; } // Change it
+	public Color getColor() { return Color.GREEN; }
 	public Image getImg() { return img; }
 
 	public BufferedImage setImg(BufferedImage img) { this.img = img; return this.img; }
