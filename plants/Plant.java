@@ -7,6 +7,7 @@ import java.util.Random;
 import food.EFoodType;
 import food.IEdible;
 import graphics.IDrawable;
+import graphics.ZooPanel;
 import mobility.Ilocatable;
 import mobility.Point;
 import utilities.MessageUtility;
@@ -18,10 +19,22 @@ import utilities.MessageUtility;
 public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 
 	protected BufferedImage img = null;
+	private ZooPanel pan;
 
-	public void drawObject (Graphics g) {}
+	public boolean setPan(ZooPanel pan) {
+		//if (pan == null) return false;
+		this.pan = pan;
+		return true; }
+
+	public ZooPanel getPan() { return this.pan; }
+
+	public void drawObject (Graphics g) {
+		//g.setColor(getColor());
+			g.drawImage(img, 100, 100, 50, 100, pan);
+	}
 	public Color getColor() { return Color.GREEN; } // Change it
 	public Image getImg() { return img; }
+
 	public BufferedImage setImg(BufferedImage img) { this.img = img; return this.img; }
 
 	/**

@@ -1,5 +1,6 @@
 package plants;
 
+import food.EFoodType;
 import graphics.IDrawable;
 import utilities.MessageUtility;
 
@@ -19,4 +20,10 @@ public class Meat extends Plant {
             System.out.println("Cannot load image");
         }
     }
+
+    public EFoodType getFoodtype() {
+        MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.MEAT);
+        return EFoodType.MEAT;
+    }
+
 }

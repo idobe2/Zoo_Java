@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import mobility.Point;
 
 public class MoveAnimalDialog extends JDialog {
     private final JLabel animalLabel = new JLabel();
@@ -21,12 +22,12 @@ public class MoveAnimalDialog extends JDialog {
     private final JLabel lA = new JLabel("Animal:");
     private boolean flag = true;
 
-    public MoveAnimalDialog(ArrayList<Animal> animalArrayList, JPanel mainP) {
+    public MoveAnimalDialog(ArrayList<Animal> animalArrayList, ZooPanel zooPanel) {
         {
             // TESTING-start
-            animalArrayList.add(new Elephant(100, 7, 8, "Natural", 500));
-            animalArrayList.add(new Lion(125,4,3,"Red",250));
-            animalArrayList.add(new Giraffe(150,5,6,"Blue",350));
+//            animalArrayList.add(new Elephant(100, 7, 8, "Natural", 500));
+//            animalArrayList.add(new Lion(125,4,3,"Red",250));
+//            animalArrayList.add(new Giraffe(150,5,6,"Blue",350));
             System.out.println("Size: " + animalArrayList.size());
             // TESTING-end
 
@@ -71,8 +72,17 @@ public class MoveAnimalDialog extends JDialog {
                             JOptionPane.showMessageDialog(null, "Y coordinate should be between 0 and 600");
                         }
                         if (flag) {
+                            System.out.println("Test: " + animalArrayList.get(cbAnimals.getSelectedIndex()));
                             animalArrayList.get(cbAnimals.getSelectedIndex()).setX_dir(Integer.parseInt(tbX.getText()));
                             animalArrayList.get(cbAnimals.getSelectedIndex()).setY_dir(Integer.parseInt(tbY.getText()));
+                            Point point = new Point((Integer.parseInt(tbX.getText())),Integer.parseInt(tbY.getText()));
+                            animalArrayList.get(cbAnimals.getSelectedIndex()).setLocation(point);
+                            animalArrayList.get(cbAnimals.getSelectedIndex()).ChangeCoored();
+                            //zooPanel.remove(animalArrayList.get(cbAnimals.getSelectedIndex()).getPan());
+                            //animalArrayList.get(cbAnimals.getSelectedIndex()).setPan(zooPanel);
+                            //animalArrayList.get(cbAnimals.getSelectedIndex()).drawObject(zooPanel.getGraphics());
+                            zooPanel.repaint();
+                            zooPanel.manageZoo();
                             //System.out.println("X: " + animalArrayList.get(cbAnimals.getSelectedIndex()).getX_dir()
                             // + "\nY: " + animalArrayList.get(cbAnimals.getSelectedIndex()).getY_dir());
                         }

@@ -9,6 +9,8 @@ import graphics.ZooPanel;
 import mobility.Mobile;
 import mobility.Point;
 import utilities.MessageUtility;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -27,8 +29,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private String col;
 	private int horSpeed;
 	private int verSpeed;
-	private boolean coordChanged;
-	private Thread thread;
+	private boolean coordChanged = false;
 	private int x_dir;
 	private int y_dir;
 	private int eatCount;
@@ -38,6 +39,11 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private double weight;
 	private IDiet diet;
 	//private Point location; // Animal is extending Mobile, so it has location already.
+
+	public boolean ChangeCoored() {
+		if (!coordChanged) return true;
+		else return false;
+	}
 
 	public Animal(int size, int horSpeed, int verSpeed, String color, double weight) {
 		//super(location);
