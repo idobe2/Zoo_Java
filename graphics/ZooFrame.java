@@ -1,6 +1,7 @@
 package graphics;
 
 import animals.Animal;
+import mobility.Point;
 import plants.Cabbage;
 import plants.Lettuce;
 import plants.Meat;
@@ -33,7 +34,7 @@ public class ZooFrame extends JFrame {
         try {   // Read image file
             backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
         } catch (IOException ex) {System.out.println("Cannot load image"); }
-        this.setLayout(new BorderLayout()); // Background color, image not working without it
+        this.setLayout(new BorderLayout()); // For Image Background
         File=new JMenu("File");
         Background = new JMenu("Background");
         Help = new JMenu("Help");
@@ -150,24 +151,33 @@ public class ZooFrame extends JFrame {
                 b1.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("Lettuce");
-                        setPlant("Lettuce", zooPanel);
+                        foodType = new Lettuce();
+                        foodType.setLocation(new Point(zooPanel.getWidth()/2, zooPanel.getHeight()/2));
+                        foodType.loadImages("Lettuce");
+                        foodType.setPan(zooPanel);
+                        foodType.drawObject(zooPanel.getGraphics());
                         foodFrame.dispose();
                     }
                 });
                 b2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("Cabbage");
-                        setPlant("Cabbage", zooPanel);
+                        foodType = new Lettuce();
+                        foodType.setLocation(new Point(zooPanel.getWidth()/2, zooPanel.getHeight()/2));
+                        foodType.loadImages("Cabbage");
+                        foodType.setPan(zooPanel);
+                        foodType.drawObject(zooPanel.getGraphics());
                         foodFrame.dispose();
                     }
                 });
                 b3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("Meat");
-                        setPlant("Meat", zooPanel);
+                        foodType = new Lettuce();
+                        foodType.setLocation(new Point(zooPanel.getWidth()/2, zooPanel.getHeight()/2));
+                        foodType.loadImages("Meat");
+                        foodType.setPan(zooPanel);
+                        foodType.drawObject(zooPanel.getGraphics());
                         foodFrame.dispose();
                     }
                 });
@@ -217,13 +227,6 @@ public class ZooFrame extends JFrame {
                 infoFrame.add(sp);
                 infoFrame.setSize(500,350);
                 infoFrame.setVisible(true);
-                // Testing-start
-                for (int i = 0; i < animalArrayList.size(); i++) {
-                    for (int j = 0; j < 6; j++)
-                        System.out.print(animalsData[i][j] + " ");
-                    System.out.println();
-                }
-                // Testing-end
             }
         });
         mainP.add(exitButton);
@@ -242,31 +245,6 @@ public class ZooFrame extends JFrame {
         this.setResizable(false);
         this.setVisible(true);
         zooPanel.manageZoo();
-    }
-
-        public void setPlant (String food, ZooPanel zooPanel)
-    {
-        switch (food) {
-            case "Cabbage":
-                this.foodType = new Cabbage();
-                break;
-            case "Lettuce":
-                this.foodType = new Lettuce();
-                break;
-            case "Meat":
-                this.foodType = new Meat();
-                break;
-            default:
-                this.foodType = null;
-        }
-        this.foodType.loadImages("");
-        Image img = foodType.getImg();
-        ImageIcon IconImg = new ImageIcon(img.getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-        JLabel pic = new JLabel();
-        pic.setIcon(IconImg);
-        pic.setBounds(450, 150, 100, 100);
-        zooPanel.add(pic);
-        zooPanel.repaint();
     }
 
     public void paintClr(Color color)

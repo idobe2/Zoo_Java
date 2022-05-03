@@ -2,6 +2,8 @@ package plants;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 import food.EFoodType;
@@ -11,6 +13,8 @@ import graphics.ZooPanel;
 import mobility.Ilocatable;
 import mobility.Point;
 import utilities.MessageUtility;
+
+import javax.imageio.ImageIO;
 
 /**
  * @author baroh
@@ -22,16 +26,52 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	private ZooPanel pan;
 
 	public boolean setPan(ZooPanel pan) {
-		this.pan = pan;
-		return true; }
+		if (pan != null)
+		{
+			this.pan = pan;
+			return true;
+		}
+		else return false;}
 
 	public ZooPanel getPan() { return this.pan; }
 
-	public void drawObject (Graphics g) {
-			g.drawImage(img, 100, 100, 50, 100, pan);
+	public void loadImages(String nm) {    // Read image file
+		switch (nm) {
+			case "Lettuce":
+				try {
+					img = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/lettuce.png"));
+				} catch (IOException ex) {
+					System.out.println("Cannot load lettuce");
+				}
+				break;
+			case "Cabbage":
+				try {
+					img = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/cabbage.png"));
+				} catch (IOException ex) {
+					System.out.println("Cannot load image");
+				}
+				break;
+			case "Meat":
+				try {
+					img = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/meat.gif"));
+				} catch (IOException ex) {
+					System.out.println("Cannot load image");
+				}
+				break;
+			default:
+				break;
+		}
 	}
+
+	public void drawObject (Graphics g)
+	{
+		g.drawImage(img, getLocation().getX(), getLocation().getY(), 50, 50, pan);
+	}
+
+//	public void drawObject (Graphics g) {
+//			g.drawImage(img, 100, 100, 50, 100, this.pan); }
+
 	public Color getColor() { return Color.GREEN; }
-	public Image getImg() { return img; }
 
 	public BufferedImage setImg(BufferedImage img) { this.img = img; return this.img; }
 

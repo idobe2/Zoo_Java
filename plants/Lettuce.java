@@ -17,12 +17,5 @@ public class Lettuce extends Plant {
 		MessageUtility.logConstractor("Lettuce", "Lettuce");
 	}
 
-	public void loadImages(String nm) {    // Read image file
-		try {
-			img = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/lettuce.png"));
-		} catch (IOException ex) {
-			System.out.println("Cannot load image");
-		}
-	}
 	public Image getImg() { return this.img; }
 }

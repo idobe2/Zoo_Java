@@ -16,10 +16,4 @@ public class Cabbage extends Plant {
 		MessageUtility.logConstractor("Cabbage", "Cabbage");
 	}
 
-	public void loadImages(String nm) {	// Read image file
-		try {
-			img = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/cabbage.png"));
-		} catch (IOException ex) {System.out.println("Cannot load image");}
-	}
-
 }

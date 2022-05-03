@@ -13,13 +13,7 @@ public class Meat extends Plant {
         MessageUtility.logConstractor("Meat", "Meat");
     }
 
-    public void loadImages(String nm) {    // Read image file
-        try {
-            img = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/meat.gif"));
-        } catch (IOException ex) {
-            System.out.println("Cannot load image");
-        }
-    }
+
 
     public EFoodType getFoodtype() {
         MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.MEAT);

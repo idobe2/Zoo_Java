@@ -33,7 +33,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private int x_dir;
 	private int y_dir;
 	private int eatCount;
-	private ZooPanel pan; // JPanel
+	private ZooPanel pan;
 	protected BufferedImage img1 = null, img2 = null;
 	private String name;
 	private double weight;
@@ -41,9 +41,12 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	//private Point location; // Animal is extending Mobile, so it has location already.
 
 	public boolean changeCoored() {
-		if (!coordChanged) return true;
-
-		else return false;
+		if (!coordChanged) {
+			this.coordChanged = true;
+			return true; }
+		else {
+			this.coordChanged = false;
+			return false; }
 	}
 
 	public Animal(int size, int horSpeed, int verSpeed, String color, double weight) {
