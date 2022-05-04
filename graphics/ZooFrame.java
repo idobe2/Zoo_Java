@@ -55,14 +55,14 @@ public class ZooFrame extends JFrame {
         i2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                paintImg(backgroundImage);
+                zooPanel.setBackgroundImage(backgroundImage);
             }
         });
         Background.add(i3);
         Background.add(i4);
         i4.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { paintClr(color); }
+            public void actionPerformed(ActionEvent e) { zooPanel.setBackgroundColor(color); }
         });
         Help.add(i5);
         mb.add(File);
@@ -70,7 +70,7 @@ public class ZooFrame extends JFrame {
         i3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                paintClr(Color.GREEN);
+                zooPanel.setBackgroundColor(Color.GREEN);
             }
         });
         mb.add(Help);
@@ -116,6 +116,8 @@ public class ZooFrame extends JFrame {
                     zooPanel.remove(animalArrayList.get(i).getPan());
                 }
                 animalArrayList.clear();
+                zooPanel.setBackgroundColor(null);
+                zooPanel.setBackgroundImage(null);
                 //zooPanel.remove(foodType.getPan());
                 zooPanel.repaint();
             }
@@ -247,6 +249,7 @@ public class ZooFrame extends JFrame {
         zooPanel.manageZoo();
     }
 
+
     public void paintClr(Color color)
     {
         this.zooPanel.setBackground(color);
@@ -256,6 +259,8 @@ public class ZooFrame extends JFrame {
     {
         this.zooPanel.getGraphics().drawImage(backgroundImage,0,0,getWidth(),getHeight(), this.zooPanel);
     }
+
+
 
     public static void main(String[] args)
     {

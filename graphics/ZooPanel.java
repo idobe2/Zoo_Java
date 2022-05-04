@@ -18,19 +18,42 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
     protected ArrayList<Animal> animals = new ArrayList<>();
     protected Plant foodType;
     protected BufferedImage backgroundImage = null;
+    protected Color color;
+
+    public BufferedImage getBackgroundImage() {
+        return backgroundImage;
+    }
+    public void setBackgroundImage(BufferedImage backgroundImage) {
+        if (getBackgroundColor() != null)
+            setBackgroundColor(null);
+        this.backgroundImage = backgroundImage;
+        this.repaint();
+    }
+    public Color getBackgroundColor() {
+        return color;
+    }
+    public void setBackgroundColor(Color backgroundColor) {
+        if (getBackgroundImage() != null)
+            setBackgroundImage(null);
+        this.color = backgroundColor;
+        this.repaint();
+    }
 
     public ZooPanel(ArrayList<Animal> animalArrayList, Plant food) {
         animals = animalArrayList;
         foodType = food;
-        try {   // Read image file
-            backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
-        } catch (IOException ex) {
-            System.out.println("Cannot load image");
-        }
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        if (getBackgroundImage() != null) // Check if there is background image
+            g.drawImage(getBackgroundImage(),0,0,getWidth(),getHeight(), this);
+        else if (getBackgroundColor() != null) { // Check if there is background color
+            g.setColor(getBackgroundColor());
+            g.fillRect(0,0,getWidth(),getHeight());
+        }
+
         if (!animals.isEmpty()) {
             for (int i = 0; i < animals.size(); i++) {
                 animals.get(i).drawObject(g);
@@ -39,6 +62,7 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         if (foodType != null) {
             foodType.drawObject(g);
         }
+
     }
 
     public void manageZoo() {
