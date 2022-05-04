@@ -16,13 +16,24 @@ import java.util.ArrayList;
 
 public class ZooPanel extends JPanel { // implements Runnable // public void run() {}
     protected ArrayList<Animal> animals = new ArrayList<>();
-    protected Plant foodType;
+    protected Plant foodType = null;
     protected BufferedImage backgroundImage = null;
     protected Color color;
 
     public BufferedImage getBackgroundImage() {
         return backgroundImage;
     }
+
+
+    public void setfoodtype(Plant foodType){
+        this.foodType = foodType;
+        this.repaint();
+    }
+
+    public Plant getfoodtype(){
+        return this.foodType;
+    }
+
     public void setBackgroundImage(BufferedImage backgroundImage) {
         if (getBackgroundColor() != null)
             setBackgroundColor(null);
@@ -39,9 +50,8 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
         this.repaint();
     }
 
-    public ZooPanel(ArrayList<Animal> animalArrayList, Plant food) {
+    public ZooPanel(ArrayList<Animal> animalArrayList) {
         animals = animalArrayList;
-        foodType = food;
     }
 
     public void paintComponent(Graphics g) {
@@ -59,9 +69,10 @@ public class ZooPanel extends JPanel { // implements Runnable // public void run
                 animals.get(i).drawObject(g);
             }
         }
-        if (foodType != null) {
+        if (getfoodtype() != null) {
             foodType.drawObject(g);
         }
+
 
     }
 

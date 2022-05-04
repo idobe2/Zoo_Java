@@ -26,7 +26,7 @@ public class ZooFrame extends JFrame {
     private final JMenuItem i1, i2, i3, i4, i5; // i1=Exit,i2=Image,i3=Green,i4=None,i5=Help
     private final JMenuBar mb=new JMenuBar();
     private final Color color = UIManager.getColor ( "Panel.background" ); // default background color
-    private final ZooPanel zooPanel = new ZooPanel(animalArrayList, foodType);
+    private final ZooPanel zooPanel = new ZooPanel(animalArrayList);
     private BufferedImage backgroundImage = null;
 
     ZooFrame() {
@@ -115,10 +115,10 @@ public class ZooFrame extends JFrame {
                 {
                     zooPanel.remove(animalArrayList.get(i).getPan());
                 }
+                zooPanel.setfoodtype(null);
                 animalArrayList.clear();
                 zooPanel.setBackgroundColor(null);
                 zooPanel.setBackgroundImage(null);
-                //zooPanel.remove(foodType.getPan());
                 zooPanel.repaint();
             }
 
@@ -158,6 +158,7 @@ public class ZooFrame extends JFrame {
                         foodType.loadImages("Lettuce");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
+                        zooPanel.setfoodtype(foodType);
                         foodFrame.dispose();
                     }
                 });
@@ -169,6 +170,7 @@ public class ZooFrame extends JFrame {
                         foodType.loadImages("Cabbage");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
+                        zooPanel.setfoodtype(foodType);
                         foodFrame.dispose();
                     }
                 });
@@ -180,6 +182,7 @@ public class ZooFrame extends JFrame {
                         foodType.loadImages("Meat");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
+                        zooPanel.setfoodtype(foodType);
                         foodFrame.dispose();
                     }
                 });
