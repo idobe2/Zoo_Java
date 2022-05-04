@@ -20,7 +20,7 @@ public class Lettuce extends Plant {
 
 	public EFoodType getFoodtype() {
 		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
-		return EFoodType.MEAT;
+		return EFoodType.VEGETABLE;
 	}
 	public Image getImg() { return this.img; }
 }

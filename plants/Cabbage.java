@@ -16,7 +16,7 @@ public class Cabbage extends Plant {
 
 	public EFoodType getFoodtype() {
 		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
-		return EFoodType.MEAT;
+		return EFoodType.VEGETABLE;
 	}
 	public Cabbage() {
 		MessageUtility.logConstractor("Cabbage", "Cabbage");

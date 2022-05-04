@@ -115,7 +115,7 @@ public class ZooFrame extends JFrame {
                 {
                     zooPanel.remove(animalArrayList.get(i).getPan());
                 }
-                zooPanel.setfoodtype(null);
+                zooPanel.setFood(null);
                 animalArrayList.clear();
                 zooPanel.setBackgroundColor(null);
                 zooPanel.setBackgroundImage(null);
@@ -158,7 +158,7 @@ public class ZooFrame extends JFrame {
                         foodType.loadImages("Lettuce");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
-                        zooPanel.setfoodtype(foodType);
+                        zooPanel.setFood(foodType);
                         foodFrame.dispose();
                         zooPanel.manageZoo();
                     }
@@ -171,7 +171,7 @@ public class ZooFrame extends JFrame {
                         foodType.loadImages("Cabbage");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
-                        zooPanel.setfoodtype(foodType);
+                        zooPanel.setFood(foodType);
                         foodFrame.dispose();
                         zooPanel.manageZoo();
                     }
@@ -184,7 +184,7 @@ public class ZooFrame extends JFrame {
                         foodType.loadImages("Meat");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
-                        zooPanel.setfoodtype(foodType);
+                        zooPanel.setFood(foodType);
                         foodFrame.dispose();
                         zooPanel.manageZoo();
                     }
