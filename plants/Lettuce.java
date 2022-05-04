@@ -1,26 +1,27 @@
 package plants;
 
 import food.EFoodType;
-import graphics.IDrawable;
 import utilities.MessageUtility;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * @author baroh
  *
  */
 public class Lettuce extends Plant {
+
+	/**
+	 * An easy ctor of lettuce object.
+	 */
 	public Lettuce() {
 		MessageUtility.logConstractor("Lettuce", "Lettuce");
 	}
 
+	/**
+	 * A simple function to get lettuce food type.
+	 * @return EFoodType.VEGETABLE
+	 */
 	public EFoodType getFoodtype() {
 		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
 		return EFoodType.VEGETABLE;
 	}
-	public Image getImg() { return this.img; }
 }

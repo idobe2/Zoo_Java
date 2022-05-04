@@ -1,12 +1,7 @@
 package plants;
 
 import food.EFoodType;
-import graphics.IDrawable;
 import utilities.MessageUtility;
-
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * @author baroh
@@ -14,12 +9,18 @@ import java.io.IOException;
  */
 public class Cabbage extends Plant {
 
+	/**
+	 * A simple function to get cabbage food type.
+	 * @return EFoodType.VEGETABLE
+	 */
 	public EFoodType getFoodtype() {
 		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
 		return EFoodType.VEGETABLE;
 	}
-	public Cabbage() {
-		MessageUtility.logConstractor("Cabbage", "Cabbage");
-	}
+
+	/**
+	 * An easy ctor of cabbage object.
+	 */
+	public Cabbage() { MessageUtility.logConstractor("Cabbage", "Cabbage"); }
 
 }

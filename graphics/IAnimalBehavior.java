@@ -1,5 +1,15 @@
 package graphics;
 
+import mobility.Mobile;
+
+/**
+ * An interface to use with animals,
+ * Expands the options of an animal.
+ *
+ * @version 1.1 01 May 2022
+ * @author Ido Ben Nun, Bar Cohen
+ * @see IDrawable
+ */
 public interface IAnimalBehavior {
     public String getAnimalName();
     public int getSize();

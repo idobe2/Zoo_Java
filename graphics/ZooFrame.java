@@ -2,11 +2,7 @@ package graphics;
 
 import animals.Animal;
 import mobility.Point;
-import plants.Cabbage;
-import plants.Lettuce;
-import plants.Meat;
-import plants.Plant;
-
+import plants.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +14,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * A frame class that combined the menu bar,
+ * ZooPanel for drawing objects and mainP - bottom panel.
+ * and move it to new X and Y coordinates.
+ *
+ * @version 1.1 01 May 2022
+ * @author Ido Ben Nun, Bar Cohen
+ * @see ZooPanel
+ */
 public class ZooFrame extends JFrame {
     protected ArrayList<Animal> animalArrayList = new ArrayList<>();
     private Plant foodType;
@@ -29,6 +34,9 @@ public class ZooFrame extends JFrame {
     private final ZooPanel zooPanel = new ZooPanel(animalArrayList);
     private BufferedImage backgroundImage = null;
 
+    /**
+     * A Ctor of ZooFrame, make a frame for all the components to be unit.
+     */
     ZooFrame() {
         this.setTitle("Zoo");
         try {   // Read image file
@@ -51,7 +59,7 @@ public class ZooFrame extends JFrame {
                 System.exit(0);
             }
         });
-        Background.add(i2); // TODO image
+        Background.add(i2);
         i2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,7 +90,7 @@ public class ZooFrame extends JFrame {
         });
         this.setJMenuBar(mb);
         this.setSize(1000,500);
-        // ZooPanel
+        // Bottom panel - mainP
         JButton addAnimalButton = new JButton("Add Animal");
         JButton moveAnimalButton = new JButton("Move Animal");
         JButton clearButton = new JButton("Clear");
@@ -94,7 +102,6 @@ public class ZooFrame extends JFrame {
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Size:" + animalArrayList.size());
                 if (animalArrayList.size() < 10 )
                     new AddAnimalDialog(animalArrayList, zooPanel);
                 else JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
@@ -254,19 +261,6 @@ public class ZooFrame extends JFrame {
         this.setVisible(true);
         zooPanel.manageZoo();
     }
-
-
-    public void paintClr(Color color)
-    {
-        this.zooPanel.setBackground(color);
-    }
-
-    public void paintImg(BufferedImage img)
-    {
-        this.zooPanel.getGraphics().drawImage(backgroundImage,0,0,getWidth(),getHeight(), this.zooPanel);
-    }
-
-
 
     public static void main(String[] args)
     {

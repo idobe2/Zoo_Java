@@ -25,15 +25,31 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	protected BufferedImage img = null;
 	private ZooPanel pan;
 
-	public boolean setPan(ZooPanel pan) {
-		if (pan != null)
-		{
-			this.pan = pan;
-			return true;
-		}
-		else return false;}
+	/**
+	 * 
+	 */
+	private double height;
+	/**
+	 * 
+	 */
+	private Point location;
+	/**
+	 * 
+	 */
+	private double weight;
 
-	public ZooPanel getPan() { return this.pan; }
+	/**
+	 * 
+	 */
+	public Plant() {
+		Random rand = new Random();
+		int x = rand.nextInt(30);
+		int y = rand.nextInt(12);
+		this.location = new Point(x, y);
+		this.height = rand.nextInt(30);
+		this.weight = rand.nextInt(12);
+		MessageUtility.logConstractor("Plant", "Plant");
+	}
 
 	public void loadImages(String nm) {    // Read image file
 		switch (nm) {
@@ -63,54 +79,16 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 		}
 	}
 
-	public void drawObject (Graphics g)
-	{
-		g.drawImage(img, getLocation().getX(), getLocation().getY(), 50, 50, pan);
+	public boolean setPan(ZooPanel pan) {
+		this.pan = pan;
+		return true;
 	}
 
-//	public void drawObject (Graphics g) {
-//			g.drawImage(img, 100, 100, 50, 100, this.pan); }
+	public ZooPanel getPan() { return this.pan; }
+
+	public void drawObject (Graphics g) { g.drawImage(img, getLocation().getX(), getLocation().getY(), 50, 50, pan); }
 
 	public Color getColor() { return Color.GREEN; }
-
-	public BufferedImage setImg(BufferedImage img) { this.img = img; return this.img; }
-
-	/**
-	 * 
-	 */
-	private double height;
-	/**
-	 * 
-	 */
-	private Point location;
-	/**
-	 * 
-	 */
-	private double weight;
-
-	/**
-	 * 
-	 */
-	public Plant() {
-		Random rand = new Random();
-		int x = rand.nextInt(30);
-		int y = rand.nextInt(12);
-		this.location = new Point(x, y);
-		this.height = rand.nextInt(30);
-		this.weight = rand.nextInt(12);
-		MessageUtility.logConstractor("Plant", "Plant");
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see food.IFood#getFoodtype()
-	 */
-//	@Override
-//	public EFoodType getFoodtype() {
-//		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
-//		return EFoodType.VEGETABLE;
-//	}
 
 	/**
 	 * @return
@@ -197,5 +175,4 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	public String toString() {
 		return "[" + this.getClass().getSimpleName() + "] ";
 	}
-
 }

@@ -8,6 +8,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import mobility.Point;
 
+/**
+ * A dialog class that allows you to select an existing animal
+ * and move it to new X and Y coordinates.
+ *
+ * @version 1.1 01 May 2022
+ * @author Ido Ben Nun, Bar Cohen
+ * @see AddAnimalDialog
+ */
 public class MoveAnimalDialog extends JDialog {
     private final JLabel animalLabel = new JLabel();
     private final JButton bOK = new JButton("OK");
@@ -18,6 +26,13 @@ public class MoveAnimalDialog extends JDialog {
     private final JLabel lA = new JLabel("Animal:");
     private boolean flag = true;
 
+    /**
+     * A Ctor of MoveAnimalDialog, make a dialog for moving an animal.
+     * @param animalArrayList
+     *          ArrayList<Animal> of all existing animals.
+     * @param zooPanel
+     *          Provided ZooPanel for drawing animals.
+     */
     public MoveAnimalDialog(ArrayList<Animal> animalArrayList, ZooPanel zooPanel) {
         {
             this.setTitle("Move Animal");

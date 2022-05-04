@@ -4,9 +4,7 @@ import diet.Herbivore;
 import graphics.IDrawable;
 import mobility.Point;
 import utilities.MessageUtility;
-
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,13 +13,22 @@ import java.io.IOException;
  * The neck length of Giraffes can be 
  * between 1 and 2.5 meters.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.1 01 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Chew
  */
 public class Giraffe extends Chew {
+
 	private double neckLength;
 
+	/**
+	 * A Ctor of giraffe to be used with graphics package.
+	 * @param size (Integer) Size of giraffe on the panel.
+	 * @param horSpeed (Integer) Horizontal speed.
+	 * @param verSpeed (Integer) Vertical speed.
+	 * @param color (String) Color of giraffe image.
+	 * @param weight (Double) Weight of giraffe.
+	 */
 	public Giraffe(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
 		this.neckLength = 1.5;
@@ -32,6 +39,11 @@ public class Giraffe extends Chew {
 			drawObject(getPan().getGraphics());
 	}
 
+	/**
+	 * A simple function to load image of a specific animal.
+	 * @param nm
+	 * 			(String) part of file name.
+	 */
 	public void loadImages(String nm)
 	{	// Read image file
 		try {

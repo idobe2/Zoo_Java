@@ -5,7 +5,6 @@ import graphics.IDrawable;
 import mobility.Point;
 import utilities.MessageUtility;
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ import java.io.IOException;
  * Each time a lion eats,
  * it can get one more scar.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.1 01 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Roar
  */
@@ -23,6 +22,14 @@ public class Lion extends Roar {
 	
 	private int scarCount;
 
+	/**
+	 * A Ctor of lion to be used with graphics package.
+	 * @param size (Integer) Size of lion on the panel.
+	 * @param horSpeed (Integer) Horizontal speed.
+	 * @param verSpeed (Integer) Vertical speed.
+	 * @param color (String) Color of lion image.
+	 * @param weight (Double) Weight of lion.
+	 */
 	public Lion(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
 		this.scarCount = 0;
@@ -110,6 +117,11 @@ public class Lion extends Roar {
 		MessageUtility.logSound(this.getName(), "Roars, then stretches and shakes its mane");
 	}
 
+	/**
+	 * A simple function to load image of a specific animal.
+	 * @param nm
+	 * 			(String) part of file name.
+	 */
 	public void loadImages(String nm)
 	{	// Read image file
 		try {

@@ -18,7 +18,7 @@ import java.io.IOException;
  * The trunk length of elephants can be 
  * between 0.5 and 3 meters.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.1 01 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Chew
  */
@@ -26,16 +26,20 @@ public class Elephant extends Chew {
 	
 	private double trunkLength;
 
+	/**
+	 * A Ctor of elephant to be used with graphics package.
+	 * @param size (Integer) Size of elephant on the panel.
+	 * @param horSpeed (Integer) Horizontal speed.
+	 * @param verSpeed (Integer) Vertical speed.
+	 * @param color (String) Color of elephant image.
+	 * @param weight (Double) Weight of elephant.
+	 */
 	public Elephant(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
 		this.trunkLength = 1;
 		setLocation(new Point(50,90));
 		this.setDiet(new Herbivore());
 		loadImages(getColorToFile(color));
-		//drawObject(img1.getGraphics());
-		//setPan(new ZooPanel());
-		//drawObject(getPan().getGraphics());
-
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
 	}
@@ -113,6 +117,11 @@ public class Elephant extends Chew {
 		MessageUtility.logSound(this.getName(), "Trumpets with joy while flapping its ears, then chews");
 	}
 
+	/**
+	 * A simple function to load image of a specific animal.
+	 * @param nm
+	 * 			(String) part of file name.
+	 */
 	public void loadImages(String nm) {    // Read image file
 			try {
 				img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/elf_" + nm + "_1.png"));

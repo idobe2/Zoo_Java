@@ -9,8 +9,6 @@ import graphics.ZooPanel;
 import mobility.Mobile;
 import mobility.Point;
 import utilities.MessageUtility;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -18,12 +16,13 @@ import java.awt.image.BufferedImage;
  * A class that contains the basic fields of an animal.
  * Required to create an animal-type object.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.1 01 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Mobile
  */
 public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnimalBehavior { //
 
+	private static final int MIN_X = 0, MIN_Y = 0, MAX_X = 800, MAX_Y = 600, MIN_SIZE = 50, MAX_SIZE = 300;
 	private final int EAT_DISTANCE = 10;
 	private int size;
 	private String col;
@@ -38,17 +37,15 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private String name;
 	private double weight;
 	private IDiet diet;
-	//private Point location; // Animal is extending Mobile, so it has location already.
 
-	public boolean changeCoored() {
-		if (!coordChanged) {
-			this.coordChanged = true;
-			return true; }
-		else {
-			this.coordChanged = false;
-			return false; }
-	}
-
+	/**
+	 * A Ctor of animal to be used with graphics package.
+	 * @param size (Integer) Size of animal on the panel.
+	 * @param horSpeed (Integer) Horizontal speed.
+	 * @param verSpeed (Integer) Vertical speed.
+	 * @param color (String) Color of animal image.
+	 * @param weight (Double) Weight of animal.
+	 */
 	public Animal(int size, int horSpeed, int verSpeed, String color, double weight) {
 		this.size = size;
 		this.weight = weight;
@@ -57,6 +54,12 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		setColor(color);
 	}
 
+	/**
+	 * A simple getter for color to file.
+	 * @param color
+	 * 			(String) Color.
+	 * @return A string for file to be loaded.
+	 */
 	public String getColorToFile(String color) {
 		switch (color) {
 			case "Natural":
@@ -70,8 +73,29 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		}
 	}
 
+	/**
+	 * A simple function to change the value of coordChanged.
+	 * @return True if succeeded, otherwise false.
+	 */
+	public boolean changeCoored() {
+		if (!coordChanged) {
+			this.coordChanged = true;
+			return true; }
+		else {
+			this.coordChanged = false;
+			return false; }
+	}
+
+	/**
+	 * A getter for color string.
+	 * @return (String) color.
+	 */
 	public String getColorToString() { return col; }
 
+	/**
+	 * A getter for color.
+	 * @return (Color) color.
+	 */
 	public Color getColor() {
 		if (col.equals("Natural")) return null;
 		else if (col.equals("Red")) return Color.RED;
@@ -79,6 +103,11 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return null;
 	}
 
+	/**
+	 * A setter of horSpeed.
+	 * @param horSpeed Horizontal speed (Integer).
+	 * @return True if succeeded, otherwise false.
+	 */
 	public boolean setHorSpeed(int horSpeed) {
 		if (horSpeed < 0 || horSpeed > 10) {
 			MessageUtility.logSetter(getClass().getSimpleName(), "setHorSpeed", horSpeed, false);
@@ -87,6 +116,11 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		MessageUtility.logSetter(getClass().getSimpleName(), "setHorSpeed", horSpeed, true);
 		return true; }
 
+	/**
+	 * A setter of verSpeed.
+	 * @param verSpeed Horizontal speed (Integer).
+	 * @return True if succeeded, otherwise false.
+	 */
 	public boolean setVerSpeed(int verSpeed) {
 		if (verSpeed < 0 || verSpeed > 10) {
 			MessageUtility.logSetter(getClass().getSimpleName(), "setVerSpeed", verSpeed, false);
@@ -95,25 +129,52 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		MessageUtility.logSetter(getClass().getSimpleName(), "setVerSpeed", verSpeed, true);
 		return true; }
 
+	/**
+	 * A setter for x_dir.
+	 * @param x_dir X coordinate (Integer).
+	 * @return True if succeeded, otherwise false.
+	 */
 	public boolean setX_dir(int x_dir) {
-		if (x_dir < 0 || x_dir > 800) return false;
+		if (x_dir < MIN_X || x_dir > MAX_X) return false;
 		else this.x_dir = x_dir;
 		return true; }
 
+	/**
+	 * A setter for y_dir.
+	 * @param y_dir Y coordinate (Integer).
+	 * @return True if succeeded, otherwise false.
+	 */
 	public boolean setY_dir(int y_dir) {
-		if (y_dir < 0 || y_dir > 600) return false;
+		if (y_dir < MIN_Y || y_dir > MAX_Y) return false;
 		else this.y_dir = y_dir;
 		return true; }
 
+	/**
+	 * A setter for animal size.
+	 * @param size
+	 * 			size of animal on the panel (Integer).
+	 * @return True if succeeded, otherwise false.
+	 */
 	public boolean setSize(int size) {
-		if (size < 50 || size > 300) return false;
+		if (size < MIN_SIZE || size > MAX_SIZE) return false;
 		else this.size = size;
 		return true; }
 
+	/**
+	 * A getter for animal name.
+	 * Not relevant after HW1.
+	 * @return (String) Name of animal.
+	 */
 	public String getAnimalName() {
 		return this.name;
 	}
 
+	/**
+	 * A setter for animal color.
+	 * @param col
+	 * 			Color of animal to use in panel.
+	 * @return True if succeeded, otherwise false.
+	 */
 	public boolean setColor(String col) {
 		if (col.equals("Natural") || col.equals("Blue") || col.equals("Red")) {
 			this.col = new String(col);
@@ -121,40 +182,89 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return false;
 	}
 
+	/**
+	 * A setter for animal using panel.
+	 * @param pan - (ZooPanel) Panel for drawing animals.
+	 * @return True if succeeded, otherwise false.
+	 */
 	public boolean setPan(ZooPanel pan) {
-		//if (pan == null) return false;
 		this.pan = pan;
-		return true; }
+		return true;
+	}
 
+	/**
+	 * A simple function to draw an animal on the panel.
+	 * @param g
+	 * 			Graphics of the panel.
+	 */
 	public void drawObject (Graphics g)
 	{
-		//g.setColor(getColor());
-		if(getX_dir()==1) // giraffe goes to the right side
+		if(getX_dir()==1) // animal goes to the right side
 			g.drawImage(img1, getLocation().getX()-size/2, getLocation().getY()-size/10, size/2, size, pan);
-		else // giraffe goes to the left side
+		else // animal goes to the left side
 			g.drawImage(img2, getLocation().getX(), getLocation().getY()-size/10, size/2, size, pan);
 	}
 
-	public Image getImg() { return this.img1; }
-
+	/**
+	 * A simple function to increase eatCount.
+	 */
 	public void eatInc() { this.eatCount++; }
 
+	/**
+	 * A getter for eatCount.
+	 * @return eatCount.
+	 */
 	public int getEatCount() { return this.eatCount; }
 
+	/**
+	 * A getter for horSpeed.
+	 * @return horSpeed.
+	 */
 	public int getHorSpeed() { return this.horSpeed; }
 
+	/**
+	 * A getter for verSpeed.
+	 * @return verSpeed.
+	 */
 	public int getVerSpeed() { return this.verSpeed; }
 
-	public boolean getChanges() { return false; } //TODO
+	/**
+	 * A getter for coordChanged.
+	 * @return (Boolean) value of coordChanged.
+	 */
+	public boolean getChanges() { return this.coordChanged; }
 
-	public void setChanges(boolean state) { } //TODO
+	/**
+	 * A setter of coordChanged.
+	 * @param coordChanged
+	 * 			(Boolean) value.
+	 */
+	public void setChanges(boolean coordChanged) {
+		this.coordChanged = coordChanged;
+	}
 
+	/**
+	 * A getter of X coordinate.
+	 * @return (Integer) X coordinate.
+	 */
 	public int getX_dir() { return x_dir; }
 
+	/**
+	 * A getter of Y coordinate.
+	 * @return (Integer) X coordinate.
+	 */
 	public int getY_dir() { return y_dir; }
 
+	/**
+	 * A getter of animal size on the panel.
+	 * @return (Integer) animal size.
+	 */
 	public int getSize() { return this.size; }
 
+	/**
+	 * A getter of animal's panel.
+	 * @return (ZooPanel) panel to be used.
+	 */
 	public ZooPanel getPan() { return this.pan; }
 
 	/**
@@ -257,7 +367,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * @return animal weight.
 	 */
 	public double getWeight() {
-		//MessageUtility.logGetter(getName(), "getWeight", this.weight);
+		MessageUtility.logGetter(getClass().getSimpleName(), "getWeight", this.weight);
 		return this.weight; }
 
 	/**
@@ -294,6 +404,10 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 */
 	public String toString() { return "[!] " + this.name + ": total distance: " + getTotalDistance() + ", weight: " + getWeight(); }
 
+	/**
+	 * A simple getter for EAT_DISTANCE.
+	 * @return (Integer) EAT_DISTANCE.
+	 */
 	public int getEAT_DISTANCE() {
 		return EAT_DISTANCE;
 	}

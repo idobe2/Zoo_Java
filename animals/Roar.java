@@ -6,12 +6,20 @@ import mobility.Point;
  * A simple abstract class for carnivore and omnivore animals.
  * This class is created to use with makeSound function.
  * 
- * @version 1.0 04 April 2022
+ * @version 1.1 01 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Chew
  */
 public abstract class Roar extends Animal{
 
+	/**
+	 * A Ctor of animal to be used with graphics package.
+	 * @param size (Integer) Size of animal on the panel.
+	 * @param horSpeed (Integer) Horizontal speed.
+	 * @param verSpeed (Integer) Vertical speed.
+	 * @param color (String) Color of animal image.
+	 * @param weight (Double) Weight of animal.
+	 */
 	public Roar(int size, int horSpeed, int verSpeed, String color, double weight)	{
 		super(size, horSpeed, verSpeed, color, weight);
 	}

@@ -6,7 +6,7 @@ import mobility.Point;
  * A simple abstract class for herbivore animals.
  * This class is created to use with makeSound function.
  * 
- * @version 1.0 04 April 2022
+ * @version 1.1 01 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Roar
  */

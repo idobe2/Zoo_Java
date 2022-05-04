@@ -5,15 +5,12 @@ import utilities.MessageUtility;
 /**
  * A class that uses 2D axis for location estimation.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.1 01 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Mobile
  */
 public class Point {
-	private static final int MAX_X = 800;
-	private static final int MAX_Y = 600;
-	private static final int MIN_X = 0;
-	private static final int MIN_Y = 0;
+	private static final int MAX_X = 800, MAX_Y = 600, MIN_X = 0, MIN_Y = 0;
 	private int x;
 	private int y;
 	

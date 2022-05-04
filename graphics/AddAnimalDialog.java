@@ -7,6 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * A dialog class that allows you to define a new animal with parameters:
+ * Animal type, Size, Horizontal speed, Vertical speed, Color type.
+ *
+ * @version 1.1 01 May 2022
+ * @author Ido Ben Nun, Bar Cohen
+ * @see MoveAnimalDialog
+ */
 public class AddAnimalDialog extends JDialog {
     private final String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
     private final JComboBox cb = new JComboBox(animals);
@@ -19,6 +27,13 @@ public class AddAnimalDialog extends JDialog {
     private final JComboBox cbColors = new JComboBox(colors);
     private boolean flag = true;
 
+    /**
+     * A Ctor of AddAnimalDialog, make a dialog for adding an animal to the zoo.
+     * @param animalArrayList
+     *          ArrayList<Animal> of all existing animals.
+     * @param zooPanel
+     *          Provided ZooPanel for drawing animals.
+     */
     public AddAnimalDialog(ArrayList<Animal> animalArrayList, ZooPanel zooPanel)
     {
         this.setLayout(new GridLayout(6, 2));
@@ -106,11 +121,9 @@ public class AddAnimalDialog extends JDialog {
                         animalArrayList.get(animalArrayList.size()-1).drawObject(zooPanel.getGraphics());
                         zooPanel.repaint();
                         JOptionPane.showMessageDialog(null, "The animal was added successfully");
-                        tbSize.setText("");
-                        tbHspeed.setText("");
-                        tbVspeed.setText("");
                         dispose();
                     }
+                    else dispose();
                 }
             }
         });
@@ -119,28 +132,25 @@ public class AddAnimalDialog extends JDialog {
         this.setVisible(true);
     }
 
-        public void AddAnimal(Animal animal, JPanel mainP) {
-            Image animalImg = animal.getImg();
-            Image newImg = animalImg.getScaledInstance(animal.getSize(), animal.getSize(), Image.SCALE_DEFAULT);
-            ImageIcon lec = new ImageIcon(newImg);
-            JLabel pic = new JLabel();
-            pic.setIcon(lec);
-            pic.setBounds(animal.getX_dir(), animal.getY_dir(), 300, 300);
-            mainP.add(pic);
-            mainP.repaint();
-        }
-
-        public double getWeight(String animal, int size) {
-            if (animal.equals("Elephant"))
-                return size * 10;
-            else if (animal.equals("Giraffe"))
-                return size * 2.2;
-            else if (animal.equals("Bear"))
-                return size * 1.5;
-            else if (animal.equals("Lion"))
-                return size * 0.8;
-            else if (animal.equals("Turtle"))
-                return size * 0.5;
-            return 0;
-        }
+    /**
+     * A getter for animals weight to calculate with animals size.
+     * @param animal
+     *          (String) Type-of-animal.
+     * @param size
+     *          (Integer) Size of animal on the panel.
+     * @return
+     */
+    public double getWeight(String animal, int size) {
+        if (animal.equals("Elephant"))
+            return size * 10;
+        else if (animal.equals("Giraffe"))
+            return size * 2.2;
+        else if (animal.equals("Bear"))
+            return size * 1.5;
+        else if (animal.equals("Lion"))
+            return size * 0.8;
+        else if (animal.equals("Turtle"))
+            return size * 0.5;
+        return 0;
     }
+}

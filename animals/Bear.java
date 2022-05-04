@@ -5,7 +5,6 @@ import graphics.IDrawable;
 import mobility.Point;
 import utilities.MessageUtility;
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,7 +13,7 @@ import java.io.IOException;
  * The fur color of bears can be 
  * only black, gray or white.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.1 01 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Roar
  */
@@ -22,6 +21,14 @@ public class Bear extends Roar {
 
 	private String furColor;
 
+	/**
+	 * A Ctor of bear to be used with graphics package.
+	 * @param size (Integer) Size of bear on the panel.
+	 * @param horSpeed (Integer) Horizontal speed.
+	 * @param verSpeed (Integer) Vertical speed.
+	 * @param color (String) Color of bear.
+	 * @param weight (Double) Weight of bear.
+	 */
 	public Bear(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
 		this.furColor = new String("GRAY");
@@ -108,6 +115,11 @@ public class Bear extends Roar {
 		MessageUtility.logSound(this.getName(), "Stands on its hind legs, roars and scratches its belly");
 	}
 
+	/**
+	 * A simple function to load image of a specific animal.
+	 * @param nm
+	 * 			(String) part of file name.
+	 */
 	public void loadImages(String nm)
 	{	// Read image file
 		try {

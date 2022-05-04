@@ -5,7 +5,7 @@ import utilities.MessageUtility;
 /**
  * An abstract class that defines movement in space.
  *
- * @version 1.0 05 April 2022
+ * @version 1.1 01 May 2022
  * @author	Ido Ben Nun, Bar Cohen
  * @see Point
  */
