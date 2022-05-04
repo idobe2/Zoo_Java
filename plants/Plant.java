@@ -164,10 +164,12 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	public boolean setLocation(Point newLocation) {
 		boolean isSuccess = Point.checkBoundaries(newLocation);
 		if (isSuccess) {
+			MessageUtility.logSetter(getClass().getSimpleName(), "setLocation", new String(newLocation.getX() + "," + newLocation.getY()), true);
 			this.location = newLocation;
+			return true;
 		}
-		MessageUtility.logSetter(this.getClass().getSimpleName(), "setLocation", newLocation, isSuccess);
-		return isSuccess;
+		MessageUtility.logSetter(this.getClass().getSimpleName(), "setLocation", new String(newLocation.getX() + "," + newLocation.getY()), false);
+		return false;
 	}
 
 	/**
