@@ -77,8 +77,9 @@ public class MoveAnimalDialog extends JDialog {
                             Point point = new Point((Integer.parseInt(tbX.getText())),Integer.parseInt(tbY.getText()));
                             animalArrayList.get(cbAnimals.getSelectedIndex()).setLocation(point);
                             animalArrayList.get(cbAnimals.getSelectedIndex()).changeCoored();
-                            zooPanel.repaint();
                             zooPanel.manageZoo();
+                            zooPanel.repaint();
+
                         }
                     }
                 }
