@@ -106,11 +106,11 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	 * 
 	 * @see food.IFood#getFoodtype()
 	 */
-	@Override
-	public EFoodType getFoodtype() {
-		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
-		return EFoodType.VEGETABLE;
-	}
+//	@Override
+//	public EFoodType getFoodtype() {
+//		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
+//		return EFoodType.VEGETABLE;
+//	}
 
 	/**
 	 * @return

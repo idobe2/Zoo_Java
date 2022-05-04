@@ -160,30 +160,33 @@ public class ZooFrame extends JFrame {
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setfoodtype(foodType);
                         foodFrame.dispose();
+                        zooPanel.manageZoo();
                     }
                 });
                 b2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        foodType = new Lettuce();
+                        foodType = new Cabbage();
                         foodType.setLocation(new Point(zooPanel.getWidth()/2, zooPanel.getHeight()/2));
                         foodType.loadImages("Cabbage");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setfoodtype(foodType);
                         foodFrame.dispose();
+                        zooPanel.manageZoo();
                     }
                 });
                 b3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        foodType = new Lettuce();
+                        foodType = new Meat();
                         foodType.setLocation(new Point(zooPanel.getWidth()/2, zooPanel.getHeight()/2));
                         foodType.loadImages("Meat");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setfoodtype(foodType);
                         foodFrame.dispose();
+                        zooPanel.manageZoo();
                     }
                 });
             }

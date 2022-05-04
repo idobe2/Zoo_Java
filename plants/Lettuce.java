@@ -1,5 +1,6 @@
 package plants;
 
+import food.EFoodType;
 import graphics.IDrawable;
 import utilities.MessageUtility;
 
@@ -17,5 +18,9 @@ public class Lettuce extends Plant {
 		MessageUtility.logConstractor("Lettuce", "Lettuce");
 	}
 
+	public EFoodType getFoodtype() {
+		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
+		return EFoodType.MEAT;
+	}
 	public Image getImg() { return this.img; }
 }
