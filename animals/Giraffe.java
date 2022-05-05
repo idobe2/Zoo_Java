@@ -121,7 +121,7 @@ public class Giraffe extends Chew {
 	 * Using logSound function to print doc message.
 	 */
 	public void chew() {
-		MessageUtility.logSound(this.getName(), "Bleats and Stomps its legs, then chews");
+		MessageUtility.logSound(this.getClass().getSimpleName(), "Bleats and Stomps its legs, then chews");
 	}
 
 }

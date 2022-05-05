@@ -114,7 +114,7 @@ public class Elephant extends Chew {
 	 */
 	public void chew()
 	{
-		MessageUtility.logSound(this.getName(), "Trumpets with joy while flapping its ears, then chews");
+		MessageUtility.logSound(this.getClass().getSimpleName(), "Trumpets with joy while flapping its ears, then chews");
 	}
 
 	/**

@@ -112,7 +112,7 @@ public class Bear extends Roar {
 	 */
 	public void roar()
 	{
-		MessageUtility.logSound(this.getName(), "Stands on its hind legs, roars and scratches its belly");
+		MessageUtility.logSound(this.getClass().getSimpleName(), "Stands on its hind legs, roars and scratches its belly");
 	}
 
 	/**

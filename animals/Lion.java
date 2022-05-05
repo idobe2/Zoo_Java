@@ -114,7 +114,7 @@ public class Lion extends Roar {
 	 */
 	public void roar()
 	{
-		MessageUtility.logSound(this.getName(), "Roars, then stretches and shakes its mane");
+		MessageUtility.logSound(this.getClass().getSimpleName(), "Roars, then stretches and shakes its mane");
 	}
 
 	/**

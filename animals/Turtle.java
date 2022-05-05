@@ -102,7 +102,7 @@ public class Turtle extends Chew {
 	 * Using logSound function to print doc message.
 	 */
 	public void chew() {
-		MessageUtility.logSound(this.getName(), "Retracts its head in then eats quietly");
+		MessageUtility.logSound(this.getClass().getSimpleName(), "Retracts its head in then eats quietly");
 	}
 
 	public void loadImages(String nm)

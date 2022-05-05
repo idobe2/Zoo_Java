@@ -17,7 +17,6 @@ import java.util.ArrayList;
 /**
  * A frame class that combined the menu bar,
  * ZooPanel for drawing objects and mainP - bottom panel.
- * and move it to new X and Y coordinates.
  *
  * @version 1.1 01 May 2022
  * @author Ido Ben Nun, Bar Cohen
@@ -257,7 +256,6 @@ public class ZooFrame extends JFrame {
         this.add(mainP, BorderLayout.SOUTH);
         this.add(zooPanel, BorderLayout.CENTER);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
         this.setVisible(true);
         zooPanel.manageZoo();
     }

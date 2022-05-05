@@ -73,18 +73,18 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		}
 	}
 
-	/**
-	 * A simple function to change the value of coordChanged.
-	 * @return True if succeeded, otherwise false.
-	 */
-	public boolean changeCoored() {
-		if (!coordChanged) {
-			this.coordChanged = true;
-			return true; }
-		else {
-			this.coordChanged = false;
-			return false; }
-	}
+//	/**
+//	 * A simple function to change the value of coordChanged.
+//	 * @return True if succeeded, otherwise false.
+//	 */
+//	public boolean changeCoored() {
+//		if (!coordChanged) {
+//			this.coordChanged = true;
+//			return true; }
+//		else {
+//			this.coordChanged = false;
+//			return false; }
+//	}
 
 	/**
 	 * A getter for color string.
@@ -352,11 +352,11 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	{
 		if (weight > 0)
 		{
-			MessageUtility.logSetter(getName(), "setWeight", weight, true);
+			MessageUtility.logSetter(this.getClass().getSimpleName(), "setWeight", weight, true);
 			this.weight = weight;
 			return true;
 		}
-		MessageUtility.logSetter(getName(), "setWeight", weight, false);
+		MessageUtility.logSetter(this.getClass().getSimpleName(), "setWeight", weight, false);
 		return false;
 	}
 
