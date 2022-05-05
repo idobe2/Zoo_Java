@@ -394,10 +394,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 *
 	 * @return animal name.
 	 */
-	public String getName() {
-		// No need to print that according to the output file.
-		//MessageUtility.logGetter(name, "getName", name);
-		return this.name; }
+	public String getName() { return this.name; }
 
 	/**
 	 * toString function of animal class.
