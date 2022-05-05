@@ -72,11 +72,11 @@ public class MoveAnimalDialog extends JDialog {
                             JOptionPane.showMessageDialog(null, "Y coordinate should be between 0 and 600");
                         }
                         if (flag) {
-                            animalArrayList.get(cbAnimals.getSelectedIndex()).setX_dir(Integer.parseInt(tbX.getText()));
-                            animalArrayList.get(cbAnimals.getSelectedIndex()).setY_dir(Integer.parseInt(tbY.getText()));
                             Point point = new Point((Integer.parseInt(tbX.getText())),Integer.parseInt(tbY.getText()));
+                            if (animalArrayList.get(cbAnimals.getSelectedIndex()).getLocation().getX() < point.getX())
+                                animalArrayList.get(cbAnimals.getSelectedIndex()).setChanges(true);
+                            else animalArrayList.get(cbAnimals.getSelectedIndex()).setChanges(false);
                             animalArrayList.get(cbAnimals.getSelectedIndex()).setLocation(point);
-                            animalArrayList.get(cbAnimals.getSelectedIndex()).setChanges(true);
                             zooPanel.manageZoo();
                             zooPanel.repaint();
                             dispose();

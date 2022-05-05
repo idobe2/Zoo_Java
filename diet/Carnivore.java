@@ -62,10 +62,9 @@ public class Carnivore implements IDiet {
 				if (getRandomBoolean())
 					((Lion) animal).addScar();
 			}
-			double temp = animal.getWeight(); // original weight
-			animal.setWeight(animal.getWeight()*1.1); // new weight
+			double temp = animal.getWeight() * 1.1 ; // new weight
 			animal.makeSound();
-			return animal.getWeight()-temp; // return new weight - original weight
+			return temp - animal.getWeight(); // return new weight - original weight
 		}
 		return 0;
 	}

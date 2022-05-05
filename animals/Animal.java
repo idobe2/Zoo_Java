@@ -11,6 +11,7 @@ import mobility.Point;
 import utilities.MessageUtility;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 
 /**
  * A class that contains the basic fields of an animal.
@@ -22,14 +23,14 @@ import java.awt.image.BufferedImage;
  */
 public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnimalBehavior { //
 
-	private static final int MIN_X = 0, MIN_Y = 0, MAX_X = 800, MAX_Y = 600, MIN_SIZE = 50, MAX_SIZE = 300;
+	private static final int X_DIR_RIGHT = 1, X_DIR_LEFT = -1, Y_DIR_UP = 1, Y_DIR_DOWN = -1, MIN_SIZE = 50, MAX_SIZE = 300;
 	private final int EAT_DISTANCE = 10;
 	private int size;
 	private String col;
 	private int horSpeed;
 	private int verSpeed;
 	private boolean coordChanged = false;
-	private int x_dir;
+	private int x_dir; //
 	private int y_dir;
 	private int eatCount;
 	private ZooPanel pan;
@@ -47,11 +48,13 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * @param weight (Double) Weight of animal.
 	 */
 	public Animal(int size, int horSpeed, int verSpeed, String color, double weight) {
-		this.size = size;
-		this.weight = weight;
+		setSize(size);
+		setWeight(weight);
 		setHorSpeed(horSpeed);
 		setVerSpeed(verSpeed);
 		setColor(color);
+		setX_dir(1); // Default
+		setY_dir(1); // Default
 	}
 
 	/**
@@ -131,22 +134,30 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 
 	/**
 	 * A setter for x_dir.
-	 * @param x_dir X coordinate (Integer).
+	 * @param x_dir Y Direction (Integer).
 	 * @return True if succeeded, otherwise false.
 	 */
 	public boolean setX_dir(int x_dir) {
-		if (x_dir < MIN_X || x_dir > MAX_X) return false;
+		if (x_dir != X_DIR_LEFT && x_dir != X_DIR_RIGHT) {
+			MessageUtility.logSetter(getClass().getSimpleName(), "setX_dir", x_dir, false);
+			return false;
+		}
 		else this.x_dir = x_dir;
+		MessageUtility.logSetter(getClass().getSimpleName(), "setX_dir", x_dir, true);
 		return true; }
 
 	/**
 	 * A setter for y_dir.
-	 * @param y_dir Y coordinate (Integer).
+	 * @param y_dir Y Direction (Integer).
 	 * @return True if succeeded, otherwise false.
 	 */
 	public boolean setY_dir(int y_dir) {
-		if (y_dir < MIN_Y || y_dir > MAX_Y) return false;
+		if (y_dir != Y_DIR_DOWN && y_dir != Y_DIR_UP) {
+			MessageUtility.logSetter(getClass().getSimpleName(), "setY_dir", y_dir, false);
+			return false;
+		}
 		else this.y_dir = y_dir;
+		MessageUtility.logSetter(getClass().getSimpleName(), "setY_dir", y_dir, true);
 		return true; }
 
 	/**
@@ -240,7 +251,9 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * 			(Boolean) value.
 	 */
 	public void setChanges(boolean coordChanged) {
-		this.coordChanged = coordChanged;
+		if (coordChanged)
+			setX_dir(1);
+		else setX_dir(-1);
 	}
 
 	/**
@@ -308,10 +321,13 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * @return true or false.
 	 */
 	public boolean eat(IEdible food) {
-		double wgt;
-		wgt = diet.eat(this, food);
+		DecimalFormat df = new DecimalFormat("#.##");
+		double wgt = diet.eat(this, food);
 		if (wgt > 0)
+		{
+			setWeight(getWeight()+Double.valueOf(df.format(wgt)));
 			return true;
+		}
 		return false;
 	}
 
@@ -336,7 +352,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 */
 	public IDiet getDiet()
 	{
-		MessageUtility.logGetter(getName(), "getDiet", diet.getClass().getSimpleName());
+		MessageUtility.logGetter(getClass().getSimpleName(), "getDiet", diet.getClass().getSimpleName());
 		return this.diet;
 	}
 

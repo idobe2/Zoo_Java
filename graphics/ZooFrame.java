@@ -127,7 +127,6 @@ public class ZooFrame extends JFrame {
                 zooPanel.setBackgroundImage(null);
                 zooPanel.repaint();
             }
-
         });
         mainP.add(foodButton);
         foodButton.addActionListener(new ActionListener() {
@@ -135,7 +134,6 @@ public class ZooFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JFrame foodFrame = new JFrame("Food for animals");
                 JPanel panel = new JPanel();
-                //foodFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 GroupLayout layout = new GroupLayout(panel);
                 JLabel lF = new JLabel("Please choose food");
                 lF.setSize(400, 200);

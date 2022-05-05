@@ -44,17 +44,15 @@ public class Omnivore implements IDiet {
 		if (canEat(food.getFoodtype()))
 		{
 			if(Etemp == EFoodType.MEAT) {
-				double temp = animal.getWeight();
-				animal.setWeight(animal.getWeight()*1.1);
+				double temp = animal.getWeight() * 1.1;
 				animal.makeSound();
-				return animal.getWeight()-temp;
+				return temp - animal.getWeight()-temp;
 				}
 			
 			else if(Etemp == EFoodType.VEGETABLE) {
-				double temp = animal.getWeight();
-				animal.setWeight(animal.getWeight()*1.07);
+				double temp = animal.getWeight() * 1.1;
 				animal.makeSound();
-				return animal.getWeight()-temp;
+				return temp - animal.getWeight();
 			}
 		}
 		return 0;

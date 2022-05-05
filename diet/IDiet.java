@@ -4,6 +4,8 @@ import animals.Animal;
 import food.EFoodType;
 import food.IEdible;
 
+import java.text.DecimalFormat;
+
 /**
  * An interface to use with animals feed and diet.
  * 
@@ -36,4 +38,5 @@ public interface IDiet {
 	 * @return
 	 */
 	public double eat(Animal animal, IEdible food);
+
 }
