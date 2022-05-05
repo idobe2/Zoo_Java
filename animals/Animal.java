@@ -76,19 +76,6 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		}
 	}
 
-//	/**
-//	 * A simple function to change the value of coordChanged.
-//	 * @return True if succeeded, otherwise false.
-//	 */
-//	public boolean changeCoored() {
-//		if (!coordChanged) {
-//			this.coordChanged = true;
-//			return true; }
-//		else {
-//			this.coordChanged = false;
-//			return false; }
-//	}
-
 	/**
 	 * A getter for color string.
 	 * @return (String) color.
