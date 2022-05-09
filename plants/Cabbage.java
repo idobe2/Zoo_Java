@@ -1,6 +1,7 @@
 package plants;
 
 import food.EFoodType;
+import mobility.Point;
 import utilities.MessageUtility;
 
 /**
@@ -10,6 +11,13 @@ import utilities.MessageUtility;
 public class Cabbage extends Plant {
 
 	/**
+	 * An easy ctor of cabbage object.
+	 */
+	public Cabbage() { MessageUtility.logConstractor("Cabbage", "Cabbage"); }
+
+	public Cabbage(Point location) {super(location);}
+
+	/**
 	 * A simple function to get cabbage food type.
 	 * @return EFoodType.VEGETABLE
 	 */
@@ -17,10 +25,4 @@ public class Cabbage extends Plant {
 		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
 		return EFoodType.VEGETABLE;
 	}
-
-	/**
-	 * An easy ctor of cabbage object.
-	 */
-	public Cabbage() { MessageUtility.logConstractor("Cabbage", "Cabbage"); }
-
 }

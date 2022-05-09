@@ -51,6 +51,8 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 		MessageUtility.logConstractor("Plant", "Plant");
 	}
 
+	public Plant(Point location) {this.location = new Point(location); }
+
 	public void loadImages(String nm) {    // Read image file
 		switch (nm) {
 			case "Lettuce":
@@ -105,7 +107,9 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	 */
 	@Override
 	public Point getLocation() {
-		// MessageUtility.logGetter(this.getClass().getSimpleName(), "getLocation", "(" + this.location.getX() + ", " + this.location.getY() + ")");
+		if (this.location != null)
+			MessageUtility.logGetter(this.getClass().getSimpleName(), "getLocation", "(" + this.location.getX() + ", " + this.location.getY() + ")");
+		else setLocation(new Point(getPan().getWidth()/2,getPan().getHeight()/2));
 		return this.location;
 	}
 

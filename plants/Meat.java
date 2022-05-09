@@ -1,6 +1,7 @@
 package plants;
 
 import food.EFoodType;
+import mobility.Point;
 import utilities.MessageUtility;
 
 public class Meat extends Plant {
@@ -12,6 +13,7 @@ public class Meat extends Plant {
         MessageUtility.logConstractor("Meat", "Meat");
     }
 
+    public Meat(Point location) {super(location);}
     /**
      * A simple function to get meat food type.
      * @return EFoodType.MEAT
