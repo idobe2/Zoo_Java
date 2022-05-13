@@ -21,7 +21,7 @@ import java.text.DecimalFormat;
  * @author Ido Ben Nun, Bar Cohen
  * @see Mobile
  */
-public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnimalBehavior { //
+public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnimalBehavior, Runnable {
 
 	private static final int X_DIR_RIGHT = 1, X_DIR_LEFT = -1, Y_DIR_UP = 1, Y_DIR_DOWN = -1, MIN_SIZE = 50, MAX_SIZE = 300;
 	private final int EAT_DISTANCE = 10;
@@ -38,6 +38,19 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private String name;
 	private double weight;
 	private IDiet diet;
+
+	//protected Point location;
+
+	protected Thread thread;
+	protected boolean threadSuspended;
+
+	public void run() {
+		setLocation(new Point(getLocation().getX()+horSpeed*x_dir,getLocation().getY()+verSpeed*y_dir));
+		getPan().repaint();
+	}
+
+	public void setSuspended() {}
+	public void SetResumed() {}
 
 	/**
 	 * A Ctor of animal to be used with graphics package.

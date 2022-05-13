@@ -15,11 +15,15 @@ import java.util.ArrayList;
  * @author Ido Ben Nun, Bar Cohen
  * @see ZooFrame
  */
-public class ZooPanel extends JPanel {
+public class ZooPanel extends JPanel implements Runnable {
     protected ArrayList<Animal> animals;
     protected Plant food = null;
     protected BufferedImage backgroundImage = null;
     protected Color backgroundColor;
+
+    private Thread controller;
+
+    public void run() {}
 
     /**
      * An easy ctor of ZooPanel.
