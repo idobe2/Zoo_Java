@@ -93,7 +93,9 @@ public class ZooFrame extends JFrame {
         this.setSize(1000,500);
         // Bottom panel - mainP
         JButton addAnimalButton = new JButton("Add Animal");
-        JButton moveAnimalButton = new JButton("Move Animal");
+//        JButton moveAnimalButton = new JButton("Move Animal");
+        JButton sleepButton = new JButton("Sleep");
+        JButton wakeUpButton = new JButton("Wake up");
         JButton clearButton = new JButton("Clear");
         JButton foodButton = new JButton("Food");
         JButton infoButton = new JButton("Info");
@@ -108,11 +110,25 @@ public class ZooFrame extends JFrame {
                 else JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
             }
         });
-        mainP.add(moveAnimalButton);
-        moveAnimalButton.addActionListener(new ActionListener() {
+//        mainP.add(moveAnimalButton);
+//        moveAnimalButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                new MoveAnimalDialog(animalArrayList, zooPanel);
+//            }
+//        });
+        mainP.add(sleepButton);
+        sleepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MoveAnimalDialog(animalArrayList, zooPanel);
+
+            }
+        });
+        mainP.add(wakeUpButton);
+        wakeUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
         mainP.add(clearButton);
@@ -257,7 +273,6 @@ public class ZooFrame extends JFrame {
         this.add(zooPanel, BorderLayout.CENTER);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-        zooPanel.manageZoo();
     }
 
     public static void main(String[] args) throws Exception

@@ -51,7 +51,6 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public void run() {
 		while(!threadSuspended)
 		{
-			//System.out.println(getPan().getWidth() + "," + getPan().getHeight());
 			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0)
 			{
 				if (getLocation().getX() == 0) getLocation().setX(1);
@@ -66,14 +65,8 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 			}
 			setLocation(new Point(getLocation().getX()+horSpeed*x_dir,getLocation().getY()+verSpeed*y_dir));
 			getPan().repaint();
-//			else if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= getPan().getHeight())
-//			{
-//				setY_dir(getY_dir()*(-1));
-//				setLocation(new Point(getLocation().getX()+horSpeed*x_dir,getLocation().getY()+verSpeed*y_dir));
-//				getPan().repaint();
-//			}
 			try {
-				Thread.sleep(200);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 			/* empty */
 		}
