@@ -13,6 +13,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * A frame class that combined the menu bar,
@@ -249,7 +251,7 @@ public class ZooFrame extends JFrame {
             }
         });
         this.setBackground(Color.CYAN);
-        zooPanel.setSize(1000,500);
+        //zooPanel.setSize(1000,500);
         mainP.setBackground(Color.CYAN);
         this.add(mainP, BorderLayout.SOUTH);
         this.add(zooPanel, BorderLayout.CENTER);
@@ -258,9 +260,9 @@ public class ZooFrame extends JFrame {
         zooPanel.manageZoo();
     }
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
-       new ZooFrame();
+        new ZooFrame();
     }
 }
 

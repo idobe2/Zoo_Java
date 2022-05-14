@@ -124,6 +124,18 @@ public class AddAnimalDialog extends JDialog {
                         dispose();
                     }
                     else dispose();
+//                    if (zooPanel.getController() == null)
+//                    {
+//                        zooPanel.setController(new Thread(zooPanel));
+//                        zooPanel.getController().start();
+//                    }
+                    animalArrayList.get(animalArrayList.size()-1).setThread(new Thread(animalArrayList.get(animalArrayList.size()-1)));
+                    SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        zooPanel.setController(new Thread(zooPanel));
+                        zooPanel.getController().start();
+                    }
+                });
                 }
             }
         });

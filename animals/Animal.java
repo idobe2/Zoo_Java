@@ -39,14 +39,46 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private double weight;
 	private IDiet diet;
 
-	//protected Point location;
+	protected Point location;
 
 	protected Thread thread;
-	protected boolean threadSuspended;
+	protected boolean threadSuspended = false;
 
+	public Thread getThread() { return thread; }
+	public boolean setThread(Thread thread) { this.thread = thread; return true; }
+
+	@Override
 	public void run() {
-		setLocation(new Point(getLocation().getX()+horSpeed*x_dir,getLocation().getY()+verSpeed*y_dir));
-		getPan().repaint();
+		while(!threadSuspended)
+		{
+			//System.out.println(getPan().getWidth() + "," + getPan().getHeight());
+			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0)
+			{
+				if (getLocation().getX() == 0) getLocation().setX(1);
+				if (x_dir == X_DIR_RIGHT) setX_dir(X_DIR_LEFT);
+				else setX_dir(X_DIR_RIGHT);
+			}
+			else if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= 0)
+			{
+				if (getLocation().getY() == 0) getLocation().setY(1);
+				if (y_dir == Y_DIR_UP) setY_dir(Y_DIR_DOWN);
+				else setY_dir(Y_DIR_UP);
+			}
+			setLocation(new Point(getLocation().getX()+horSpeed*x_dir,getLocation().getY()+verSpeed*y_dir));
+			getPan().repaint();
+//			else if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= getPan().getHeight())
+//			{
+//				setY_dir(getY_dir()*(-1));
+//				setLocation(new Point(getLocation().getX()+horSpeed*x_dir,getLocation().getY()+verSpeed*y_dir));
+//				getPan().repaint();
+//			}
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+			/* empty */
+		}
+			getPan().manageZoo();
+		}
 	}
 
 	public void setSuspended() {}

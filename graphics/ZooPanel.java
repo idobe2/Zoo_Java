@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * A class of ZooPanel, required to draw all objects on the center area.
@@ -23,7 +25,21 @@ public class ZooPanel extends JPanel implements Runnable {
 
     private Thread controller;
 
-    public void run() {}
+    @Override
+    public void run() {
+//        ExecutorService e = Executors.newFixedThreadPool(10);
+//        for (int i=0; i<animals.size(); i++)
+//        {
+//            System.out.println("Creating new task: "+ i + " ");
+//            e.execute(new ZooPanel(i)); }
+            animals.get(animals.size()-1).getThread().start();
+            repaint();
+            manageZoo();
+    }
+
+    public Thread getController() { return this.controller; }
+
+    public boolean setController(Thread controller) {this.controller = controller; return true; }
 
     /**
      * An easy ctor of ZooPanel.

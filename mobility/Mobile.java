@@ -42,13 +42,13 @@ public abstract class Mobile implements Ilocatable {
 	 * 			otherwise false.
 	 */
 	public boolean setLocation(Point other) {
-		if (other.checkPoint()) {
+		//if (other.checkPoint()) {
 			MessageUtility.logSetter(getClass().getSimpleName(), "setLocation", new String(other.getX()+","+other.getY()), true);
 			this.location = new Point(other.getX(),other.getY());
 			return true;
-		}
-		MessageUtility.logSetter(getClass().getSimpleName(), "setLocation", new String(other.getX()+","+other.getY()), false);
-		return false;
+		//}
+		//MessageUtility.logSetter(getClass().getSimpleName(), "setLocation", new String(other.getX()+","+other.getY()), false);
+		//return false;
 	}
 	
 	/**
