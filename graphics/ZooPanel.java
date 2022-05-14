@@ -132,7 +132,8 @@ public class ZooPanel extends JPanel implements Runnable {
      * This function is called after each operation.
      * We use it to look for changes and perform actions.
      */
-    public void manageZoo() {
+    public synchronized void manageZoo() {
+        System.out.println("manageZoo");
         if (getFood() != null)
         {
             for (int i = 0; i < this.animals.size(); i++)
