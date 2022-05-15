@@ -12,6 +12,7 @@ import utilities.MessageUtility;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 /**
  * A class that contains the basic fields of an animal.
@@ -53,13 +54,13 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		{
 			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0)
 			{
-				if (getLocation().getX() == 0) getLocation().setX(1);
+				if (getLocation().getX() == 0 || getLocation().getX() == getPan().getWidth()) getLocation().setX(1);
 				if (x_dir == X_DIR_RIGHT) setX_dir(X_DIR_LEFT);
 				else setX_dir(X_DIR_RIGHT);
 			}
 			else if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= 0)
 			{
-				if (getLocation().getY() == 0) getLocation().setY(1);
+				if (getLocation().getY() == 0 || getLocation().getY() == getPan().getHeight()) getLocation().setY(1);
 				if (y_dir == Y_DIR_UP) setY_dir(Y_DIR_DOWN);
 				else setY_dir(Y_DIR_UP);
 			}
@@ -72,10 +73,43 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		}
 			getPan().manageZoo();
 		}
+		if (threadSuspended)
+		{
+			synchronized (this)
+			{System.out.println("Animal thread running...");
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+					System.out.println("Test");
+				}
+				System.out.println("");
+			}
+		}
 	}
 
-	public void setSuspended() { this.threadSuspended = true; }
-	public void setResumed() { this.threadSuspended = false; }
+	public void setSuspended() throws InterruptedException {
+		this.threadSuspended = true;
+//		synchronized (this) {
+//			System.out.println("Animal thread running...");
+//			wait();
+//			System.out.println("");
+//		}
+	}
+
+	public void setResumed() throws InterruptedException {
+		this.threadSuspended = false;
+//		Scanner scanner = new Scanner(System.in);
+//		Thread.sleep(2000);
+//		synchronized (this) {
+//			System.out.println("Waiting for return key.");
+//			scanner.nextLine();
+//			System.out.println("Return key pressed.");
+//			notify();
+//		}
+
+
+	}
 
 	/**
 	 * A Ctor of animal to be used with graphics package.
@@ -377,7 +411,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 */
 	public IDiet getDiet()
 	{
-		MessageUtility.logGetter(getClass().getSimpleName(), "getDiet", diet.getClass().getSimpleName());
+		//MessageUtility.logGetter(getClass().getSimpleName(), "getDiet", diet.getClass().getSimpleName());
 		return this.diet;
 	}
 

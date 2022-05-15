@@ -121,9 +121,14 @@ public class ZooFrame extends JFrame {
         sleepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 for (int i=0; i<animalArrayList.size(); i++)
                 {
-                    animalArrayList.get(i).setSuspended();
+                    try {
+                        animalArrayList.get(i).setSuspended();
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         });
@@ -133,7 +138,11 @@ public class ZooFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 for (int i=0; i<animalArrayList.size(); i++)
                 {
-                    animalArrayList.get(i).setResumed();
+                    try {
+                        animalArrayList.get(i).setResumed();
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         });
@@ -281,9 +290,13 @@ public class ZooFrame extends JFrame {
         this.setVisible(true);
     }
 
-    public static void main(String[] args) throws Exception
+    public static void main(String[] args)
     {
-        new ZooFrame();
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new ZooFrame();
+            }
+        });
     }
 }
 

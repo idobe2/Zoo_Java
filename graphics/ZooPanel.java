@@ -32,9 +32,14 @@ public class ZooPanel extends JPanel implements Runnable {
 //        {
 //            System.out.println("Creating new task: "+ i + " ");
 //            e.execute(new ZooPanel(i)); }
-            animals.get(animals.size()-1).getThread().start();
-            repaint();
-            manageZoo();
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                animals.get(animals.size()-1).getThread().start();
+                repaint();
+                manageZoo();
+            }
+        });
+
     }
 
     public Thread getController() { return this.controller; }
@@ -64,7 +69,7 @@ public class ZooPanel extends JPanel implements Runnable {
      * A getter of food to be drawn.
      * @return (Plant) Cabbage, Lettuce, or Meat object.
      */
-    public Plant getFood(){
+    public synchronized Plant getFood(){
         return this.food;
     }
 
@@ -146,7 +151,12 @@ public class ZooPanel extends JPanel implements Runnable {
                         animals.get(i).eatInc();
                         getFood().setPan(null);
                         setFood(null);
-                        repaint();
+                        SwingUtilities.invokeLater(new Runnable() {
+                            public void run() {
+                                repaint();
+                            }
+                        });
+                        //repaint();
                     }
             }
         }
@@ -160,7 +170,12 @@ public class ZooPanel extends JPanel implements Runnable {
                                             animals.get(i).eat(animals.get(j));
                                             animals.get(i).eatInc();
                                             animals.remove(j);
-                                            repaint();
+                                            SwingUtilities.invokeLater(new Runnable() {
+                                                public void run() {
+                                                    repaint();
+                                                }
+                                            });
+                                            //repaint();
                                         }
                                     }
                                 }
