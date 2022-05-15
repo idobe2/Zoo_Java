@@ -74,8 +74,8 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		}
 	}
 
-	public void setSuspended() {}
-	public void SetResumed() {}
+	public void setSuspended() { this.threadSuspended = true; }
+	public void setResumed() { this.threadSuspended = false; }
 
 	/**
 	 * A Ctor of animal to be used with graphics package.

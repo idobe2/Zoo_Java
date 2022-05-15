@@ -121,14 +121,20 @@ public class ZooFrame extends JFrame {
         sleepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                for (int i=0; i<animalArrayList.size(); i++)
+                {
+                    animalArrayList.get(i).setSuspended();
+                }
             }
         });
         mainP.add(wakeUpButton);
         wakeUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                for (int i=0; i<animalArrayList.size(); i++)
+                {
+                    animalArrayList.get(i).setResumed();
+                }
             }
         });
         mainP.add(clearButton);
