@@ -54,13 +54,13 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		{
 			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0)
 			{
-				if (getLocation().getX() == 0 || getLocation().getX() == getPan().getWidth()) getLocation().setX(1);
+				//if (getLocation().getX() == 0 || getLocation().getX() == getPan().getWidth()) getLocation().setX(1);
 				if (x_dir == X_DIR_RIGHT) setX_dir(X_DIR_LEFT);
 				else setX_dir(X_DIR_RIGHT);
 			}
-			else if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= 0)
+			if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= 0)
 			{
-				if (getLocation().getY() == 0 || getLocation().getY() == getPan().getHeight()) getLocation().setY(1);
+				//if (getLocation().getY() == 0 || getLocation().getY() == getPan().getHeight()) getLocation().setY(1);
 				if (y_dir == Y_DIR_UP) setY_dir(Y_DIR_DOWN);
 				else setY_dir(Y_DIR_UP);
 			}
@@ -442,7 +442,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * @return animal weight.
 	 */
 	public double getWeight() {
-		MessageUtility.logGetter(getClass().getSimpleName(), "getWeight", this.weight);
+		//MessageUtility.logGetter(getClass().getSimpleName(), "getWeight", this.weight);
 		return this.weight; }
 
 	/**

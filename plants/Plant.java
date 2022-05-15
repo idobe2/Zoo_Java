@@ -108,9 +108,8 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	@Override
 	public Point getLocation() {
 		if (this.location != null)
-			MessageUtility.logGetter(this.getClass().getSimpleName(), "getLocation", "(" + this.location.getX() + ", " + this.location.getY() + ")");
-		else setLocation(new Point(getPan().getWidth()/2,getPan().getHeight()/2));
-		return this.location;
+			return this.location;
+		else return new Point(getPan().getWidth()/2,getPan().getHeight()/2);
 	}
 
 	/**
