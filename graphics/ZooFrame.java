@@ -197,7 +197,7 @@ public class ZooFrame extends JFrame {
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setFood(foodType);
                         foodFrame.dispose();
-                        zooPanel.manageZoo();
+                        //zooPanel.manageZoo();
                     }
                 });
                 b2.addActionListener(new ActionListener() {
@@ -210,7 +210,7 @@ public class ZooFrame extends JFrame {
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setFood(foodType);
                         foodFrame.dispose();
-                        zooPanel.manageZoo();
+                        //zooPanel.manageZoo();
                     }
                 });
                 b3.addActionListener(new ActionListener() {
@@ -223,7 +223,7 @@ public class ZooFrame extends JFrame {
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setFood(foodType);
                         foodFrame.dispose();
-                        zooPanel.manageZoo();
+                        //zooPanel.manageZoo();
                     }
                 });
             }

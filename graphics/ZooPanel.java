@@ -27,16 +27,11 @@ public class ZooPanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
-//        ExecutorService e = Executors.newFixedThreadPool(10);
-//        for (int i=0; i<animals.size(); i++)
-//        {
-//            System.out.println("Creating new task: "+ i + " ");
-//            e.execute(new ZooPanel(i)); }
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 animals.get(animals.size()-1).getThread().start();
                 repaint();
-                manageZoo();
+                //manageZoo();
             }
         });
 
@@ -138,7 +133,7 @@ public class ZooPanel extends JPanel implements Runnable {
      * We use it to look for changes and perform actions.
      */
     public synchronized void manageZoo() {
-//        System.out.println("manageZoo");
+//        System.out.println("UI thread name is: " + Thread.currentThread().getName());
         if (getFood() != null)
         {
             for (int i = 0; i < this.animals.size(); i++)

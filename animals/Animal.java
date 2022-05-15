@@ -9,6 +9,8 @@ import graphics.ZooPanel;
 import mobility.Mobile;
 import mobility.Point;
 import utilities.MessageUtility;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
@@ -50,42 +52,47 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 
 	@Override
 	public void run() {
+		System.out.println("Thread name is: " + Thread.currentThread().getName());
 		while(!threadSuspended)
 		{
 			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0)
 			{
-				//if (getLocation().getX() == 0 || getLocation().getX() == getPan().getWidth()) getLocation().setX(1);
+				if (getLocation().getX() == 0 || getLocation().getX() == getPan().getWidth()) getLocation().setX(1);
 				if (x_dir == X_DIR_RIGHT) setX_dir(X_DIR_LEFT);
 				else setX_dir(X_DIR_RIGHT);
 			}
 			if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= 0)
 			{
-				//if (getLocation().getY() == 0 || getLocation().getY() == getPan().getHeight()) getLocation().setY(1);
+				if (getLocation().getY() == 0 || getLocation().getY() == getPan().getHeight()) getLocation().setY(1);
 				if (y_dir == Y_DIR_UP) setY_dir(Y_DIR_DOWN);
 				else setY_dir(Y_DIR_UP);
 			}
 			setLocation(new Point(getLocation().getX()+horSpeed*x_dir,getLocation().getY()+verSpeed*y_dir));
-			getPan().repaint();
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					getPan().repaint();
+					getPan().manageZoo();
+				}
+			});
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 			/* empty */
 		}
-			getPan().manageZoo();
 		}
-		if (threadSuspended)
-		{
-			synchronized (this)
-			{System.out.println("Animal thread running...");
-				try {
-					wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-					System.out.println("Test");
-				}
-				System.out.println("");
-			}
-		}
+//		if (threadSuspended)
+//		{
+//			synchronized (this)
+//			{System.out.println("Animal thread running...");
+//				try {
+//					wait();
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//					System.out.println("Test");
+//				}
+//				System.out.println("");
+//			}
+//		}
 	}
 
 	public void setSuspended() throws InterruptedException {
@@ -107,8 +114,6 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 //			System.out.println("Return key pressed.");
 //			notify();
 //		}
-
-
 	}
 
 	/**

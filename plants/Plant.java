@@ -86,7 +86,7 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 		return true;
 	}
 
-	public ZooPanel getPan() { return this.pan; }
+	//public ZooPanel getPan() { return this.pan; }
 
 	public void drawObject (Graphics g) { g.drawImage(img, getLocation().getX(), getLocation().getY(), 50, 50, pan); }
 
@@ -107,9 +107,9 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	 */
 	@Override
 	public Point getLocation() {
-		if (this.location != null)
+		//if (this.location != null)
 			return this.location;
-		else return new Point(getPan().getWidth()/2,getPan().getHeight()/2);
+		//else return new Point(getPan().getWidth()/2,getPan().getHeight()/2);
 	}
 
 	/**
