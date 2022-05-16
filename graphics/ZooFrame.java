@@ -292,11 +292,12 @@ public class ZooFrame extends JFrame {
 
     public static void main(String[] args)
     {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new ZooFrame();
-            }
-        });
+        new ZooFrame();
+//        SwingUtilities.invokeLater(new Runnable() {
+//            public void run() {
+//                new ZooFrame();
+//            }
+//        });
     }
 }
 

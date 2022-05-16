@@ -27,6 +27,7 @@ public class ZooPanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
+        //System.out.println("Thread name is: " + Thread.currentThread().getName());
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 animals.get(animals.size()-1).getThread().start();
