@@ -77,12 +77,12 @@ public class Point {
 	 * 			and update X field, otherwise false.
 	 */
 	public boolean setX(int x) {
-		if (x >=MIN_X && x <= MAX_X)
-		{
+//		if (x >=MIN_X && x <= MAX_X)
+//		{
 			this.x = x;
 			return true; 
-		}
-		return false;
+//		}
+//		return false;
 	}
 
 	/**
@@ -95,12 +95,12 @@ public class Point {
 	 * 			and update Y field, otherwise false.
 	 */
 	public boolean setY(int y) {
-		if (y >= MIN_Y && y <= MAX_Y)
-		{
+//		if (y >= MIN_Y && y <= MAX_Y)
+//		{
 			this.y = y; 
-			return true; 
-		}
-		return false;
+			return true;
+//		}
+//		return false;
 	}
 
 	/**
