@@ -119,6 +119,7 @@ public class AddAnimalDialog extends JDialog {
                         }
                         animalArrayList.get(animalArrayList.size()-1).setPan(zooPanel);
                         animalArrayList.get(animalArrayList.size()-1).drawObject(zooPanel.getGraphics());
+                        //animalArrayList.get(animalArrayList.size()-1).setThread(new Thread(animalArrayList.get(animalArrayList.size()-1)));
                         zooPanel.repaint();
                         JOptionPane.showMessageDialog(null, "The animal was added successfully");
                         dispose();
@@ -132,6 +133,8 @@ public class AddAnimalDialog extends JDialog {
                     animalArrayList.get(animalArrayList.size()-1).setThread(new Thread(animalArrayList.get(animalArrayList.size()-1)));
                     SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
+                        System.out.println("Starting...");
+                        System.out.println("ADD ANIMAL Thread name is: " + Thread.currentThread().getName());
                         zooPanel.setController(new Thread(zooPanel));
                         zooPanel.getController().start();
                     }
@@ -140,7 +143,7 @@ public class AddAnimalDialog extends JDialog {
             }
         });
         this.setTitle("Add Animal");
-        this.setSize(350, 350);
+        this.setSize(250, 300);
         this.setVisible(true);
     }
 

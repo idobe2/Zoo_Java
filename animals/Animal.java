@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 import java.util.Scanner;
+import java.util.concurrent.locks.Lock;
 
 /**
  * A class that contains the basic fields of an animal.
@@ -41,7 +42,6 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private String name;
 	private double weight;
 	private IDiet diet;
-
 	protected Point location;
 
 	protected Thread thread;
@@ -52,7 +52,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 
 	@Override
 	public void run() {
-		System.out.println("Thread name is: " + Thread.currentThread().getName());
+		System.out.println("ANIMAL Thread name is: " + Thread.currentThread().getName());
 		while(!threadSuspended)
 		{
 			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0)
@@ -64,7 +64,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 			if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= 0)
 			{
 				if (getLocation().getY() == 0) getLocation().setY(1); // || getLocation().getY() == getPan().getHeight()
-				if (y_dir == Y_DIR_UP) setY_dir(Y_DIR_DOWN);
+				if (y_dir == Y_DIR_UP) 	setY_dir(Y_DIR_DOWN);
 				else setY_dir(Y_DIR_UP);
 			}
 			setLocation(new Point(getLocation().getX()+horSpeed*x_dir,getLocation().getY()+verSpeed*y_dir));
@@ -97,6 +97,18 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 
 	public void setSuspended() throws InterruptedException {
 		this.threadSuspended = true;
+//		SwingUtilities.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//			System.out.println("Waiting...");
+//			wait(); }
+//		catch(InterruptedException e){}
+//			}
+//		});
+//		try {
+//			System.out.println("Waiting...");
+//			wait(); }
+//		catch(InterruptedException e){}
 //		synchronized (this) {
 //			System.out.println("Animal thread running...");
 //			wait();

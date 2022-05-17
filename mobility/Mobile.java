@@ -57,7 +57,7 @@ public abstract class Mobile implements Ilocatable {
 	 *
 	 * @return this Point object.
 	 */
-	public Point getLocation() {
+	public synchronized Point getLocation() {
 		return this.location;
 	}
 
