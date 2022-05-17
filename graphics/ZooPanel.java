@@ -50,7 +50,7 @@ public class ZooPanel extends JPanel implements Runnable {
      * @param foodType
      *      (Plant) Cabbage, Lettuce, or Meat object.
      */
-    public boolean setFood(Plant foodType){
+    public synchronized boolean setFood(Plant foodType){
        this.food = foodType;
        return true;
     }
