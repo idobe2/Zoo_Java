@@ -93,14 +93,22 @@ public class ZooFrame extends JFrame {
         this.setSize(1000,500);
         /*--------------------MainPanel--------------------*/
         JButton addAnimalButton = new JButton("Add Animal");
+        addAnimalButton.setBackground(Color.LIGHT_GRAY);
 //        JButton moveAnimalButton = new JButton("Move Animal");
         JButton sleepButton = new JButton("Sleep");
+        sleepButton.setBackground(Color.LIGHT_GRAY);
         JButton wakeUpButton = new JButton("Wake up");
+        wakeUpButton.setBackground(Color.LIGHT_GRAY);
         JButton clearButton = new JButton("Clear");
+        clearButton.setBackground(Color.LIGHT_GRAY);
         JButton foodButton = new JButton("Food");
+        foodButton.setBackground(Color.LIGHT_GRAY);
         JButton infoButton = new JButton("Info");
+        infoButton.setBackground(Color.LIGHT_GRAY);
         JButton exitButton = new JButton("Exit");
-        mainP.setLayout(new FlowLayout(FlowLayout.CENTER));
+        exitButton.setBackground(Color.LIGHT_GRAY);
+        //mainP.setLayout(new FlowLayout(FlowLayout.CENTER));
+        mainP.setLayout(new GridLayout(1,7));
         /*--------------------AddAnimal--------------------*/
         mainP.add(addAnimalButton);
         addAnimalButton.addActionListener(new ActionListener() {
@@ -289,7 +297,7 @@ public class ZooFrame extends JFrame {
         });
         this.setBackground(Color.CYAN);
         //zooPanel.setSize(1000,500);
-        mainP.setBackground(Color.CYAN);
+        mainP.setBackground(Color.GRAY);
         this.add(mainP, BorderLayout.SOUTH);
         this.add(zooPanel, BorderLayout.CENTER);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
