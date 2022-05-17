@@ -19,7 +19,7 @@ public class Meat extends Plant {
      * @return EFoodType.MEAT
      */
     public EFoodType getFoodtype() {
-        MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.MEAT);
+        //MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.MEAT);
         return EFoodType.MEAT;
     }
 }

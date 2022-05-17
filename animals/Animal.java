@@ -55,6 +55,34 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		System.out.println("ANIMAL Thread name is: " + Thread.currentThread().getName());
 		while(!threadSuspended)
 		{
+			try {
+				while (diet.canEat(getPan().getFood().getFoodtype()))
+				{
+					if (getLocation().getX() >= getPan().getFood().getLocation().getX()) { setX_dir(X_DIR_LEFT);
+						if (getLocation().getY() >= getPan().getFood().getLocation().getY())
+							setLocation(new Point(getLocation().getX()-horSpeed,getLocation().getY()-verSpeed)); }
+
+					if (getLocation().getX() <= getPan().getFood().getLocation().getX()) { setX_dir(X_DIR_RIGHT);
+						if (getLocation().getY() <= getPan().getFood().getLocation().getY())
+								setLocation(new Point(getLocation().getX()+horSpeed,getLocation().getY()+verSpeed)); }
+
+					if (getLocation().getX() <= getPan().getFood().getLocation().getX()) { setX_dir(X_DIR_RIGHT);
+						if (getLocation().getY() >= getPan().getFood().getLocation().getY())
+							setLocation(new Point(getLocation().getX()+horSpeed,getLocation().getY()-verSpeed)); }
+
+					if (getLocation().getX() >= getPan().getFood().getLocation().getX()) { setX_dir(X_DIR_LEFT);
+						if (getLocation().getY() <= getPan().getFood().getLocation().getY())
+							setLocation(new Point(getLocation().getX()-horSpeed,getLocation().getY()+verSpeed)); }
+					getPan().repaint();
+					getPan().manageZoo();
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						/* empty */}
+				}
+			}
+			catch (NullPointerException ex){}
+
 			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0)
 			{
 				if (getLocation().getX() == 0) getLocation().setX(1); //  || getLocation().getX() == getPan().getWidth()
@@ -80,53 +108,18 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 			/* empty */
 		}
 		}
-//		if (threadSuspended)
-//		{
-//			synchronized (this)
-//			{System.out.println("Animal thread running...");
-//				try {
-//					wait();
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//					System.out.println("Test");
-//				}
-//				System.out.println("");
-//			}
-//		}
 	}
 
-	public void setSuspended() throws InterruptedException {
+	public synchronized void setSuspended() {
 		this.threadSuspended = true;
-//		SwingUtilities.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//			System.out.println("Waiting...");
-//			wait(); }
-//		catch(InterruptedException e){}
-//			}
-//		});
-//		try {
-//			System.out.println("Waiting...");
-//			wait(); }
-//		catch(InterruptedException e){}
-//		synchronized (this) {
-//			System.out.println("Animal thread running...");
-//			wait();
-//			System.out.println("");
-//		}
 	}
 
-	public void setResumed() throws InterruptedException {
+	public synchronized void setResumed() {
 		this.threadSuspended = false;
-//		Scanner scanner = new Scanner(System.in);
-//		Thread.sleep(2000);
-//		synchronized (this) {
-//			System.out.println("Waiting for return key.");
-//			scanner.nextLine();
-//			System.out.println("Return key pressed.");
-//			notify();
-//		}
+		notifyAll();
 	}
+
+	public void interrupt() { thread.interrupt(); }
 
 	/**
 	 * A Ctor of animal to be used with graphics package.
@@ -144,6 +137,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		setColor(color);
 		setX_dir(1); // Default
 		setY_dir(1); // Default
+		setThread(new Thread(this));
 	}
 
 	/**

@@ -22,7 +22,7 @@ public class Cabbage extends Plant {
 	 * @return EFoodType.VEGETABLE
 	 */
 	public EFoodType getFoodtype() {
-		MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
+		//MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
 		return EFoodType.VEGETABLE;
 	}
 }

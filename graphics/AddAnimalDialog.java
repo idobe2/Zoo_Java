@@ -130,7 +130,6 @@ public class AddAnimalDialog extends JDialog {
 //                        zooPanel.setController(new Thread(zooPanel));
 //                        zooPanel.getController().start();
 //                    }
-                    animalArrayList.get(animalArrayList.size()-1).setThread(new Thread(animalArrayList.get(animalArrayList.size()-1)));
                     SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         System.out.println("Starting...");

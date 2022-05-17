@@ -91,7 +91,7 @@ public class ZooFrame extends JFrame {
         });
         this.setJMenuBar(mb);
         this.setSize(1000,500);
-        // Bottom panel - mainP
+        /*--------------------MainPanel--------------------*/
         JButton addAnimalButton = new JButton("Add Animal");
 //        JButton moveAnimalButton = new JButton("Move Animal");
         JButton sleepButton = new JButton("Sleep");
@@ -101,6 +101,7 @@ public class ZooFrame extends JFrame {
         JButton infoButton = new JButton("Info");
         JButton exitButton = new JButton("Exit");
         mainP.setLayout(new FlowLayout(FlowLayout.CENTER));
+        /*--------------------AddAnimal--------------------*/
         mainP.add(addAnimalButton);
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
@@ -117,41 +118,40 @@ public class ZooFrame extends JFrame {
 //                new MoveAnimalDialog(animalArrayList, zooPanel);
 //            }
 //        });
+        /*--------------------Sleep--------------------*/
         mainP.add(sleepButton);
         sleepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 for (int i=0; i<animalArrayList.size(); i++)
                 {
-                    try {
-                        animalArrayList.get(i).setSuspended();
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
+                    animalArrayList.get(i).setSuspended();
                 }
+                repaint();
             }
         });
+        /*--------------------WakeUp--------------------*/
         mainP.add(wakeUpButton);
         wakeUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i=0; i<animalArrayList.size(); i++)
-                {
-                    try {
+                synchronized (this) {
+                    for (int i = 0; i < animalArrayList.size(); i++) {
                         animalArrayList.get(i).setResumed();
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
                     }
+                    repaint();
                 }
             }
         });
+        /*--------------------Clear--------------------*/
         mainP.add(clearButton);
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i=0; i<animalArrayList.size(); i++)
                 {
+                    animalArrayList.get(i).setSuspended();
+                    animalArrayList.get(i).interrupt();
                     zooPanel.remove(animalArrayList.get(i).getPan());
                 }
                 zooPanel.setFood(null);
@@ -161,6 +161,7 @@ public class ZooFrame extends JFrame {
                 zooPanel.repaint();
             }
         });
+        /*--------------------Food--------------------*/
         mainP.add(foodButton);
         foodButton.addActionListener(new ActionListener() {
             @Override
@@ -187,6 +188,7 @@ public class ZooFrame extends JFrame {
                 foodFrame.add(panel, BorderLayout.PAGE_END);
                 foodFrame.setSize(400,200);
                 foodFrame.setVisible(true);
+                /*--------------------Lettuce--------------------*/
                 b1.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -200,6 +202,7 @@ public class ZooFrame extends JFrame {
                         //zooPanel.manageZoo();
                     }
                 });
+                /*--------------------Cabbage--------------------*/
                 b2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -213,6 +216,7 @@ public class ZooFrame extends JFrame {
                         //zooPanel.manageZoo();
                     }
                 });
+                /*--------------------Meat--------------------*/
                 b3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -228,6 +232,7 @@ public class ZooFrame extends JFrame {
                 });
             }
         });
+        /*--------------------Info--------------------*/
         mainP.add(infoButton);
         infoButton.addActionListener(new ActionListener() {
             @Override
@@ -274,6 +279,7 @@ public class ZooFrame extends JFrame {
                 infoFrame.setVisible(true);
             }
         });
+        /*--------------------Exit--------------------*/
         mainP.add(exitButton);
         exitButton.addActionListener(new ActionListener() {
             @Override
