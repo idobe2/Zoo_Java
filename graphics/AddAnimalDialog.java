@@ -29,12 +29,12 @@ public class AddAnimalDialog extends JDialog {
 
     /**
      * A Ctor of AddAnimalDialog, make a dialog for adding an animal to the zoo.
-     * @param animalArrayList
+     * @param Animals
      *          ArrayList<Animal> of all existing animals.
      * @param zooPanel
      *          Provided ZooPanel for drawing animals.
      */
-    public AddAnimalDialog(ArrayList<Animal> animalArrayList, ZooPanel zooPanel)
+    public AddAnimalDialog(ArrayList<Animal> Animals, ZooPanel zooPanel)
     {
         this.setLayout(new GridLayout(6, 2));
         cbAnimals.setBounds(50, 100, 90, 20);
@@ -82,43 +82,43 @@ public class AddAnimalDialog extends JDialog {
                     if (flag) {
                         switch (cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString()) {
                             case "Elephant":
-                                animalArrayList.add(new Elephant(Integer.parseInt(tbSize.getText()),
+                                Animals.add(new Elephant(Integer.parseInt(tbSize.getText()),
                                         Integer.parseInt(tbHspeed.getText()),
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Elephant"), Integer.parseInt(tbSize.getText()))));
                                 break;
                             case "Lion":
-                                animalArrayList.add(new Lion(Integer.parseInt(tbSize.getText()),
+                                Animals.add(new Lion(Integer.parseInt(tbSize.getText()),
                                         Integer.parseInt(tbHspeed.getText()),
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Lion"), Integer.parseInt(tbSize.getText()))));
                                 break;
                             case "Giraffe":
-                                animalArrayList.add(new Giraffe(Integer.parseInt(tbSize.getText()),
+                                Animals.add(new Giraffe(Integer.parseInt(tbSize.getText()),
                                         Integer.parseInt(tbHspeed.getText()),
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Giraffe"), Integer.parseInt(tbSize.getText()))));
                                 break;
                             case "Turtle":
-                                animalArrayList.add(new Turtle(Integer.parseInt(tbSize.getText()),
+                                Animals.add(new Turtle(Integer.parseInt(tbSize.getText()),
                                         Integer.parseInt(tbHspeed.getText()),
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Turtle"), Integer.parseInt(tbSize.getText()))));
                                 break;
                             case "Bear":
-                                animalArrayList.add(new Bear(Integer.parseInt(tbSize.getText()),
+                                Animals.add(new Bear(Integer.parseInt(tbSize.getText()),
                                         Integer.parseInt(tbHspeed.getText()),
                                         Integer.parseInt(tbVspeed.getText()),
                                         cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
                                         getWeight(("Bear"), Integer.parseInt(tbSize.getText()))));
                                 break;
                         }
-                        animalArrayList.get(animalArrayList.size()-1).setPan(zooPanel);
-                        animalArrayList.get(animalArrayList.size()-1).drawObject(zooPanel.getGraphics());
+                        Animals.get(Animals.size()-1).setPan(zooPanel);
+                        Animals.get(Animals.size()-1).drawObject(zooPanel.getGraphics());
                         //animalArrayList.get(animalArrayList.size()-1).setThread(new Thread(animalArrayList.get(animalArrayList.size()-1)));
                         zooPanel.repaint();
                         JOptionPane.showMessageDialog(null, "The animal was added successfully");
@@ -132,9 +132,9 @@ public class AddAnimalDialog extends JDialog {
 //                    }
                     SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        System.out.println("Starting...");
-                        System.out.println("ADD ANIMAL Thread name is: " + Thread.currentThread().getName());
-                        zooPanel.setController(new Thread(zooPanel));
+                        System.out.println("Test Add Animal Thread invoke later " + getName());
+                        Runnable runnable = new ZooPanel(Animals);
+                        zooPanel.setController(new Thread(runnable));
                         zooPanel.getController().start();
                     }
                 });

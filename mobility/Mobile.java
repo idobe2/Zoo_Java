@@ -46,7 +46,7 @@ public abstract class Mobile implements Ilocatable {
 			this.location = new Point(other.getX(), other.getY());	}
 		else {
 			this.location.setX(other.getX()); this.location.setY(other.getY());
-		}	MessageUtility.logSetter(getClass().getSimpleName(), "setLocation", new String(other.getX()+","+other.getY()), true);
+		}	//MessageUtility.logSetter(getClass().getSimpleName(), "setLocation", new String(other.getX()+","+other.getY()), true);
 		return true;
 //		if (other.checkPoint())
 

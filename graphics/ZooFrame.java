@@ -25,14 +25,14 @@ import java.util.concurrent.Executors;
  * @see ZooPanel
  */
 public class ZooFrame extends JFrame {
-    protected ArrayList<Animal> animalArrayList = new ArrayList<>();
+    protected ArrayList<Animal> Animals = new ArrayList<>();
     private Plant foodType;
     protected JPanel mainP = new JPanel();
     private final JMenu File, Background, Help, submenu;
     private final JMenuItem i1, i2, i3, i4, i5; // i1=Exit,i2=Image,i3=Green,i4=None,i5=Help
     private final JMenuBar mb=new JMenuBar();
     private final Color color = UIManager.getColor ( "Panel.background" ); // default background color
-    private final ZooPanel zooPanel = new ZooPanel(animalArrayList);
+    private final ZooPanel zooPanel = new ZooPanel(Animals);
     private BufferedImage backgroundImage = null;
 
     /**
@@ -114,16 +114,17 @@ public class ZooFrame extends JFrame {
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (animalArrayList.size() < 10 )
-                    new AddAnimalDialog(animalArrayList, zooPanel);
+                if (Animals.size() < 10 )
+                    new AddAnimalDialog(Animals, zooPanel);
                 else JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
             }
         });
+        /*--------------------MoveAnimal--------------------*/
 //        mainP.add(moveAnimalButton);
 //        moveAnimalButton.addActionListener(new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
-//                new MoveAnimalDialog(animalArrayList, zooPanel);
+//                new MoveAnimalDialog(Animals, zooPanel);
 //            }
 //        });
         /*--------------------Sleep--------------------*/
@@ -131,9 +132,11 @@ public class ZooFrame extends JFrame {
         sleepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i=0; i<animalArrayList.size(); i++)
+                for (int i=0; i<Animals.size(); i++)
                 {
-                    animalArrayList.get(i).setSuspended();
+                    System.out.println("Before" + Animals.get(i).getThread().getState());
+                    Animals.get(i).setSuspended();
+                    System.out.println("After" + Animals.get(i).getThread().getState());
                 }
                 repaint();
             }
@@ -144,8 +147,8 @@ public class ZooFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 synchronized (this) {
-                    for (int i = 0; i < animalArrayList.size(); i++) {
-                        animalArrayList.get(i).setResumed();
+                    for (int i = 0; i < Animals.size(); i++) {
+                        Animals.get(i).setResumed();
                     }
                     repaint();
                 }
@@ -156,17 +159,17 @@ public class ZooFrame extends JFrame {
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i=0; i<animalArrayList.size(); i++)
+                for (int i=0; i<Animals.size(); i++)
                 {
-                    animalArrayList.get(i).setSuspended();
-                    animalArrayList.get(i).interrupt();
-                    zooPanel.remove(animalArrayList.get(i).getPan());
+                    Animals.get(i).setSuspended();
+                    zooPanel.remove(Animals.get(i).getPan());
                 }
                 zooPanel.setFood(null);
-                animalArrayList.clear();
+                Animals.clear();
                 zooPanel.setBackgroundColor(null);
                 zooPanel.setBackgroundImage(null);
                 zooPanel.repaint();
+
             }
         });
         /*--------------------Food--------------------*/
@@ -248,28 +251,28 @@ public class ZooFrame extends JFrame {
                 JFrame infoFrame = new JFrame("Info");
                 String column[] = {"Animal", "Color", "Weight", "Hor. speed", "Ver. speed", "Eat counter"};
                 int totalEatCount = 0;
-                String[][] animalsData = new String[animalArrayList.size()+1][6];
-                for (int i = 0; i < animalArrayList.size(); i++) {
+                String[][] animalsData = new String[Animals.size()+1][6];
+                for (int i = 0; i < Animals.size(); i++) {
                     for (int j = 0; j < 6; j++) {
                         switch (j) {
                             case 0: // Animal
-                                animalsData[i][j] = new String(animalArrayList.get(i).getClass().getSimpleName());
+                                animalsData[i][j] = new String(Animals.get(i).getClass().getSimpleName());
                                 break;
                             case 1: // Color
-                                animalsData[i][j] = new String(animalArrayList.get(i).getColorToString());
+                                animalsData[i][j] = new String(Animals.get(i).getColorToString());
                                 break;
                             case 2: // Weight
-                                animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getWeight()));
+                                animalsData[i][j] = new String(String.valueOf(Animals.get(i).getWeight()));
                                 break;
                             case 3: // Hor. speed
-                                animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getHorSpeed()));
+                                animalsData[i][j] = new String(String.valueOf(Animals.get(i).getHorSpeed()));
                                 break;
                             case 4: // Ver. speed
-                                animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getVerSpeed()));
+                                animalsData[i][j] = new String(String.valueOf(Animals.get(i).getVerSpeed()));
                                 break;
                             case 5: // Eat counter
-                                animalsData[i][j] = new String(String.valueOf(animalArrayList.get(i).getEatCount()));
-                                totalEatCount += animalArrayList.get(i).getEatCount();
+                                animalsData[i][j] = new String(String.valueOf(Animals.get(i).getEatCount()));
+                                totalEatCount += Animals.get(i).getEatCount();
                                 break;
                             default:
                                 System.out.println("Error");
@@ -278,7 +281,7 @@ public class ZooFrame extends JFrame {
                     }
                 }
                 String[] endLine = {"Total", "", "", "", "", String.valueOf(totalEatCount)};
-                animalsData[animalArrayList.size()] = endLine;
+                animalsData[Animals.size()] = endLine;
                 JTable infoTable = new JTable(animalsData,column);
                 infoTable.setBounds(30,40,200,300);
                 JScrollPane sp=new JScrollPane(infoTable);

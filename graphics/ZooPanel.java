@@ -18,18 +18,19 @@ import java.util.concurrent.Executors;
  * @see ZooFrame
  */
 public class ZooPanel extends JPanel implements Runnable {
-    protected ArrayList<Animal> animals;
+    protected ArrayList<Animal> Animals;
     protected Plant food = null;
     protected BufferedImage backgroundImage = null;
     protected Color backgroundColor;
+    //protected ArrayList<Thread> clients = new ArrayList<Thread>();
 
     private Thread controller;
 
     @Override
     public void run() {
-        System.out.println("ZooPanel thread: " + animals.get(animals.size()-1).getThread().getName());
-        animals.get(animals.size()-1).getThread().start();
-        repaint();
+        System.out.println("ZooPanel thread: " + Animals.get(Animals.size()-1).getThread().getName());
+        Animals.get(Animals.size()-1).getThread().start();
+        //repaint();
     }
 
     public Thread getController() { return this.controller; }
@@ -42,7 +43,9 @@ public class ZooPanel extends JPanel implements Runnable {
      *          (ArrayList<Animal>) All existing animals.
      */
     public ZooPanel(ArrayList<Animal> animalArrayList) {
-        animals = animalArrayList;
+        Animals = animalArrayList;
+//        setController(new Thread(this));
+//        System.out.println("Test ZooPanel Thread invoke later" + getController().getName());
     }
 
     /**
@@ -116,9 +119,9 @@ public class ZooPanel extends JPanel implements Runnable {
         else if (getBackgroundColor() != null) { // Check if there is a background color
             g.setColor(getBackgroundColor());
             g.fillRect(0,0,getWidth(),getHeight()); }
-        if (!animals.isEmpty()) {
-            for (int i = 0; i < animals.size(); i++) {
-                animals.get(i).drawObject(g); } }
+        if (!Animals.isEmpty()) {
+            for (int i = 0; i < Animals.size(); i++) {
+                Animals.get(i).drawObject(g); } }
         if (getFood() != null) {
             food.drawObject(g); }
     }
@@ -131,14 +134,14 @@ public class ZooPanel extends JPanel implements Runnable {
 //        System.out.println("UI thread name is: " + Thread.currentThread().getName());
         if (getFood() != null)
         {
-            for (int i = 0; i < this.animals.size(); i++)
+            for (int i = 0; i < this.Animals.size(); i++)
             {
-                if (Math.abs(animals.get(i).getLocation().getX() - (getFood().getLocation().getX())) <= animals.get(i).getEAT_DISTANCE()
-                        && Math.abs(animals.get(i).getLocation().getY() - (getFood().getLocation().getY())) <= animals.get(i).getEAT_DISTANCE())
-                    if (animals.get(i).getDiet().canEat(getFood().getFoodtype()))
+                if (Math.abs(Animals.get(i).getLocation().getX() - (getFood().getLocation().getX())) <= Animals.get(i).getEAT_DISTANCE()
+                        && Math.abs(Animals.get(i).getLocation().getY() - (getFood().getLocation().getY())) <= Animals.get(i).getEAT_DISTANCE())
+                    if (Animals.get(i).getDiet().canEat(getFood().getFoodtype()))
                     {
-                        animals.get(i).eat(getFood());
-                        animals.get(i).eatInc();
+                        Animals.get(i).eat(getFood());
+                        Animals.get(i).eatInc();
                         getFood().setPan(null);
                         setFood(null);
                         SwingUtilities.invokeLater(new Runnable() {
@@ -150,16 +153,16 @@ public class ZooPanel extends JPanel implements Runnable {
                     }
             }
         }
-                for (int i = 0; i < animals.size(); i++)
-                    for (int j = 0; j < animals.size(); j++) {
+                for (int i = 0; i < Animals.size(); i++)
+                    for (int j = 0; j < Animals.size(); j++) {
                         if (i != j) {
-                            if (animals.get(i).getDiet() instanceof Carnivore || animals.get(i).getDiet() instanceof Omnivore) {
-                                if (((animals.get(j).getDiet() instanceof Herbivore) || (animals.get(j).getDiet() instanceof Omnivore))) {
-                                    if (animals.get(i).getWeight() >= 2 * animals.get(j).getWeight()) {
-                                        if (animals.get(i).calcDistance(animals.get(j).getLocation()) < animals.get(j).getSize()) {
-                                            animals.get(i).eat(animals.get(j));
-                                            animals.get(i).eatInc();
-                                            animals.remove(j);
+                            if (Animals.get(i).getDiet() instanceof Carnivore || Animals.get(i).getDiet() instanceof Omnivore) {
+                                if (((Animals.get(j).getDiet() instanceof Herbivore) || (Animals.get(j).getDiet() instanceof Omnivore))) {
+                                    if (Animals.get(i).getWeight() >= 2 * Animals.get(j).getWeight()) {
+                                        if (Animals.get(i).calcDistance(Animals.get(j).getLocation()) < Animals.get(j).getSize()) {
+                                            Animals.get(i).eat(Animals.get(j));
+                                            Animals.get(i).eatInc();
+                                            Animals.remove(j);
                                             SwingUtilities.invokeLater(new Runnable() {
                                                 public void run() {
                                                     repaint();

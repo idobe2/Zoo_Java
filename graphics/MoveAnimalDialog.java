@@ -28,17 +28,17 @@ public class MoveAnimalDialog extends JDialog {
 
     /**
      * A Ctor of MoveAnimalDialog, make a dialog for moving an animal.
-     * @param animalArrayList
+     * @param Animals
      *          ArrayList<Animal> of all existing animals.
      * @param zooPanel
      *          Provided ZooPanel for drawing animals.
      */
-    public MoveAnimalDialog(ArrayList<Animal> animalArrayList, ZooPanel zooPanel) {
+    public MoveAnimalDialog(ArrayList<Animal> Animals, ZooPanel zooPanel) {
         {
             this.setTitle("Move Animal");
-            String[] animalsClassName = new String[animalArrayList.size()];
-            for (int i=0; i<animalArrayList.size(); i++)
-                animalsClassName[i] = new String(animalArrayList.get(i).getClass().getSimpleName() + "-" + animalArrayList.get(i).getColorToString());
+            String[] animalsClassName = new String[Animals.size()];
+            for (int i=0; i<Animals.size(); i++)
+                animalsClassName[i] = new String(Animals.get(i).getClass().getSimpleName() + "-" + Animals.get(i).getColorToString());
             JComboBox cbAnimals = new JComboBox(animalsClassName);
             this.setLayout(new GridLayout(4, 5));
             this.add(lA);
@@ -73,10 +73,10 @@ public class MoveAnimalDialog extends JDialog {
                         }
                         if (flag) {
                             Point point = new Point((Integer.parseInt(tbX.getText())),Integer.parseInt(tbY.getText()));
-                            if (animalArrayList.get(cbAnimals.getSelectedIndex()).getLocation().getX() < point.getX())
-                                animalArrayList.get(cbAnimals.getSelectedIndex()).setChanges(true);
-                            else animalArrayList.get(cbAnimals.getSelectedIndex()).setChanges(false);
-                            animalArrayList.get(cbAnimals.getSelectedIndex()).setLocation(point);
+                            if (Animals.get(cbAnimals.getSelectedIndex()).getLocation().getX() < point.getX())
+                                Animals.get(cbAnimals.getSelectedIndex()).setChanges(true);
+                            else Animals.get(cbAnimals.getSelectedIndex()).setChanges(false);
+                            Animals.get(cbAnimals.getSelectedIndex()).setLocation(point);
                             zooPanel.manageZoo();
                             zooPanel.repaint();
                             dispose();
