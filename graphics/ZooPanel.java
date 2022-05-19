@@ -7,13 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * A class of ZooPanel, required to draw all objects on the center area.
  *
- * @version 1.2 19 Mat 2022
+ * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see ZooFrame
  */

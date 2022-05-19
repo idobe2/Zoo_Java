@@ -5,7 +5,7 @@ import utilities.MessageUtility;
 /**
  * A class that uses 2D axis for location estimation.
  * 
- * @version 1.2 19 Mat 2022
+ * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Mobile
  */

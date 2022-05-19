@@ -7,7 +7,7 @@ import food.IEdible;
 /**
  * A simple class to use with herbivore animals.
  * 
- * @version 1.2 19 Mat 2022
+ * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Omnivore
  */

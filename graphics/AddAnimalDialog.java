@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * A dialog class that allows you to define a new animal with parameters:
  * Animal type, Size, Horizontal speed, Vertical speed, Color type.
  *
- * @version 1.2 19 Mat 2022
+ * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see MoveAnimalDialog
  */

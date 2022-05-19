@@ -19,7 +19,7 @@ import java.text.DecimalFormat;
  * A class that contains all fields of an animal object,
  * including GUI components and implements runnable.
  * 
- * @version 1.2 19 Mat 2022
+ * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Mobile
  */

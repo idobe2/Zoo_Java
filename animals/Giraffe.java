@@ -13,7 +13,7 @@ import java.io.IOException;
  * The neck length of Giraffes can be 
  * between 1 and 2.5 meters.
  * 
- * @version 1.2 19 Mat 2022
+ * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Chew
  */

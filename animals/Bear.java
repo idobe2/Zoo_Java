@@ -13,7 +13,7 @@ import java.io.IOException;
  * The fur color of bears can be 
  * only black, gray or white.
  * 
- * @version 1.2 19 Mat 2022
+ * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Roar
  */
