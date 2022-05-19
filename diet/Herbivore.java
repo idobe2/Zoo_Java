@@ -7,7 +7,7 @@ import food.IEdible;
 /**
  * A simple class to use with herbivore animals.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Omnivore
  */
@@ -29,16 +29,15 @@ public class Herbivore implements IDiet {
 			return true;
 		else return false;
 	}
-	
+
 	/**
 	 * eat function to perform an animal feed 
 	 * with a specific food type (other animal).
-	 * 
-	 * @param animal
-	 * 			The eating animal.
-	 * @param food
-	 * 			The eaten animal food type.
-	 * @return
+	 *
+	 * @param animal	The eating animal.
+	 * @param food		The eaten animal food type.
+	 * @return 		(double) difference between
+	 * 					new and prev weight.
 	 */
 	public double eat(Animal animal, IEdible food) {
 		if (canEat(food.getFoodtype()))

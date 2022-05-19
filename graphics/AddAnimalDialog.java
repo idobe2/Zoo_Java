@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * A dialog class that allows you to define a new animal with parameters:
  * Animal type, Size, Horizontal speed, Vertical speed, Color type.
  *
- * @version 1.1 01 May 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see MoveAnimalDialog
  */
@@ -119,20 +119,13 @@ public class AddAnimalDialog extends JDialog {
                         }
                         Animals.get(Animals.size()-1).setPan(zooPanel);
                         Animals.get(Animals.size()-1).drawObject(zooPanel.getGraphics());
-                        //animalArrayList.get(animalArrayList.size()-1).setThread(new Thread(animalArrayList.get(animalArrayList.size()-1)));
                         zooPanel.repaint();
                         JOptionPane.showMessageDialog(null, "The animal was added successfully");
                         dispose();
                     }
                     else dispose();
-//                    if (zooPanel.getController() == null)
-//                    {
-//                        zooPanel.setController(new Thread(zooPanel));
-//                        zooPanel.getController().start();
-//                    }
                     SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        System.out.println("Test Add Animal Thread invoke later " + getName());
                         Runnable runnable = new ZooPanel(Animals);
                         zooPanel.setController(new Thread(runnable));
                         zooPanel.getController().start();

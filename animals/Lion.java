@@ -14,7 +14,7 @@ import java.io.IOException;
  * Each time a lion eats,
  * it can get one more scar.
  * 
- * @version 1.1 01 May 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Roar
  */
@@ -118,9 +118,9 @@ public class Lion extends Roar {
 	}
 
 	/**
-	 * A simple function to load image of a specific animal.
+	 * A simple function to read/load image file of this animal object.
 	 * @param nm
-	 * 			(String) part of file name.
+	 * 			(String) part-of-string of file name.
 	 */
 	public void loadImages(String nm)
 	{	// Read image file

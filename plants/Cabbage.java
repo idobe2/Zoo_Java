@@ -21,8 +21,5 @@ public class Cabbage extends Plant {
 	 * A simple function to get cabbage food type.
 	 * @return EFoodType.VEGETABLE
 	 */
-	public EFoodType getFoodtype() {
-		//MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.VEGETABLE);
-		return EFoodType.VEGETABLE;
-	}
+	public EFoodType getFoodtype() { return EFoodType.VEGETABLE; }
 }

@@ -4,12 +4,10 @@ import animals.Animal;
 import food.EFoodType;
 import food.IEdible;
 
-import java.text.DecimalFormat;
-
 /**
  * An interface to use with animals feed and diet.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see IEdible
  */
@@ -26,16 +24,17 @@ public interface IDiet {
 	 * 		otherwise false.
 	 */
 	public boolean canEat(EFoodType food);
-	
+
 	/**
 	 * eat function to perform an animal feed 
 	 * with a specific food type (other animal).
-	 * 
-	 * @param animal
-	 * 			The eating animal.
-	 * @param food
-	 * 			The eaten animal food type.
-	 * @return
+	 * Each class that uses this interface implements it in a different
+	 * way because each class describes a different type of animal.
+	 *
+	 * @param animal	The eating animal.
+	 * @param food		The eaten animal food type.
+	 * @return 		(double) difference between
+	 * 					new and prev weight.
 	 */
 	public double eat(Animal animal, IEdible food);
 

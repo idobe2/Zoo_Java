@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
  * A frame class that combined the menu bar,
  * ZooPanel for drawing objects and mainP - bottom panel.
  *
- * @version 1.1 01 May 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see ZooPanel
  */
@@ -133,11 +133,7 @@ public class ZooFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i=0; i<Animals.size(); i++)
-                {
-                    System.out.println("Before" + Animals.get(i).getThread().getState());
                     Animals.get(i).setSuspended();
-                    System.out.println("After" + Animals.get(i).getThread().getState());
-                }
                 repaint();
             }
         });
@@ -210,7 +206,6 @@ public class ZooFrame extends JFrame {
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setFood(foodType);
                         foodFrame.dispose();
-                        //zooPanel.manageZoo();
                     }
                 });
                 /*--------------------Cabbage--------------------*/
@@ -224,7 +219,6 @@ public class ZooFrame extends JFrame {
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setFood(foodType);
                         foodFrame.dispose();
-                        //zooPanel.manageZoo();
                     }
                 });
                 /*--------------------Meat--------------------*/
@@ -238,7 +232,6 @@ public class ZooFrame extends JFrame {
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setFood(foodType);
                         foodFrame.dispose();
-                        //zooPanel.manageZoo();
                     }
                 });
             }
@@ -275,8 +268,7 @@ public class ZooFrame extends JFrame {
                                 totalEatCount += Animals.get(i).getEatCount();
                                 break;
                             default:
-                                System.out.println("Error");
-                                break;
+                                throw new IllegalArgumentException("Invalid input...");
                         }
                     }
                 }
@@ -310,11 +302,6 @@ public class ZooFrame extends JFrame {
     public static void main(String[] args)
     {
         new ZooFrame();
-//        SwingUtilities.invokeLater(new Runnable() {
-//            public void run() {
-//                new ZooFrame();
-//            }
-//        });
     }
 }
 

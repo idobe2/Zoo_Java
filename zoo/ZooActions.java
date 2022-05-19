@@ -11,7 +11,7 @@ import mobility.Point;
  * A class to perform actions on animals.
  * Also contains the main function.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Animal
  */
@@ -194,8 +194,6 @@ public class ZooActions {
 					break;
 			}
 		}
-		/* for (int i=0 ; i<size; i++) // Show all animals data.
-			System.out.println(animals[i].toString()); */
 		for (int i=0 ; i<size; i++)
 		{
 			if(move(animals[i], initPoint()))

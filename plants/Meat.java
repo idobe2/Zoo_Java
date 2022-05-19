@@ -18,8 +18,5 @@ public class Meat extends Plant {
      * A simple function to get meat food type.
      * @return EFoodType.MEAT
      */
-    public EFoodType getFoodtype() {
-        //MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.MEAT);
-        return EFoodType.MEAT;
-    }
+    public EFoodType getFoodtype() { return EFoodType.MEAT; }
 }

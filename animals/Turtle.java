@@ -5,7 +5,6 @@ import graphics.IDrawable;
 import mobility.Point;
 import utilities.MessageUtility;
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,7 +13,7 @@ import java.io.IOException;
  * Age of turtle can be 
  * at least 500 years.
  * 
- * @version 1.1 01 May 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Chew
  */
@@ -96,7 +95,7 @@ public class Turtle extends Chew {
 		return this.Age; }
 	
 	/**
-	 * roar function - for herbivore animals only.
+	 * chew function - for herbivore animals only.
 	 * This function will be used after the animal eat,
 	 * or by calling makeSound function.
 	 * Using logSound function to print doc message.
@@ -105,6 +104,11 @@ public class Turtle extends Chew {
 		MessageUtility.logSound(this.getClass().getSimpleName(), "Retracts its head in then eats quietly");
 	}
 
+	/**
+	 * A simple function to read/load image file of this animal object.
+	 * @param nm
+	 * 			(String) part-of-string of file name.
+	 */
 	public void loadImages(String nm)
 	{	// Read image file
 		try {

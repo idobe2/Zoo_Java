@@ -1,15 +1,10 @@
 package animals;
 
 import diet.Herbivore;
-import diet.Omnivore;
 import graphics.IDrawable;
-import graphics.ZooPanel;
 import mobility.Point;
 import utilities.MessageUtility;
-
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -18,7 +13,7 @@ import java.io.IOException;
  * The trunk length of elephants can be 
  * between 0.5 and 3 meters.
  * 
- * @version 1.1 01 May 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Chew
  */
@@ -118,9 +113,9 @@ public class Elephant extends Chew {
 	}
 
 	/**
-	 * A simple function to load image of a specific animal.
+	 * A simple function to read/load image file of this animal object.
 	 * @param nm
-	 * 			(String) part of file name.
+	 * 			(String) part-of-string of file name.
 	 */
 	public void loadImages(String nm) {    // Read image file
 			try {

@@ -4,14 +4,12 @@ import animals.Animal;
 import animals.Lion;
 import food.EFoodType;
 import food.IEdible;
-import utilities.MessageUtility;
-
 import java.util.Random;
 
 /**
  * A simple class to use with carnivore animals.
  * 
- * @version 1.0 03 April 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Herbivore
  */
@@ -48,11 +46,10 @@ public class Carnivore implements IDiet {
 	 * eat function to perform an animal feed 
 	 * with a specific food type (other animal).
 	 * 
-	 * @param animal
-	 * 			The eating animal.
-	 * @param food
-	 * 			The eaten animal food type.
-	 * @return
+	 * @param animal	The eating animal.
+	 * @param food		The eaten animal food type.
+	 * @return 		(double) difference between
+	 * 					new and prev weight.
 	 */
 	public double eat(Animal animal, IEdible food) {
 		if (canEat(food.getFoodtype()))
@@ -64,7 +61,7 @@ public class Carnivore implements IDiet {
 			}
 			double temp = animal.getWeight() * 1.1 ; // new weight
 			animal.makeSound();
-			return temp - animal.getWeight(); // return new weight - original weight
+			return temp - animal.getWeight(); // return new weight - prev weight
 		}
 		return 0;
 	}

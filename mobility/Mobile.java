@@ -5,7 +5,7 @@ import utilities.MessageUtility;
 /**
  * An abstract class that defines movement in space.
  *
- * @version 1.1 01 May 2022
+ * @version 1.2 19 Mat 2022
  * @author	Ido Ben Nun, Bar Cohen
  * @see Point
  */
@@ -46,9 +46,8 @@ public abstract class Mobile implements Ilocatable {
 			this.location = new Point(other.getX(), other.getY());	}
 		else {
 			this.location.setX(other.getX()); this.location.setY(other.getY());
-		}	//MessageUtility.logSetter(getClass().getSimpleName(), "setLocation", new String(other.getX()+","+other.getY()), true);
+		}
 		return true;
-//		if (other.checkPoint())
 
 	}
 

@@ -13,7 +13,7 @@ import java.io.IOException;
  * The neck length of Giraffes can be 
  * between 1 and 2.5 meters.
  * 
- * @version 1.1 01 May 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Chew
  */
@@ -37,19 +37,6 @@ public class Giraffe extends Chew {
 		loadImages(getColorToFile(color));
 		if (getPan() != null)
 			drawObject(getPan().getGraphics());
-	}
-
-	/**
-	 * A simple function to load image of a specific animal.
-	 * @param nm
-	 * 			(String) part of file name.
-	 */
-	public void loadImages(String nm)
-	{	// Read image file
-		try {
-			img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/grf_" + nm + "_1.png"));
-			img2 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/grf_" + nm + "_2.png"));
-		} catch (IOException ex) {System.out.println("Cannot load image");}
 	}
 
 	/**
@@ -124,4 +111,16 @@ public class Giraffe extends Chew {
 		MessageUtility.logSound(this.getClass().getSimpleName(), "Bleats and Stomps its legs, then chews");
 	}
 
+	/**
+	 * A simple function to read/load image file of this animal object.
+	 * @param nm
+	 * 			(String) part-of-string of file name.
+	 */
+	public void loadImages(String nm)
+	{	// Read image file
+		try {
+			img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/grf_" + nm + "_1.png"));
+			img2 = ImageIO.read(new File(IDrawable.PICTURE_PATH + "/grf_" + nm + "_2.png"));
+		} catch (IOException ex) {System.out.println("Cannot load image");}
+	}
 }

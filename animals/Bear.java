@@ -13,7 +13,7 @@ import java.io.IOException;
  * The fur color of bears can be 
  * only black, gray or white.
  * 
- * @version 1.1 01 May 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Roar
  */
@@ -116,9 +116,9 @@ public class Bear extends Roar {
 	}
 
 	/**
-	 * A simple function to load image of a specific animal.
+	 * A simple function to read/load image file of this animal object.
 	 * @param nm
-	 * 			(String) part of file name.
+	 * 			(String) part-of-string of file name.
 	 */
 	public void loadImages(String nm)
 	{	// Read image file

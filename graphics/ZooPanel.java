@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 /**
  * A class of ZooPanel, required to draw all objects on the center area.
  *
- * @version 1.1 01 May 2022
+ * @version 1.2 19 Mat 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see ZooFrame
  */
@@ -22,15 +22,15 @@ public class ZooPanel extends JPanel implements Runnable {
     protected Plant food = null;
     protected BufferedImage backgroundImage = null;
     protected Color backgroundColor;
-    //protected ArrayList<Thread> clients = new ArrayList<Thread>();
-
     private Thread controller;
 
+    /**
+     * When an object implementing interface Runnable is used to create a thread,
+     * starting the thread causes the object's run method to be called in that separately executing thread.
+     */
     @Override
     public void run() {
-        System.out.println("ZooPanel thread: " + Animals.get(Animals.size()-1).getThread().getName());
         Animals.get(Animals.size()-1).getThread().start();
-        //repaint();
     }
 
     public Thread getController() { return this.controller; }
@@ -44,8 +44,6 @@ public class ZooPanel extends JPanel implements Runnable {
      */
     public ZooPanel(ArrayList<Animal> animalArrayList) {
         Animals = animalArrayList;
-//        setController(new Thread(this));
-//        System.out.println("Test ZooPanel Thread invoke later" + getController().getName());
     }
 
     /**
@@ -127,11 +125,10 @@ public class ZooPanel extends JPanel implements Runnable {
     }
 
     /**
-     * This function is called after each operation.
-     * We use it to look for changes and perform actions.
+     * This function is called after each operation made in the zoo.
+     * Its purpose is to handle changes and perform actions.
      */
     public synchronized void manageZoo() {
-//        System.out.println("UI thread name is: " + Thread.currentThread().getName());
         if (getFood() != null)
         {
             for (int i = 0; i < this.Animals.size(); i++)
@@ -149,7 +146,6 @@ public class ZooPanel extends JPanel implements Runnable {
                                 repaint();
                             }
                         });
-                        //repaint();
                     }
             }
         }
@@ -168,7 +164,6 @@ public class ZooPanel extends JPanel implements Runnable {
                                                     repaint();
                                                 }
                                             });
-                                            //repaint();
                                         }
                                     }
                                 }
