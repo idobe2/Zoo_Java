@@ -298,7 +298,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	/**
 	 * A simple function to draw an animal on the panel.
 	 * @param g
-	 * 			Graphics of the panel.
+	 * 			Graphics of pan.
 	 */
 	public void drawObject (Graphics g)
 	{

@@ -15,8 +15,6 @@ public class Cabbage extends Plant {
 	 */
 	public Cabbage() { MessageUtility.logConstractor("Cabbage", "Cabbage"); }
 
-	public Cabbage(Point location) {super(location);}
-
 	/**
 	 * A simple function to get cabbage food type.
 	 * @return EFoodType.VEGETABLE

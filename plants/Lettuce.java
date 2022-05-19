@@ -17,8 +17,6 @@ public class Lettuce extends Plant {
 		MessageUtility.logConstractor("Lettuce", "Lettuce");
 	}
 
-	public Lettuce(Point location) {super(location);}
-
 	/**
 	 * A simple function to get lettuce food type.
 	 * @return EFoodType.VEGETABLE

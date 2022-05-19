@@ -13,7 +13,6 @@ public class Meat extends Plant {
         MessageUtility.logConstractor("Meat", "Meat");
     }
 
-    public Meat(Point location) {super(location);}
     /**
      * A simple function to get meat food type.
      * @return EFoodType.MEAT

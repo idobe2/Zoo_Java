@@ -24,22 +24,13 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 
 	protected BufferedImage img = null;
 	private ZooPanel pan;
-
-	/**
-	 * 
-	 */
 	private double height;
-	/**
-	 * 
-	 */
 	private Point location;
-	/**
-	 * 
-	 */
 	private double weight;
 
 	/**
-	 * 
+	 * A given ctor of plant object.
+	 * We will prefer to use inheritance classes ctors.
 	 */
 	public Plant() {
 		Random rand = new Random();
@@ -51,8 +42,11 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 		MessageUtility.logConstractor("Plant", "Plant");
 	}
 
-	public Plant(Point location) {this.location = new Point(location); }
-
+	/**
+	 * A simple function to read/load image file of this animal object.
+	 * @param nm
+	 * 			(String) part-of-string of file name.
+	 */
 	public void loadImages(String nm) {    // Read image file
 		switch (nm) {
 			case "Lettuce":
@@ -81,14 +75,30 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 		}
 	}
 
+	/**
+	 * A setter of this plant to work with zooPanel.
+	 * @param pan ZooPanel reference.
+	 * @return (boolean) true.
+	 */
 	public boolean setPan(ZooPanel pan) {
 		this.pan = pan;
 		return true;
 	}
 
+	/**
+	 * A simple function to draw an animal on the panel.
+	 * @param g
+	 * 			Graphics of pan.
+	 */
 	public void drawObject (Graphics g) { g.drawImage(img, getLocation().getX(), getLocation().getY(), 50, 50, pan); }
 
-	public Color getColor() { return Color.GREEN; }
+	/**
+	 * A simple getter of plant object color.
+	 * @return Color of plant type.
+	 */
+	public Color getColor() { if (this instanceof Meat) return Color.RED;
+		else if (this instanceof Cabbage || this instanceof Lettuce) return Color.GREEN;
+	else return null;}
 
 	/**
 	 * @return
