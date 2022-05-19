@@ -116,6 +116,25 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	}
 
 	/**
+	 * A Ctor of animal to be used with graphics package.
+	 * @param size (Integer) Size of animal on the panel.
+	 * @param horSpeed (Integer) Horizontal speed.
+	 * @param verSpeed (Integer) Vertical speed.
+	 * @param color (String) Color of animal image.
+	 * @param weight (Double) Weight of animal.
+	 */
+	public Animal(int size, int horSpeed, int verSpeed, String color, double weight) {
+		setSize(size);
+		setWeight(weight);
+		setHorSpeed(horSpeed);
+		setVerSpeed(verSpeed);
+		setColor(color);
+		setX_dir(1); // Default
+		setY_dir(1); // Default
+		setThread(new Thread(this));
+	}
+
+	/**
 	 * A simple synchronized method,
 	 * Allows us to put the animal thread in a waiting position.
 	 */
@@ -129,6 +148,10 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		this.threadSuspended = false;
 		notify(); }
 
+	/**
+	 * A simple synchronized method,
+	 * Allows us to terminate the animal thread.
+	 */
 	public synchronized void stop() {
 		exit = true;
 	}
@@ -147,25 +170,6 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public boolean setThread(Thread thread) {
 		this.thread = thread;
 		return true;
-	}
-
-	/**
-	 * A Ctor of animal to be used with graphics package.
-	 * @param size (Integer) Size of animal on the panel.
-	 * @param horSpeed (Integer) Horizontal speed.
-	 * @param verSpeed (Integer) Vertical speed.
-	 * @param color (String) Color of animal image.
-	 * @param weight (Double) Weight of animal.
-	 */
-	public Animal(int size, int horSpeed, int verSpeed, String color, double weight) {
-		setSize(size);
-		setWeight(weight);
-		setHorSpeed(horSpeed);
-		setVerSpeed(verSpeed);
-		setColor(color);
-		setX_dir(1); // Default
-		setY_dir(1); // Default
-		setThread(new Thread(this));
 	}
 
 	/**

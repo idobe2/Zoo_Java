@@ -13,8 +13,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * A frame class that combined the menu bar,
@@ -31,19 +29,20 @@ public class ZooFrame extends JFrame {
     private final JMenu File, Background, Help, submenu;
     private final JMenuItem i1, i2, i3, i4, i5; // i1=Exit,i2=Image,i3=Green,i4=None,i5=Help
     private final JMenuBar mb=new JMenuBar();
-    private final Color color = UIManager.getColor ( "Panel.background" ); // default background color
+    private final Color color = UIManager.getColor ( "Panel.background" ); // Default background color
     private final ZooPanel zooPanel = new ZooPanel(Animals);
     private BufferedImage backgroundImage = null;
 
     /**
-     * A Ctor of ZooFrame, make a frame for all the components to be unit.
+     * ZooFrame constructor - make a frame for all the components to be unit.
+     * Main panel Initialization along with all action buttons.
      */
     ZooFrame() {
         this.setTitle("Zoo");
         try {   // Read image file
             backgroundImage = ImageIO.read(new File("assignment2_pictures/savanna.jpg"));
         } catch (IOException ex) {System.out.println("Cannot load image"); }
-        this.setLayout(new BorderLayout()); // For Image Background
+        this.setLayout(new BorderLayout()); // For image background
         File=new JMenu("File");
         Background = new JMenu("Background");
         Help = new JMenu("Help");
@@ -119,14 +118,14 @@ public class ZooFrame extends JFrame {
                 else JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
             }
         });
-        /*--------------------MoveAnimal--------------------*/
-//        mainP.add(moveAnimalButton);
-//        moveAnimalButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                new MoveAnimalDialog(Animals, zooPanel);
-//            }
-//        });
+        /*--------------------MoveAnimal(Saved)--------------------*/
+        /*mainP.add(moveAnimalButton);
+        moveAnimalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MoveAnimalDialog(Animals, zooPanel);
+            }
+        });*/
         /*--------------------Sleep--------------------*/
         mainP.add(sleepButton);
         sleepButton.addActionListener(new ActionListener() {
@@ -290,7 +289,6 @@ public class ZooFrame extends JFrame {
             }
         });
         this.setBackground(Color.CYAN);
-        //zooPanel.setSize(1000,500);
         mainP.setBackground(Color.GRAY);
         this.add(mainP, BorderLayout.SOUTH);
         this.add(zooPanel, BorderLayout.CENTER);
