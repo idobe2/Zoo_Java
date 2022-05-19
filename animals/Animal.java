@@ -43,33 +43,35 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	protected Point location;
 	protected Thread thread;
 	protected boolean threadSuspended = false;
+	private boolean exit = false;
 
 	/**
 	 * When an object implementing interface Runnable is used to create a thread,
 	 * starting the thread causes the object's run method to be called in that separately executing thread.
+	 * In this run() method we change the location of an animal object and perform related actions.
 	 */
 	@Override
 	public void run() {
-		while (true) {
+		while (!exit) {
 			try {
 				while (diet.canEat(getPan().getFood().getFoodtype())) {
 					if (getLocation().getX() >= getPan().getFood().getLocation().getX()) {
-						setX_dir(X_DIR_LEFT);
+						this.x_dir = X_DIR_LEFT;
 						if (getLocation().getY() >= getPan().getFood().getLocation().getY())
 							setLocation(new Point(getLocation().getX() - horSpeed, getLocation().getY() - verSpeed));
 					}
 					if (getLocation().getX() <= getPan().getFood().getLocation().getX()) {
-						setX_dir(X_DIR_RIGHT);
+						this.x_dir = X_DIR_RIGHT;
 						if (getLocation().getY() <= getPan().getFood().getLocation().getY())
 							setLocation(new Point(getLocation().getX() + horSpeed, getLocation().getY() + verSpeed));
 					}
 					if (getLocation().getX() <= getPan().getFood().getLocation().getX()) {
-						setX_dir(X_DIR_RIGHT);
+						this.x_dir = X_DIR_RIGHT;
 						if (getLocation().getY() >= getPan().getFood().getLocation().getY())
 							setLocation(new Point(getLocation().getX() + horSpeed, getLocation().getY() - verSpeed));
 					}
 					if (getLocation().getX() >= getPan().getFood().getLocation().getX()) {
-						setX_dir(X_DIR_LEFT);
+						this.x_dir = X_DIR_LEFT;
 						if (getLocation().getY() <= getPan().getFood().getLocation().getY())
 							setLocation(new Point(getLocation().getX() - horSpeed, getLocation().getY() + verSpeed));
 					}
@@ -82,34 +84,34 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 				}
 			} catch (NullPointerException ex) {}
 
-		if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0) {
-			if (getLocation().getX() == 0) getLocation().setX(1);
-			if (x_dir == X_DIR_RIGHT) setX_dir(X_DIR_LEFT);
-			else setX_dir(X_DIR_RIGHT);
-		}
-		if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= 0) {
-			if (getLocation().getY() == 0) getLocation().setY(1);
-			if (y_dir == Y_DIR_UP) setY_dir(Y_DIR_DOWN);
-			else setY_dir(Y_DIR_UP);
-		}
-		setLocation(new Point(getLocation().getX() + horSpeed * x_dir, getLocation().getY() + verSpeed * y_dir));
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				getPan().repaint();
-				getPan().manageZoo();
+			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0) {
+				if (getLocation().getX() == 0) getLocation().setX(1);
+				if (x_dir == X_DIR_RIGHT) setX_dir(X_DIR_LEFT);
+				else setX_dir(X_DIR_RIGHT);
 			}
-		});
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {}
-		while (threadSuspended) {
-			synchronized (this) {
-				try {
-					wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace(); }
+			if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= 0) {
+				if (getLocation().getY() == 0) getLocation().setY(1);
+				if (y_dir == Y_DIR_UP) setY_dir(Y_DIR_DOWN);
+				else setY_dir(Y_DIR_UP);
 			}
-		}
+			setLocation(new Point(getLocation().getX() + horSpeed * x_dir, getLocation().getY() + verSpeed * y_dir));
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					getPan().repaint();
+					getPan().manageZoo();
+				}
+			});
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {}
+			while (threadSuspended) {
+				synchronized (this) {
+					try {
+						wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace(); }
+				}
+			}
 		}
 	}
 
@@ -126,6 +128,10 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public synchronized void setResumed() {
 		this.threadSuspended = false;
 		notify(); }
+
+	public synchronized void stop() {
+		exit = true;
+	}
 
 	/**
 	 * A getter of this animal thread.

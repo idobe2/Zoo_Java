@@ -156,6 +156,7 @@ public class ZooPanel extends JPanel implements Runnable {
                                         if (Animals.get(i).calcDistance(Animals.get(j).getLocation()) < Animals.get(j).getSize()) {
                                             Animals.get(i).eat(Animals.get(j));
                                             Animals.get(i).eatInc();
+                                            Animals.get(j).stop();
                                             Animals.remove(j);
                                             SwingUtilities.invokeLater(new Runnable() {
                                                 public void run() {

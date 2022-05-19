@@ -154,10 +154,10 @@ public class ZooFrame extends JFrame {
         mainP.add(clearButton);
         clearButton.addActionListener(new ActionListener() {
             @Override
+
             public void actionPerformed(ActionEvent e) {
-                for (int i=0; i<Animals.size(); i++)
-                {
-                    Animals.get(i).setSuspended();
+                for (int i = 0; i < Animals.size(); i++) {
+                    Animals.get(i).stop();
                     zooPanel.remove(Animals.get(i).getPan());
                 }
                 zooPanel.setFood(null);
@@ -165,7 +165,6 @@ public class ZooFrame extends JFrame {
                 zooPanel.setBackgroundColor(null);
                 zooPanel.setBackgroundImage(null);
                 zooPanel.repaint();
-
             }
         });
         /*--------------------Food--------------------*/
