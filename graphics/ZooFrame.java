@@ -153,7 +153,6 @@ public class ZooFrame extends JFrame {
         mainP.add(clearButton);
         clearButton.addActionListener(new ActionListener() {
             @Override
-
             public void actionPerformed(ActionEvent e) {
                 for (int i = 0; i < Animals.size(); i++) {
                     Animals.get(i).stop();
@@ -285,6 +284,8 @@ public class ZooFrame extends JFrame {
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < Animals.size(); i++)
+                    Animals.get(i).stop();
                 System.exit(0);
             }
         });
