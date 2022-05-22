@@ -26,7 +26,7 @@ public class ZooFrame extends JFrame {
     protected ArrayList<Animal> Animals = new ArrayList<>();
     private Plant foodType;
     protected JPanel mainP = new JPanel();
-    private final JMenu File, Background, Help, submenu;
+    private final JMenu File, Background, Help;
     private final JMenuItem i1, i2, i3, i4, i5; // i1=Exit,i2=Image,i3=Green,i4=None,i5=Help
     private final JMenuBar mb=new JMenuBar();
     private final Color color = UIManager.getColor ( "Panel.background" ); // Default background color
@@ -46,7 +46,6 @@ public class ZooFrame extends JFrame {
         File=new JMenu("File");
         Background = new JMenu("Background");
         Help = new JMenu("Help");
-        submenu=new JMenu("Sub Menu");
         i1=new JMenuItem("Exit");
         i2=new JMenuItem("Image");
         i3=new JMenuItem("Green");
@@ -131,8 +130,7 @@ public class ZooFrame extends JFrame {
         sleepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i=0; i<Animals.size(); i++)
-                    Animals.get(i).setSuspended();
+                for (Animal animal : Animals) animal.setSuspended();
                 repaint();
             }
         });
@@ -142,9 +140,7 @@ public class ZooFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 synchronized (this) {
-                    for (int i = 0; i < Animals.size(); i++) {
-                        Animals.get(i).setResumed();
-                    }
+                    for (Animal animal : Animals) animal.setResumed();
                     repaint();
                 }
             }
@@ -154,9 +150,9 @@ public class ZooFrame extends JFrame {
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < Animals.size(); i++) {
-                    Animals.get(i).stop();
-                    zooPanel.remove(Animals.get(i).getPan());
+                for (Animal animal : Animals) {
+                    animal.stop();
+                    zooPanel.remove(animal.getPan());
                 }
                 zooPanel.setFood(null);
                 Animals.clear();
@@ -239,33 +235,27 @@ public class ZooFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame infoFrame = new JFrame("Info");
-                String column[] = {"Animal", "Color", "Weight", "Hor. speed", "Ver. speed", "Eat counter"};
+                String[] column = {"Animal", "Color", "Weight", "Hor. speed", "Ver. speed", "Eat counter"};
                 int totalEatCount = 0;
                 String[][] animalsData = new String[Animals.size()+1][6];
                 for (int i = 0; i < Animals.size(); i++) {
                     for (int j = 0; j < 6; j++) {
                         switch (j) {
-                            case 0: // Animal
-                                animalsData[i][j] = new String(Animals.get(i).getClass().getSimpleName());
-                                break;
-                            case 1: // Color
-                                animalsData[i][j] = new String(Animals.get(i).getColorToString());
-                                break;
-                            case 2: // Weight
-                                animalsData[i][j] = new String(String.valueOf(Animals.get(i).getWeight()));
-                                break;
-                            case 3: // Hor. speed
-                                animalsData[i][j] = new String(String.valueOf(Animals.get(i).getHorSpeed()));
-                                break;
-                            case 4: // Ver. speed
-                                animalsData[i][j] = new String(String.valueOf(Animals.get(i).getVerSpeed()));
-                                break;
-                            case 5: // Eat counter
-                                animalsData[i][j] = new String(String.valueOf(Animals.get(i).getEatCount()));
+                            case 0 -> // Animal
+                                    animalsData[i][j] = Animals.get(i).getClass().getSimpleName();
+                            case 1 -> // Color
+                                    animalsData[i][j] = Animals.get(i).getColorToString();
+                            case 2 -> // Weight
+                                    animalsData[i][j] = String.valueOf(Animals.get(i).getWeight());
+                            case 3 -> // Hor. speed
+                                    animalsData[i][j] = String.valueOf(Animals.get(i).getHorSpeed());
+                            case 4 -> // Ver. speed
+                                    animalsData[i][j] = String.valueOf(Animals.get(i).getVerSpeed());
+                            case 5 -> { // Eat counter
+                                animalsData[i][j] = String.valueOf(Animals.get(i).getEatCount());
                                 totalEatCount += Animals.get(i).getEatCount();
-                                break;
-                            default:
-                                throw new IllegalArgumentException("Invalid input...");
+                            }
+                            default -> throw new IllegalArgumentException("Invalid input...");
                         }
                     }
                 }
@@ -284,8 +274,7 @@ public class ZooFrame extends JFrame {
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < Animals.size(); i++)
-                    Animals.get(i).stop();
+                for (Animal animal : Animals) animal.stop();
                 System.exit(0);
             }
         });
