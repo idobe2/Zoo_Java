@@ -31,8 +31,15 @@ public class ZooPanel extends JPanel implements Runnable {
         Animals.get(Animals.size()-1).getThread().start();
     }
 
+    /**
+     * A getter of the controller thread.
+     * @return (Thread)
+     */
     public Thread getController() { return this.controller; }
 
+    /**
+     * A setter of the controller thread.
+     */
     public boolean setController(Thread controller) {this.controller = controller; return true; }
 
     /**

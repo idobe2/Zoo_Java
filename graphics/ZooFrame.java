@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 /**
  * A frame class that combined the menu bar,
- * ZooPanel for drawing objects and mainP - bottom panel.
+ * ZooPanel  drawing objects and mainP - bottom panel.
  *
  * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
@@ -34,7 +34,7 @@ public class ZooFrame extends JFrame {
     private BufferedImage backgroundImage = null;
 
     /**
-     * ZooFrame constructor - make a frame for all the components to be unit.
+     * ZooFrame constructor - make a frame for all the used components.
      * Main panel Initialization along with all action buttons.
      */
     ZooFrame() {

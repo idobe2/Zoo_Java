@@ -38,7 +38,7 @@ public class Point {
 	}
 
 	/**
-	 * Copy ctor for Point object.
+	 * Copy ctor of Point object.
 	 * Use checkBoundaries function
 	 * for testing the point.
 	 *

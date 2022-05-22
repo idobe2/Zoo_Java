@@ -92,7 +92,7 @@ public class Lion extends Roar {
 	}
 	
 	/**
-	 * A getter for scar count.
+	 * A getter of scar count.
 	 * Using logGetter function to print doc message.
 	 * 
 	 * @return scar count.

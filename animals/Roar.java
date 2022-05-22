@@ -3,7 +3,7 @@ package animals;
 import mobility.Point;
 
 /**
- * A simple abstract class for carnivore and omnivore animals.
+ * A simple abstract class of carnivore and omnivore animals.
  * This class is created to use with makeSound function.
  * 
  * @version 1.2 19 May 2022

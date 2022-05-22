@@ -176,7 +176,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * A simple getter of color to file.
 	 * @param color
 	 * 			(String) Color.
-	 * @return (String) part-of-string for the file name to be loaded.
+	 * @return (String) part-of-string of the file name to be loaded.
 	 */
 	public String getColorToFile(String color) {
 		switch (color) {
@@ -192,13 +192,13 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	}
 
 	/**
-	 * A getter for color string.
+	 * A getter of color string.
 	 * @return (String) color.
 	 */
 	public String getColorToString() { return col; }
 
 	/**
-	 * A getter for color.
+	 * A getter of color.
 	 * @return (Color) color.
 	 */
 	public Color getColor() {
@@ -235,7 +235,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return true; }
 
 	/**
-	 * A setter for x_dir.
+	 * A setter of x_dir.
 	 * @param x_dir Y Direction (Integer).
 	 * @return True if succeeded, otherwise false.
 	 */
@@ -249,7 +249,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return true; }
 
 	/**
-	 * A setter for y_dir.
+	 * A setter of y_dir.
 	 * @param y_dir Y Direction (Integer).
 	 * @return True if succeeded, otherwise false.
 	 */
@@ -263,7 +263,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return true; }
 
 	/**
-	 * A setter for animal size.
+	 * A setter of animal size.
 	 * @param size
 	 * 			size of animal on the panel (Integer).
 	 * @return True if succeeded, otherwise false.
@@ -274,7 +274,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		return true; }
 
 	/**
-	 * A getter for animal name.
+	 * A getter of animal name.
 	 * Not relevant after HW1.
 	 * @return (String) Name of animal.
 	 */
@@ -283,7 +283,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	}
 
 	/**
-	 * A setter for animal color.
+	 * A setter of animal color.
 	 * @param col
 	 * 			Color of animal to use in panel.
 	 * @return True if succeeded, otherwise false.
@@ -296,12 +296,14 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	}
 
 	/**
-	 * A setter for animal using panel.
+	 * A setter of the panel to be used with GUI components.
 	 * @param pan - (ZooPanel) Panel for drawing animals.
-	 * @return True if succeeded, otherwise false.
+	 * @return (Boolean) true if applied, otherwise false.
 	 */
 	public boolean setPan(ZooPanel pan) {
-		this.pan = pan;
+		if (pan == null)
+			return false;
+		else this.pan = pan;
 		return true;
 	}
 
@@ -324,25 +326,25 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public void eatInc() { this.eatCount++; }
 
 	/**
-	 * A getter for eatCount.
+	 * A getter of eatCount.
 	 * @return eatCount.
 	 */
 	public int getEatCount() { return this.eatCount; }
 
 	/**
-	 * A getter for horSpeed.
-	 * @return horSpeed.
+	 * A getter of horSpeed.
+	 * @return (Integer) horSpeed.
 	 */
 	public int getHorSpeed() { return this.horSpeed; }
 
 	/**
-	 * A getter for verSpeed.
-	 * @return verSpeed.
+	 * A getter of verSpeed.
+	 * @return (Integer) verSpeed.
 	 */
 	public int getVerSpeed() { return this.verSpeed; }
 
 	/**
-	 * A getter for coordChanged.
+	 * A getter of coordChanged.
 	 * @return (Boolean) value of coordChanged.
 	 */
 	public boolean getChanges() { return this.coordChanged; }
@@ -511,7 +513,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public String toString() { return "[!] " + this.name + ": total distance: " + getTotalDistance() + ", weight: " + getWeight(); }
 
 	/**
-	 * A simple getter for EAT_DISTANCE.
+	 * A simple getter of EAT_DISTANCE.
 	 * @return (Integer) EAT_DISTANCE.
 	 */
 	public int getEAT_DISTANCE() {

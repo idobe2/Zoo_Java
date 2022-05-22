@@ -7,7 +7,7 @@ import utilities.MessageUtility;
 public class Meat extends Plant {
 
     /**
-     * An easy ctor for meat object.
+     * An easy ctor of meat object.
      */
     public Meat() {
         MessageUtility.logConstractor("Meat", "Meat");

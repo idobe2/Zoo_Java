@@ -16,7 +16,7 @@ import java.util.Random;
 public class Carnivore implements IDiet {
 	
 	/**
-	 * A simple Getter for a random boolean.
+	 * A simple Getter of a random boolean.
 	 * Helper function.
 	 * 
 	 * @return true or false.

@@ -76,12 +76,14 @@ public abstract class Plant implements IEdible, Ilocatable ,IDrawable {
 	}
 
 	/**
-	 * A setter of this plant to work with zooPanel.
+	 * A setter of this plant panel to work with GUI components.
 	 * @param pan ZooPanel reference.
-	 * @return (boolean) true.
+	 * @return (boolean) true if applied, otherwise false.
 	 */
 	public boolean setPan(ZooPanel pan) {
-		this.pan = pan;
+		if (pan == null)
+			return false;
+		else this.pan = pan;
 		return true;
 	}
 

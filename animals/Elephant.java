@@ -102,7 +102,7 @@ public class Elephant extends Chew {
 		return this.trunkLength; }
 	
 	/**
-	 * chew function - for herbivore animals only.
+	 * chew function - of herbivore animals only.
 	 * This function will be used after the animal eat,
 	 * or by calling makeSound function.
 	 * Using logSound function to print doc message.

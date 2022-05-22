@@ -105,7 +105,7 @@ public class Bear extends Roar {
 		return this.furColor; }
 	
 	/**
-	 * roar function - for carnivore and omnivore animals.
+	 * roar function - of carnivore and omnivore animals.
 	 * This function will be used after the animal eat,
 	 * or by calling makeSound function.
 	 * Using logSound function to print doc message.
