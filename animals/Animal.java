@@ -25,7 +25,7 @@ import java.text.DecimalFormat;
  */
 public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnimalBehavior, Runnable {
 
-	private static final int X_DIR_RIGHT = 1, X_DIR_LEFT = -1, Y_DIR_UP = 1, Y_DIR_DOWN = -1, MIN_SIZE = 50, MAX_SIZE = 300;
+	private static final int X_DIR_RIGHT = 1, X_DIR_LEFT = -1, Y_DIR_UP = 1, Y_DIR_DOWN = -1, MIN_SIZE = 50, MAX_SIZE = 300, SPEED = 75;
 	private final int EAT_DISTANCE = 10;
 	private int size;
 	private String col;
@@ -78,11 +78,10 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 					getPan().repaint();
 					getPan().manageZoo();
 					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-					}
+						Thread.sleep(SPEED);
+					} catch (InterruptedException ignored) {}
 				}
-			} catch (NullPointerException ex) {}
+			} catch (NullPointerException ignored) {}
 
 			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0) {
 				if (getLocation().getX() == 0) getLocation().setX(1);
@@ -102,8 +101,8 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 				}
 			});
 			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {}
+				Thread.sleep(SPEED);
+			} catch (InterruptedException ignored) {}
 			while (threadSuspended) {
 				synchronized (this) {
 					try {
@@ -179,16 +178,12 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * @return (String) part-of-string of the file name to be loaded.
 	 */
 	public String getColorToFile(String color) {
-		switch (color) {
-			case "Natural":
-				return "n";
-			case "Blue":
-				return "b";
-			case "Red":
-				return "r";
-			default:
-				return null;
-		}
+		return switch (color) {
+			case "Natural" -> "n";
+			case "Blue" -> "b";
+			case "Red" -> "r";
+			default -> null;
+		};
 	}
 
 	/**
@@ -202,10 +197,11 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * @return (Color) color.
 	 */
 	public Color getColor() {
-		if (col.equals("Natural")) return null;
-		else if (col.equals("Red")) return Color.RED;
-		else if (col.equals("Blue")) return Color.BLUE;
-		return null;
+		return switch (col) {
+			case "Red" -> Color.RED;
+			case "Blue" -> Color.BLUE;
+			default -> null;	// case "Natural" -> null;
+		};
 	}
 
 	/**
@@ -290,7 +286,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 */
 	public boolean setColor(String col) {
 		if (col.equals("Natural") || col.equals("Blue") || col.equals("Red")) {
-			this.col = new String(col);
+			this.col = col;
 			return true; }
 		return false;
 	}
@@ -429,7 +425,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		double wgt = diet.eat(this, food);
 		if (wgt > 0)
 		{
-			setWeight(getWeight()+Double.valueOf(df.format(wgt)));
+			setWeight(getWeight()+Double.parseDouble(df.format(wgt)));
 			return true;
 		}
 		return false;

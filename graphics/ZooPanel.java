@@ -123,8 +123,10 @@ public class ZooPanel extends JPanel implements Runnable {
             g.setColor(getBackgroundColor());
             g.fillRect(0,0,getWidth(),getHeight()); }
         if (!Animals.isEmpty()) {
-            for (int i = 0; i < Animals.size(); i++) {
-                Animals.get(i).drawObject(g); } }
+            for (Animal animal : Animals) {
+                animal.drawObject(g);
+            }
+        }
         if (getFood() != null) {
             food.drawObject(g); }
     }
@@ -136,14 +138,12 @@ public class ZooPanel extends JPanel implements Runnable {
     public synchronized void manageZoo() {
         if (getFood() != null)
         {
-            for (int i = 0; i < this.Animals.size(); i++)
-            {
-                if (Math.abs(Animals.get(i).getLocation().getX() - (getFood().getLocation().getX())) <= Animals.get(i).getEAT_DISTANCE()
-                        && Math.abs(Animals.get(i).getLocation().getY() - (getFood().getLocation().getY())) <= Animals.get(i).getEAT_DISTANCE())
-                    if (Animals.get(i).getDiet().canEat(getFood().getFoodtype()))
-                    {
-                        Animals.get(i).eat(getFood());
-                        Animals.get(i).eatInc();
+            for (Animal animal : this.Animals) {
+                if (Math.abs(animal.getLocation().getX() - (getFood().getLocation().getX())) <= animal.getEAT_DISTANCE()
+                        && Math.abs(animal.getLocation().getY() - (getFood().getLocation().getY())) <= animal.getEAT_DISTANCE())
+                    if (animal.getDiet().canEat(getFood().getFoodtype())) {
+                        animal.eat(getFood());
+                        animal.eatInc();
                         getFood().setPan(null);
                         setFood(null);
                         SwingUtilities.invokeLater(new Runnable() {
