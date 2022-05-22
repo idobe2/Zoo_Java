@@ -54,7 +54,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public void run() {
 		while (!exit) {
 			try {
-				while (diet.canEat(getPan().getFood().getFoodtype())) {
+				while (diet.canEat(getPan().getFood().getFoodType())) {
 					if (getLocation().getX() >= getPan().getFood().getLocation().getX()) {
 						this.x_dir = X_DIR_LEFT;
 						if (getLocation().getY() >= getPan().getFood().getLocation().getY())
@@ -485,12 +485,12 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * Using logGetter function to print doc message.
 	 * @return EFoodType of this animal.
 	 */
-	public EFoodType getFoodtype()
+	public EFoodType getFoodType()
 	{
 		if (this instanceof Lion) {
-			MessageUtility.logGetter(getName(), "getFoodtype", EFoodType.NOTFOOD);
+			MessageUtility.logGetter(getName(), "getFoodType", EFoodType.NOTFOOD);
 			return EFoodType.NOTFOOD; }
-		MessageUtility.logGetter(getName(), "getFoodtype", EFoodType.MEAT);
+		MessageUtility.logGetter(getName(), "getFoodType", EFoodType.MEAT);
 		return EFoodType.MEAT;
 	}
 

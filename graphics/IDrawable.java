@@ -8,7 +8,7 @@ import java.awt.*;
  *
  * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
- * @see IDrawable
+ * @see IAnimalBehavior
  */
 public interface IDrawable {
     public final static String PICTURE_PATH = "assignment2_pictures";

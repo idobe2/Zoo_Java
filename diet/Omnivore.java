@@ -24,9 +24,7 @@ public class Omnivore implements IDiet {
 	 * 		otherwise false.
 	 */
 	public boolean canEat(EFoodType food) {
-		if (food != EFoodType.NOTFOOD)
-			return true;
-		else return false;
+		return food != EFoodType.NOTFOOD;
 	}
 
 	/**
@@ -39,8 +37,8 @@ public class Omnivore implements IDiet {
 	 * 					new and prev weight.
 	 */
 	public double eat(Animal animal, IEdible food) {
-		EFoodType Etemp = food.getFoodtype();
-		if (canEat(food.getFoodtype()))
+		EFoodType Etemp = food.getFoodType();
+		if (canEat(food.getFoodType()))
 		{
 			if(Etemp == EFoodType.MEAT) {
 				double temp = animal.getWeight() * 1.1;

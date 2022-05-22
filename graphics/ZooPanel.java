@@ -141,7 +141,7 @@ public class ZooPanel extends JPanel implements Runnable {
             for (Animal animal : this.Animals) {
                 if (Math.abs(animal.getLocation().getX() - (getFood().getLocation().getX())) <= animal.getEAT_DISTANCE()
                         && Math.abs(animal.getLocation().getY() - (getFood().getLocation().getY())) <= animal.getEAT_DISTANCE())
-                    if (animal.getDiet().canEat(getFood().getFoodtype())) {
+                    if (animal.getDiet().canEat(getFood().getFoodType())) {
                         animal.eat(getFood());
                         animal.eatInc();
                         getFood().setPan(null);

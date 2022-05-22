@@ -6,9 +6,9 @@ package food;
  * 
  * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
- * @see IDiet
+ * @see diet.IDiet
  */
 public interface IEdible {
-	public EFoodType getFoodtype();
+	public EFoodType getFoodType();
 	
 }

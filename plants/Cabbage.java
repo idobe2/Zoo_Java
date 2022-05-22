@@ -1,7 +1,6 @@
 package plants;
 
 import food.EFoodType;
-import mobility.Point;
 import utilities.MessageUtility;
 
 /**
@@ -19,5 +18,5 @@ public class Cabbage extends Plant {
 	 * A simple function to get cabbage food type.
 	 * @return EFoodType.VEGETABLE
 	 */
-	public EFoodType getFoodtype() { return EFoodType.VEGETABLE; }
+	public EFoodType getFoodType() { return EFoodType.VEGETABLE; }
 }

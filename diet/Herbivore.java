@@ -25,9 +25,7 @@ public class Herbivore implements IDiet {
 	 * 		otherwise false.
 	 */
 	public boolean canEat(EFoodType food) {
-		if (food == EFoodType.VEGETABLE)
-			return true;
-		else return false;
+		return food == EFoodType.VEGETABLE;
 	}
 
 	/**
@@ -40,7 +38,7 @@ public class Herbivore implements IDiet {
 	 * 					new and prev weight.
 	 */
 	public double eat(Animal animal, IEdible food) {
-		if (canEat(food.getFoodtype()))
+		if (canEat(food.getFoodType()))
 		{
 			double temp = animal.getWeight() * 1.07;
 			animal.makeSound();

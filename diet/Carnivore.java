@@ -37,9 +37,7 @@ public class Carnivore implements IDiet {
 	 * 		otherwise false.
 	 */
 	public boolean canEat(EFoodType food) {
-		if (food == EFoodType.MEAT)
-			return true;
-		else return false;
+		return food == EFoodType.MEAT;
 	}
 	
 	/**
@@ -52,7 +50,7 @@ public class Carnivore implements IDiet {
 	 * 					new and prev weight.
 	 */
 	public double eat(Animal animal, IEdible food) {
-		if (canEat(food.getFoodtype()))
+		if (canEat(food.getFoodType()))
 		{
 			if (animal instanceof Lion)
 			{

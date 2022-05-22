@@ -13,18 +13,16 @@ import java.util.ArrayList;
  *
  * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen
- * @see MoveAnimalDialog
+ * @see Animal
  */
 public class AddAnimalDialog extends JDialog {
-    private final String animals[] = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
-    private final JComboBox cb = new JComboBox(animals);
-    private final JLabel label = new JLabel();
+    private final String[] animals = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
     private final JTextField tbSize, tbHspeed, tbVspeed;
     private final JLabel labelAnimal = new JLabel();
     private final JLabel labelColor = new JLabel();
-    private final String colors[] = {"Red", "Blue", "Natural"};
-    private final JComboBox cbAnimals = new JComboBox(animals);
-    private final JComboBox cbColors = new JComboBox(colors);
+    private final String[] colors = {"Red", "Blue", "Natural"};
+    private final JComboBox<String> cbAnimals = new JComboBox<>(animals);
+    private final JComboBox<String> cbColors = new JComboBox<>(colors);
     private boolean flag = true;
 
     /**
@@ -80,42 +78,32 @@ public class AddAnimalDialog extends JDialog {
                         JOptionPane.showMessageDialog(null, "Speed should be between 1 and 10");
                     }
                     if (flag) {
-                        switch (cbAnimals.getItemAt(cbAnimals.getSelectedIndex()).toString()) {
-                            case "Elephant":
-                                Animals.add(new Elephant(Integer.parseInt(tbSize.getText()),
-                                        Integer.parseInt(tbHspeed.getText()),
-                                        Integer.parseInt(tbVspeed.getText()),
-                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
-                                        getWeight(("Elephant"), Integer.parseInt(tbSize.getText()))));
-                                break;
-                            case "Lion":
-                                Animals.add(new Lion(Integer.parseInt(tbSize.getText()),
-                                        Integer.parseInt(tbHspeed.getText()),
-                                        Integer.parseInt(tbVspeed.getText()),
-                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
-                                        getWeight(("Lion"), Integer.parseInt(tbSize.getText()))));
-                                break;
-                            case "Giraffe":
-                                Animals.add(new Giraffe(Integer.parseInt(tbSize.getText()),
-                                        Integer.parseInt(tbHspeed.getText()),
-                                        Integer.parseInt(tbVspeed.getText()),
-                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
-                                        getWeight(("Giraffe"), Integer.parseInt(tbSize.getText()))));
-                                break;
-                            case "Turtle":
-                                Animals.add(new Turtle(Integer.parseInt(tbSize.getText()),
-                                        Integer.parseInt(tbHspeed.getText()),
-                                        Integer.parseInt(tbVspeed.getText()),
-                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
-                                        getWeight(("Turtle"), Integer.parseInt(tbSize.getText()))));
-                                break;
-                            case "Bear":
-                                Animals.add(new Bear(Integer.parseInt(tbSize.getText()),
-                                        Integer.parseInt(tbHspeed.getText()),
-                                        Integer.parseInt(tbVspeed.getText()),
-                                        cbColors.getItemAt(cbColors.getSelectedIndex()).toString(),
-                                        getWeight(("Bear"), Integer.parseInt(tbSize.getText()))));
-                                break;
+                        switch (cbAnimals.getItemAt(cbAnimals.getSelectedIndex())) {
+                            case "Elephant" -> Animals.add(new Elephant(Integer.parseInt(tbSize.getText()),
+                                    Integer.parseInt(tbHspeed.getText()),
+                                    Integer.parseInt(tbVspeed.getText()),
+                                    cbColors.getItemAt(cbColors.getSelectedIndex()),
+                                    getWeight(("Elephant"), Integer.parseInt(tbSize.getText()))));
+                            case "Lion" -> Animals.add(new Lion(Integer.parseInt(tbSize.getText()),
+                                    Integer.parseInt(tbHspeed.getText()),
+                                    Integer.parseInt(tbVspeed.getText()),
+                                    cbColors.getItemAt(cbColors.getSelectedIndex()),
+                                    getWeight(("Lion"), Integer.parseInt(tbSize.getText()))));
+                            case "Giraffe" -> Animals.add(new Giraffe(Integer.parseInt(tbSize.getText()),
+                                    Integer.parseInt(tbHspeed.getText()),
+                                    Integer.parseInt(tbVspeed.getText()),
+                                    cbColors.getItemAt(cbColors.getSelectedIndex()),
+                                    getWeight(("Giraffe"), Integer.parseInt(tbSize.getText()))));
+                            case "Turtle" -> Animals.add(new Turtle(Integer.parseInt(tbSize.getText()),
+                                    Integer.parseInt(tbHspeed.getText()),
+                                    Integer.parseInt(tbVspeed.getText()),
+                                    cbColors.getItemAt(cbColors.getSelectedIndex()),
+                                    getWeight(("Turtle"), Integer.parseInt(tbSize.getText()))));
+                            case "Bear" -> Animals.add(new Bear(Integer.parseInt(tbSize.getText()),
+                                    Integer.parseInt(tbHspeed.getText()),
+                                    Integer.parseInt(tbVspeed.getText()),
+                                    cbColors.getItemAt(cbColors.getSelectedIndex()),
+                                    getWeight(("Bear"), Integer.parseInt(tbSize.getText()))));
                         }
                         Animals.get(Animals.size()-1).setPan(zooPanel);
                         Animals.get(Animals.size()-1).drawObject(zooPanel.getGraphics());
@@ -144,20 +132,18 @@ public class AddAnimalDialog extends JDialog {
      * @param animal
      *          (String) Type-of-animal.
      * @param size
-     *          (Integer) Size of animal on the panel.
+     *          (Integer) Animal size on the screen.
      * @return
+     *          (Double) Animal weight.
      */
     public double getWeight(String animal, int size) {
-        if (animal.equals("Elephant"))
-            return size * 10;
-        else if (animal.equals("Giraffe"))
-            return size * 2.2;
-        else if (animal.equals("Bear"))
-            return size * 1.5;
-        else if (animal.equals("Lion"))
-            return size * 0.8;
-        else if (animal.equals("Turtle"))
-            return size * 0.5;
-        return 0;
+        return switch (animal) {
+            case "Elephant" -> size * 10;
+            case "Giraffe" -> size * 2.2;
+            case "Bear" -> size * 1.5;
+            case "Lion" -> size * 0.8;
+            case "Turtle" -> size * 0.5;
+            default -> 0;
+        };
     }
 }

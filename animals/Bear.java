@@ -31,7 +31,7 @@ public class Bear extends Roar {
 	 */
 	public Bear(int size, int horSpeed, int verSpeed, String color, double weight) {
 		super(size, horSpeed, verSpeed, color, weight);
-		this.furColor = new String("GRAY");
+		this.furColor = "GRAY";
 		this.setLocation(new Point(100,5));
 		this.setDiet(new Omnivore());
 		loadImages(getColorToFile(color));
@@ -50,7 +50,7 @@ public class Bear extends Roar {
 	public Bear(String name, Point location)
 	{
 		super(name, location);
-		this.furColor = new String("GRAY");
+		this.furColor = "GRAY";
 		this.setWeight(308.2);
 		this.setDiet(new Omnivore());
 	}
@@ -64,7 +64,7 @@ public class Bear extends Roar {
 	public Bear(String name)
 	{
 		super(name);
-		this.furColor = new String("GRAY");
+		this.furColor = "GRAY";
 		Point startLocation = new Point(100,5);
 		this.setLocation(startLocation);
 	}
@@ -85,7 +85,7 @@ public class Bear extends Roar {
 		furColor = furColor.toUpperCase();
 		if (furColor.equals("BLACK") || furColor.equals("WHITE") || furColor.equals("GRAY"))
 		{
-			this.furColor = new String(furColor);
+			this.furColor = furColor;
 			MessageUtility.logSetter(getName(), "setFurColor", furColor, true);
 			return true;
 		}

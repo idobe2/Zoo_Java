@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-import food.EFoodType;
 import food.IEdible;
 import graphics.IDrawable;
 import graphics.ZooPanel;

@@ -21,7 +21,7 @@ public class Lettuce extends Plant {
 	 * A simple function to get lettuce food type.
 	 * @return EFoodType.VEGETABLE
 	 */
-	public EFoodType getFoodtype() {
+	public EFoodType getFoodType() {
 		return EFoodType.VEGETABLE;
 	}
 }
