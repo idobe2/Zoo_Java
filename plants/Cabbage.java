@@ -9,10 +9,19 @@ import utilities.MessageUtility;
  */
 public class Cabbage extends Plant {
 
+	private static Cabbage cabbage = null;
+
+	public static synchronized Cabbage getInstance()
+	{
+		if (cabbage==null)
+			cabbage = new Cabbage();
+		return cabbage;
+	}
+
 	/**
 	 * An easy ctor of cabbage object.
 	 */
-	public Cabbage() { MessageUtility.logConstractor("Cabbage", "Cabbage"); }
+	private Cabbage() { MessageUtility.logConstractor("Cabbage", "Cabbage"); }
 
 	/**
 	 * A simple function to get cabbage food type.

@@ -21,6 +21,7 @@ public class ZooPanel extends JPanel implements Runnable {
     protected BufferedImage backgroundImage = null;
     protected Color backgroundColor;
     private Thread controller;
+    private ThreadPool pool;
 
     /**
      * When an object implementing interface Runnable is used to create a thread,
@@ -28,7 +29,14 @@ public class ZooPanel extends JPanel implements Runnable {
      */
     @Override
     public void run() {
-        Animals.get(Animals.size()-1).getThread().start();
+        //Animals.get(Animals.size()-1).getThread().start();
+    }
+
+    public boolean addToQueue(Animal animal)
+    {
+        if (this.pool.addToPool(animal))
+            return true;
+        return false;
     }
 
     /**
@@ -41,6 +49,12 @@ public class ZooPanel extends JPanel implements Runnable {
      * A setter of the controller thread.
      */
     public boolean setController(Thread controller) {this.controller = controller; return true; }
+
+    public boolean setPool(ThreadPool pool)
+    {
+        this.pool = pool;
+        return true;
+    }
 
     /**
      * An easy ctor of ZooPanel.

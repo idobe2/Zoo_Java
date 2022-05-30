@@ -5,11 +5,19 @@ import mobility.Point;
 import utilities.MessageUtility;
 
 public class Meat extends Plant {
+    private static Meat meat = null;
+
+    public static synchronized Meat getInstance()
+    {
+        if (meat==null)
+            meat = new Meat();
+        return meat;
+    }
 
     /**
      * An easy ctor of meat object.
      */
-    public Meat() {
+    private Meat() {
         MessageUtility.logConstractor("Meat", "Meat");
     }
 

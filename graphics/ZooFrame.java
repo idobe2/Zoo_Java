@@ -112,9 +112,9 @@ public class ZooFrame extends JFrame {
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Animals.size() < 10 )
+                //if (Animals.size() < 10 )
                     new AddAnimalDialog(Animals, zooPanel);
-                else JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
+                //else JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
             }
         });
         /*--------------------MoveAnimal(Saved)--------------------*/
@@ -192,12 +192,13 @@ public class ZooFrame extends JFrame {
                 b1.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        foodType = new Lettuce();
+                        foodType = Lettuce.getInstance();
                         foodType.setLocation(new Point(zooPanel.getWidth()/2, zooPanel.getHeight()/2));
                         foodType.loadImages("Lettuce");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setFood(foodType);
+                        zooPanel.repaint();
                         foodFrame.dispose();
                     }
                 });
@@ -205,12 +206,13 @@ public class ZooFrame extends JFrame {
                 b2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        foodType = new Cabbage();
+                        foodType = Cabbage.getInstance();
                         foodType.setLocation(new Point(zooPanel.getWidth()/2, zooPanel.getHeight()/2));
                         foodType.loadImages("Cabbage");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setFood(foodType);
+                        zooPanel.repaint();
                         foodFrame.dispose();
                     }
                 });
@@ -218,12 +220,13 @@ public class ZooFrame extends JFrame {
                 b3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        foodType = new Meat();
+                        foodType = Meat.getInstance();
                         foodType.setLocation(new Point(zooPanel.getWidth()/2, zooPanel.getHeight()/2));
                         foodType.loadImages("Meat");
                         foodType.setPan(zooPanel);
                         foodType.drawObject(zooPanel.getGraphics());
                         zooPanel.setFood(foodType);
+                        zooPanel.repaint();
                         foodFrame.dispose();
                     }
                 });
@@ -259,7 +262,7 @@ public class ZooFrame extends JFrame {
                         }
                     }
                 }
-                String[] endLine = {"Total", "", "", "", "", String.valueOf(totalEatCount)};
+                String[] endLine = {"Total", String.valueOf(Animals.size()), "", "", "", String.valueOf(totalEatCount)};
                 animalsData[Animals.size()] = endLine;
                 JTable infoTable = new JTable(animalsData,column);
                 infoTable.setBounds(30,40,200,300);
@@ -282,6 +285,7 @@ public class ZooFrame extends JFrame {
         mainP.setBackground(Color.GRAY);
         this.add(mainP, BorderLayout.SOUTH);
         this.add(zooPanel, BorderLayout.CENTER);
+        zooPanel.setPool(new ThreadPool(10,15));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

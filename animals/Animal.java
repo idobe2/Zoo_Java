@@ -41,7 +41,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private double weight;
 	private IDiet diet;
 	protected Point location;
-	protected Thread thread;
+	//protected Thread thread;
 	protected boolean threadSuspended = false;
 	private boolean exit = false;
 
@@ -130,7 +130,8 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		setColor(color);
 		setX_dir(1); // Default
 		setY_dir(1); // Default
-		setThread(new Thread(this));
+
+	//	setThread(new Thread(this));
 	}
 
 	/**
@@ -159,17 +160,17 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * A getter of this animal thread.
 	 * @return (Object) thread.
 	 */
-	public Thread getThread() {
-		return thread;
-	}
+//	public Thread getThread() {
+//		return thread;
+//	}
 
 	/**
 	 * A Setter of this animal thread.
 	 */
-	public boolean setThread(Thread thread) {
-		this.thread = thread;
-		return true;
-	}
+//	public boolean setThread(Thread thread) {
+//		this.thread = thread;
+//		return true;
+//	}
 
 	/**
 	 * A simple getter of color to file.

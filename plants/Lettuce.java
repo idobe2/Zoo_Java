@@ -10,10 +10,19 @@ import utilities.MessageUtility;
  */
 public class Lettuce extends Plant {
 
+	private static Lettuce lettuce = null;
+
+	public static synchronized Lettuce getInstance()
+	{
+		if (lettuce==null)
+			lettuce = new Lettuce();
+		return lettuce;
+	}
+
 	/**
 	 * An easy ctor of lettuce object.
 	 */
-	public Lettuce() {
+	private Lettuce() {
 		MessageUtility.logConstractor("Lettuce", "Lettuce");
 	}
 

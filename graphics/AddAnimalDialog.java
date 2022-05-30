@@ -112,13 +112,14 @@ public class AddAnimalDialog extends JDialog {
                         dispose();
                     }
                     else dispose();
-                    SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        Runnable runnable = new ZooPanel(Animals);
-                        zooPanel.setController(new Thread(runnable));
-                        zooPanel.getController().start();
-                    }
-                });
+                    zooPanel.addToQueue(Animals.get(Animals.size()-1));
+//                    SwingUtilities.invokeLater(new Runnable() {
+//                    public void run() {
+//                        Runnable runnable = new ZooPanel(Animals);
+//                        zooPanel.setController(new Thread(runnable));
+//                        zooPanel.getController().start();
+//                    }
+//                });
                 }
             }
         });
