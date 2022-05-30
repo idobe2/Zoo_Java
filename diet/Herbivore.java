@@ -42,7 +42,7 @@ public class Herbivore implements IDiet {
 		{
 			double temp = animal.getWeight() * 1.07;
 			animal.makeSound();
-			return temp - animal.getWeight()-temp;
+			return temp - animal.getWeight();
 		}
 		return 0;
 	}
