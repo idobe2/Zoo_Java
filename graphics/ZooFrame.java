@@ -33,15 +33,11 @@ public class ZooFrame extends JFrame {
     private final Color color = UIManager.getColor ( "Panel.background" ); // Default background color
     private final ZooPanel zooPanel = new ZooPanel(Animals);
     private BufferedImage backgroundImage = null;
-
     private final AnimalFactory factory = new AnimalFactory();
-
-    private final String[] colors = {"Red", "Blue", "Natural"}; // TODO
-
-    private final JComboBox<String> cbColors = new JComboBox<>(colors); // TODO
-
-    private final JLabel labelAnimal = new JLabel();    // TODO
-    private final JLabel labelColor = new JLabel();     // TODO
+    private final String[] colors = {"Red", "Blue", "Natural"};
+    private final JComboBox<String> cbColors = new JComboBox<>(colors);
+    private final JLabel labelAnimal = new JLabel();
+    private final JLabel labelColor = new JLabel();
 
     /**
      * ZooFrame constructor - make a frame for all the used components.
@@ -98,7 +94,7 @@ public class ZooFrame extends JFrame {
             }
         });
         this.setJMenuBar(mb);
-        this.setSize(1000,500);
+        this.setSize(1300,650);
         /*--------------------MainPanel--------------------*/
         JButton addAnimalButton = new JButton("Add Animal");
         addAnimalButton.setBackground(Color.LIGHT_GRAY);
@@ -117,7 +113,6 @@ public class ZooFrame extends JFrame {
         colorButton.setBackground(Color.LIGHT_GRAY);
         JButton exitButton = new JButton("Exit");
         exitButton.setBackground(Color.LIGHT_GRAY);
-        //mainP.setLayout(new FlowLayout(FlowLayout.CENTER));
         mainP.setLayout(new GridLayout(1,7));
         /*--------------------AddAnimal--------------------*/
         mainP.add(addAnimalButton);
@@ -362,7 +357,7 @@ public class ZooFrame extends JFrame {
                     }
                 });
                 colorFrame.add(c);
-                c.addActionListener(e12 -> colorFrame.dispose());
+                c.addActionListener(ec -> colorFrame.dispose());
                 colorFrame.setSize(400,200);
                 colorFrame.setVisible(true);
             }
