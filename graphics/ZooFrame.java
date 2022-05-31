@@ -40,6 +40,9 @@ public class ZooFrame extends JFrame {
 
     private final JComboBox<String> cbColors = new JComboBox<>(colors); // TODO
 
+    private final JLabel labelAnimal = new JLabel();    // TODO
+    private final JLabel labelColor = new JLabel();     // TODO
+
     /**
      * ZooFrame constructor - make a frame for all the used components.
      * Main panel Initialization along with all action buttons.
@@ -324,24 +327,43 @@ public class ZooFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JFrame colorFrame = new JFrame("Color");
                 String[] animals = new String[Animals.size()];
+
                 for (int i = 0; i < Animals.size(); i++)
-                    animals[i] = Animals.get(i).getClass().getSimpleName() + ": " + Animals.get(i).getColorToString();
+                    animals[i] = Animals.get(i).getClass().getSimpleName() + " - " + Animals.get(i).getColorToString();
                 JComboBox<String> cbAnimals = new JComboBox<>(animals);
+                String dataAnimal = "   Animal Selected: "
+                        + cbAnimals.getItemAt(cbAnimals.getSelectedIndex());
+                labelAnimal.setText(dataAnimal);
+                String dataColors = "   Color Selected: "
+                        + cbColors.getItemAt(cbColors.getSelectedIndex());
+                labelColor.setText(dataColors);
                 colorFrame.setLayout(new GridLayout(3, 2));
-                cbAnimals.setBounds(50, 100, 90, 20);
                 colorFrame.add(cbAnimals);
+                colorFrame.add(labelAnimal);
                 colorFrame.add(cbColors);
-                JButton b = new JButton("OK");
-                b.setBounds(200, 100, 75, 20);
+                colorFrame.add(labelColor);
+                JButton b = new JButton("Change");
+                //b.setBounds(200, 100, 75, 20);
+                JButton c = new JButton("Close");
+                //c.setBounds(200, 100, 75, 20);
                 colorFrame.add(b);
                 b.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        String dataAnimal = "Animal Selected: "
+                                + cbAnimals.getItemAt(cbAnimals.getSelectedIndex());
+                        labelAnimal.setText(dataAnimal);
+                        String dataColors = "Color Selected: "
+                                + cbColors.getItemAt(cbColors.getSelectedIndex());
+                        labelColor.setText(dataColors);
+                        ColoredDecorator animal = new ColoredDecorator(Animals.get(cbAnimals.getSelectedIndex()));
+                        animal.changeColor(cbColors.getItemAt(cbColors.getSelectedIndex()));
                         zooPanel.repaint();
-                        colorFrame.dispose();
                     }
                 });
-                colorFrame.setSize(300,200);
+                colorFrame.add(c);
+                c.addActionListener(e12 -> colorFrame.dispose());
+                colorFrame.setSize(400,200);
                 colorFrame.setVisible(true);
             }
         });

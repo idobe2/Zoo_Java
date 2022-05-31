@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * @see Animal
  */
 public class AddAnimalDialog extends JDialog {
-    //private final String[] animals = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
     private final JTextField tbSize, tbHspeed, tbVspeed;
     private final JLabel labelAnimal = new JLabel();
     private final JLabel labelColor = new JLabel();
