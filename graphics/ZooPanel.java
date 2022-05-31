@@ -34,9 +34,7 @@ public class ZooPanel extends JPanel implements Runnable {
 
     public boolean addToQueue(Animal animal)
     {
-        if (this.pool.addToPool(animal))
-            return true;
-        return false;
+        return this.pool.addToPool(animal);
     }
 
     /**

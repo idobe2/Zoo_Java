@@ -9,12 +9,12 @@ package graphics;
  * @see IDrawable
  */
 public interface IAnimalBehavior {
-    public String getAnimalName();
-    public int getSize();
-    public void eatInc();
-    public int getEatCount();
-    public boolean getChanges ();
-    public void setChanges (boolean state);
-    public void setSuspended() throws InterruptedException;
-    public void setResumed() throws InterruptedException;
+    String getAnimalName();
+    int getSize();
+    void eatInc();
+    int getEatCount();
+    boolean getChanges ();
+    void setChanges (boolean state);
+    void setSuspended() throws InterruptedException;
+    void setResumed() throws InterruptedException;
 }

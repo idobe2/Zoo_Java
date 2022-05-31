@@ -23,7 +23,7 @@ public interface IDiet {
 	 * 		(depending on the realizing class),
 	 * 		otherwise false.
 	 */
-	public boolean canEat(EFoodType food);
+	boolean canEat(EFoodType food);
 
 	/**
 	 * eat function to perform an animal feed 
@@ -36,6 +36,6 @@ public interface IDiet {
 	 * @return 		(double) difference between
 	 * 					new and prev weight.
 	 */
-	public double eat(Animal animal, IEdible food);
+	double eat(Animal animal, IEdible food);
 
 }

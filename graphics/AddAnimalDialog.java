@@ -16,12 +16,12 @@ import java.util.ArrayList;
  * @see Animal
  */
 public class AddAnimalDialog extends JDialog {
-    private final String[] animals = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
+    //private final String[] animals = {"Elephant", "Lion", "Giraffe", "Turtle", "Bear"};
     private final JTextField tbSize, tbHspeed, tbVspeed;
     private final JLabel labelAnimal = new JLabel();
     private final JLabel labelColor = new JLabel();
     private final String[] colors = {"Red", "Blue", "Natural"};
-    private final JComboBox<String> cbAnimals = new JComboBox<>(animals);
+
     private final JComboBox<String> cbColors = new JComboBox<>(colors);
     private boolean flag = true;
 
@@ -32,8 +32,9 @@ public class AddAnimalDialog extends JDialog {
      * @param zooPanel
      *          Provided ZooPanel for drawing animals.
      */
-    public AddAnimalDialog(ArrayList<Animal> Animals, ZooPanel zooPanel)
+    public AddAnimalDialog(ArrayList<Animal> Animals, ZooPanel zooPanel, String[] animals)
     {
+        JComboBox<String> cbAnimals = new JComboBox<>(animals);
         this.setLayout(new GridLayout(6, 2));
         cbAnimals.setBounds(50, 100, 90, 20);
         this.add(cbAnimals);

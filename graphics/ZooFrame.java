@@ -1,6 +1,7 @@
 package graphics;
 
 import animals.Animal;
+import animals.Bear;
 import mobility.Point;
 import plants.*;
 import javax.imageio.ImageIO;
@@ -32,6 +33,12 @@ public class ZooFrame extends JFrame {
     private final Color color = UIManager.getColor ( "Panel.background" ); // Default background color
     private final ZooPanel zooPanel = new ZooPanel(Animals);
     private BufferedImage backgroundImage = null;
+
+    private final AnimalFactory factory = new AnimalFactory();
+
+    private final String[] colors = {"Red", "Blue", "Natural"}; // TODO
+
+    private final JComboBox<String> cbColors = new JComboBox<>(colors); // TODO
 
     /**
      * ZooFrame constructor - make a frame for all the used components.
@@ -103,6 +110,8 @@ public class ZooFrame extends JFrame {
         foodButton.setBackground(Color.LIGHT_GRAY);
         JButton infoButton = new JButton("Info");
         infoButton.setBackground(Color.LIGHT_GRAY);
+        JButton colorButton = new JButton("Color");
+        colorButton.setBackground(Color.LIGHT_GRAY);
         JButton exitButton = new JButton("Exit");
         exitButton.setBackground(Color.LIGHT_GRAY);
         //mainP.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -112,8 +121,45 @@ public class ZooFrame extends JFrame {
         addAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JFrame factoryFrame = new JFrame("Select Factory");
+                JPanel panel = new JPanel();
+                GroupLayout layout = new GroupLayout(panel);
+                JLabel lF = new JLabel("Please select factory");
+                lF.setSize(400, 200);
+                lF.setHorizontalAlignment(JLabel.CENTER);
+                factoryFrame.add(lF);
+                JButton b1 = new JButton("Carnivore");
+                JButton b2 = new JButton("Omnivore");
+                JButton b3 = new JButton("Herbivore");
+                GroupLayout.SequentialGroup leftToRight = layout.createSequentialGroup();
+                leftToRight.addComponent(b1);
+                leftToRight.addComponent(b2);
+                leftToRight.addComponent(b3);
+                GroupLayout.ParallelGroup rowBottom = layout.createParallelGroup();
+                rowBottom.addComponent(b1);
+                rowBottom.addComponent(b2);
+                rowBottom.addComponent(b3);
+                layout.setHorizontalGroup(leftToRight);
+                factoryFrame.add(panel, BorderLayout.PAGE_END);
+                factoryFrame.setSize(400,200);
+                factoryFrame.setVisible(true);
+                /*--------------------Carnivore--------------------*/
+                b1.addActionListener(e1 -> {
+                    factory.addCarnivore(zooPanel,Animals);
+                    factoryFrame.dispose();
+                });
+                /*--------------------Omnivore--------------------*/
+                b2.addActionListener(e2 -> {
+                    factory.addOmnivore(zooPanel,Animals);
+                    factoryFrame.dispose();
+                });
+                /*--------------------Herbivore--------------------*/
+                b3.addActionListener(e3 -> {
+                    factory.addHerbivore(zooPanel,Animals);
+                    factoryFrame.dispose();
+                });
                 //if (Animals.size() < 10 )
-                    new AddAnimalDialog(Animals, zooPanel);
+
                 //else JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
             }
         });
@@ -270,6 +316,33 @@ public class ZooFrame extends JFrame {
                 infoFrame.add(sp);
                 infoFrame.setSize(500,350);
                 infoFrame.setVisible(true);
+            }
+        });
+        mainP.add(colorButton);
+        colorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame colorFrame = new JFrame("Color");
+                String[] animals = new String[Animals.size()];
+                for (int i = 0; i < Animals.size(); i++)
+                    animals[i] = Animals.get(i).getClass().getSimpleName() + ": " + Animals.get(i).getColorToString();
+                JComboBox<String> cbAnimals = new JComboBox<>(animals);
+                colorFrame.setLayout(new GridLayout(3, 2));
+                cbAnimals.setBounds(50, 100, 90, 20);
+                colorFrame.add(cbAnimals);
+                colorFrame.add(cbColors);
+                JButton b = new JButton("OK");
+                b.setBounds(200, 100, 75, 20);
+                colorFrame.add(b);
+                b.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        zooPanel.repaint();
+                        colorFrame.dispose();
+                    }
+                });
+                colorFrame.setSize(300,200);
+                colorFrame.setVisible(true);
             }
         });
         /*--------------------Exit--------------------*/
