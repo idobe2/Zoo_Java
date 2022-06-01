@@ -2,6 +2,7 @@ package graphics;
 
 import animals.Animal;
 import diet.*;
+import plants.Meat;
 import plants.Plant;
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +23,15 @@ public class ZooPanel extends JPanel implements Runnable {
     protected Color backgroundColor;
     //private Thread controller;
     private ThreadPool pool;
+    private static ZooPanel zooPanel = null;
+
+    public static synchronized ZooPanel getInstance(ArrayList<Animal> animals)
+    {
+        if (zooPanel==null) {
+            zooPanel = new ZooPanel(animals);
+        }
+        return zooPanel;
+    }
 
     /**
      * When an object implementing interface Runnable is used to create a thread,
@@ -59,7 +69,7 @@ public class ZooPanel extends JPanel implements Runnable {
      * @param animalArrayList
      *          (ArrayList<Animal>) All existing animals.
      */
-    public ZooPanel(ArrayList<Animal> animalArrayList) {
+    private ZooPanel(ArrayList<Animal> animalArrayList) {
         Animals = animalArrayList;
     }
 

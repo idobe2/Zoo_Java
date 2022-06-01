@@ -1,7 +1,6 @@
 package graphics;
 
 import animals.Animal;
-import animals.Bear;
 import mobility.Point;
 import plants.*;
 import javax.imageio.ImageIO;
@@ -31,7 +30,7 @@ public class ZooFrame extends JFrame {
     private final JMenuItem i1, i2, i3, i4, i5; // i1=Exit,i2=Image,i3=Green,i4=None,i5=Help
     private final JMenuBar mb=new JMenuBar();
     private final Color color = UIManager.getColor ( "Panel.background" ); // Default background color
-    private final ZooPanel zooPanel = new ZooPanel(Animals);
+    private ZooPanel zooPanel = null;
     private BufferedImage backgroundImage = null;
     private final AnimalFactory factory = new AnimalFactory();
     private final String[] colors = {"Red", "Blue", "Natural"};
@@ -57,6 +56,7 @@ public class ZooFrame extends JFrame {
         i3=new JMenuItem("Green");
         i4=new JMenuItem("None");
         i5=new JMenuItem("Help");
+        zooPanel = zooPanel.getInstance(Animals);
         File.add(i1);
         i1.addActionListener(new ActionListener() {
             @Override

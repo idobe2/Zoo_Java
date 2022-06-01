@@ -97,7 +97,7 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 				}
 			} catch (NullPointerException ignored) {}
 
-			if (location.getX() >= getPan().getWidth() ||location.getX() <= 0) {
+			if (location.getX() >= getPan().getWidth() || location.getX() <= 0) {
 				if (location.getX() == 0) location.setX(1);
 				if (x_dir == X_DIR_RIGHT) setX_dir(X_DIR_LEFT);
 				else setX_dir(X_DIR_RIGHT);
@@ -124,9 +124,8 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 					} catch (InterruptedException e) {
 						e.printStackTrace(); }
 				}
-				notifyObservers(" is awake and hungry after "+SPEED+" hours of sleeping");
+				notifyObservers(" is awake and hungry after "+ SPEED + " hours of sleeping"); // TODO: What is this?
 			}
-
 		}
 	}
 
@@ -144,8 +143,8 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 		setHorSpeed(horSpeed);
 		setVerSpeed(verSpeed);
 		setColor(color);
-		setX_dir(1); // Default
-		setY_dir(1); // Default
+		setX_dir(1); // Default X direction
+		setY_dir(1); // Default	Y direction
 		// 	setThread(new Thread(this));
 	}
 

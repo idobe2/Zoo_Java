@@ -20,7 +20,6 @@ public class AddAnimalDialog extends JDialog {
     private final JLabel labelAnimal = new JLabel();
     private final JLabel labelColor = new JLabel();
     private final String[] colors = {"Red", "Blue", "Natural"};
-
     private final JComboBox<String> cbColors = new JComboBox<>(colors);
     private boolean flag = true;
 
@@ -46,14 +45,14 @@ public class AddAnimalDialog extends JDialog {
         this.add(tbHspeed = new JTextField());
         this.add(new JLabel("Vertical speed:"));
         this.add(tbVspeed = new JTextField());
-        JButton b = new JButton("OK");
-        b.setBounds(200, 100, 75, 20);
+        JButton ok = new JButton("OK");
+        ok.setBounds(200, 100, 75, 20);
         this.add(cbColors);
         labelColor.setHorizontalAlignment(JLabel.CENTER);
         labelColor.setSize(400, 100);
         this.add(labelColor);
-        this.add(b);
-        b.addActionListener(new ActionListener() {
+        this.add(ok);
+        ok.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String dataAnimal = "Animal Selected: "
                         + cbAnimals.getItemAt(cbAnimals.getSelectedIndex());

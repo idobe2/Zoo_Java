@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import mobility.Point;
 
 /**
+ * ------------------------Class is out of use------------------------
  * A dialog class that allows you to select an existing animal
  * and move it to new X and Y coordinates.
+ * ------------------------Class is out of use------------------------
  *
  * @version 1.2 19 May 2022
  * @author Ido Ben Nun, Bar Cohen

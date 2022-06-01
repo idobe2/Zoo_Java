@@ -3,6 +3,7 @@ package graphics;
 import java.util.Vector;
 
 public class Observable implements Runnable {
+
     private Vector<Observer> list; // = new Vector<java.util.Observer>();
 
     public void registerObserver(Observer ob) {
