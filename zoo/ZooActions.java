@@ -51,36 +51,36 @@ public class ZooActions {
 		{
 			if (animal instanceof Lion)
 			{
-				distance = ((Lion) animal).calcDistance(point);
-				((Lion) animal).addTotalDistance(distance);
+				distance = ((Lion) animal).getLocation().calcDistance(point);
+				((Lion) animal).getLocation().addTotalDistance(distance);
 				((Lion) animal).setLocation(point);
 			}
 				
 			else if (animal instanceof Bear)
 			{
-				distance = ((Bear) animal).calcDistance(point);
-				((Bear) animal).addTotalDistance(distance);
+				distance = ((Bear) animal).getLocation().calcDistance(point);
+				((Bear) animal).getLocation().addTotalDistance(distance);
 				((Bear) animal).setLocation(point);
 			}
 				
 			else if (animal instanceof Elephant)
 			{
-				distance = ((Elephant) animal).calcDistance(point);
-				((Elephant) animal).addTotalDistance(distance);
+				distance = ((Elephant) animal).getLocation().calcDistance(point);
+				((Elephant) animal).getLocation().addTotalDistance(distance);
 				((Elephant) animal).setLocation(point);
 			}
 					
 			else if (animal instanceof Giraffe)
 			{
-				distance = ((Giraffe) animal).calcDistance(point);
-				((Giraffe) animal).addTotalDistance(distance);
+				distance = ((Giraffe) animal).getLocation().calcDistance(point);
+				((Giraffe) animal).getLocation().addTotalDistance(distance);
 				((Giraffe) animal).setLocation(point);
 			}
 				
 			else if (animal instanceof Turtle)
 			{
-				distance = ((Turtle) animal).calcDistance(point);
-				((Turtle) animal).addTotalDistance(distance);
+				distance = ((Turtle) animal).getLocation().calcDistance(point);
+				((Turtle) animal).getLocation().addTotalDistance(distance);
 				((Turtle) animal).setLocation(point);
 			}
 		else return false;

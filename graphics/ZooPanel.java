@@ -20,7 +20,7 @@ public class ZooPanel extends JPanel implements Runnable {
     protected Plant food = null;
     protected BufferedImage backgroundImage = null;
     protected Color backgroundColor;
-    private Thread controller;
+    //private Thread controller;
     private ThreadPool pool;
 
     /**
@@ -41,12 +41,12 @@ public class ZooPanel extends JPanel implements Runnable {
      * A getter of the controller thread.
      * @return (Thread)
      */
-    public Thread getController() { return this.controller; }
+    //public Thread getController() { return this.controller; }
 
     /**
      * A setter of the controller thread.
      */
-    public boolean setController(Thread controller) {this.controller = controller; return true; }
+   // public boolean setController(Thread controller) {this.controller = controller; return true; }
 
     public boolean setPool(ThreadPool pool)
     {
@@ -172,7 +172,7 @@ public class ZooPanel extends JPanel implements Runnable {
                             if (Animals.get(i).getDiet() instanceof Carnivore || Animals.get(i).getDiet() instanceof Omnivore) {
                                 if (((Animals.get(j).getDiet() instanceof Herbivore) || (Animals.get(j).getDiet() instanceof Omnivore))) {
                                     if (Animals.get(i).getWeight() >= 2 * Animals.get(j).getWeight()) {
-                                        if (Animals.get(i).calcDistance(Animals.get(j).getLocation()) < Animals.get(j).getSize()) {
+                                        if (Animals.get(i).getLocation().calcDistance(Animals.get(j).getLocation()) < Animals.get(j).getSize()) {
                                             Animals.get(i).eat(Animals.get(j));
                                             Animals.get(i).eatInc();
                                             Animals.get(j).stop();

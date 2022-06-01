@@ -1,7 +1,5 @@
 package mobility;
 
-import utilities.MessageUtility;
-
 /**
  * An abstract class that defines movement in space.
  *
@@ -19,7 +17,7 @@ public abstract class Mobile implements Ilocatable {
 	public Mobile() {
 		this.location = new Point();
 		this.totalDistance = 0; }
-	
+
 	/**
 	 * A simple ctor of Mobile Point location.
 	 *
@@ -30,7 +28,7 @@ public abstract class Mobile implements Ilocatable {
 		this.totalDistance = 0;
 		this.location = location;
 	}
-	
+
 	/**
 	 * A simple setter of Point object.
 	 * Perform set of X and Y values.
@@ -91,7 +89,7 @@ public abstract class Mobile implements Ilocatable {
 
 	/**
 	 * Function to update Point location and total distance.
-	 * 
+	 *
 	 * @param other
 	 * 			Point object.
 	 * @return the total distance.

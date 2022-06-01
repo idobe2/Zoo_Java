@@ -9,18 +9,19 @@ import utilities.MessageUtility;
  * @author Ido Ben Nun, Bar Cohen
  * @see Mobile
  */
-public class Point {
+public class Point implements Ilocatable{
 	private static final int MAX_X = 800, MAX_Y = 600, MIN_X = 0, MIN_Y = 0;
 	private int x;
 	private int y;
+	private Point location;
+	private double totalDistance;
 	
 	/**
 	 * Default ctor for Point object.
 	 */
 	public Point()
 	{
-		this.x = 0;
-		this.y = 0;
+		super();
 	}
 
 	/**
@@ -123,5 +124,67 @@ public class Point {
 			if (getY() >=MIN_Y && getY() <= MAX_Y)
 				return true;
 		return false;
+	}
+	public boolean setLocation(Point other) {
+		if (this.location == null) {
+			this.location = new Point(other.getX(), other.getY());	}
+		else {
+			this.location.setX(other.getX()); this.location.setY(other.getY());
+		}
+		return true;
+
+	}
+
+	/**
+	 * A simple getter for Point object.
+	 *
+	 * @return this Point object.
+	 */
+	public synchronized Point getLocation() {
+		return this.location;
+	}
+
+	/**
+	 * A simple getter for total distance of an animal.
+	 *
+	 * @return double parameter total distance.
+	 */
+	public double getTotalDistance() { return this.totalDistance; }
+
+	/**
+	 * An easy function to add distance.
+	 *
+	 * @param distance
+	 * 			(double)distance to be
+	 * 			added to total distance.
+	 */
+	public void addTotalDistance (double distance){
+		this.totalDistance += distance;
+	}
+
+	/**
+	 * An easy function to calculate the distance traveled between the points.
+	 *
+	 * @param other
+	 * 			Other Point object.
+	 * @return The result of the calculation.
+	 */
+	public double calcDistance(Point other){
+		return Math.sqrt((Math.pow(location.getX()-other.getX(),2))+(Math.pow(location.getY()-other.getY(),2)));
+	}
+
+	/**
+	 * Function to update Point location and total distance.
+	 *
+	 * @param other
+	 * 			Point object.
+	 * @return the total distance.
+	 */
+	public double move(Point other){
+		if(!other.checkPoint())
+			return 0;
+		this.totalDistance += calcDistance(other);
+		this.location = other;
+		return this.totalDistance;
 	}
 }

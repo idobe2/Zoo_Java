@@ -3,9 +3,7 @@ package animals;
 import diet.IDiet;
 import food.EFoodType;
 import food.IEdible;
-import graphics.IAnimalBehavior;
-import graphics.IDrawable;
-import graphics.ZooPanel;
+import graphics.*;
 import mobility.Mobile;
 import mobility.Point;
 import utilities.MessageUtility;
@@ -14,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
+import java.util.Vector;
+
 
 /**
  * A class that contains all fields of an animal object,
@@ -23,7 +23,7 @@ import java.text.DecimalFormat;
  * @author Ido Ben Nun, Bar Cohen
  * @see Mobile
  */
-public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnimalBehavior, Runnable {
+public abstract class Animal extends Observable implements IEdible ,IDrawable, IAnimalBehavior, Runnable {
 
 	private static final int X_DIR_RIGHT = 1, X_DIR_LEFT = -1, Y_DIR_UP = 1, Y_DIR_DOWN = -1, MIN_SIZE = 50, MAX_SIZE = 300, SPEED = 75;
 	private final int EAT_DISTANCE = 10;
@@ -41,9 +41,23 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	private double weight;
 	private IDiet diet;
 	protected Point location;
-	//protected Thread thread;
 	protected boolean threadSuspended = false;
 	private boolean exit = false;
+
+	private Vector<Observer> list = new Vector<Observer>();
+
+	public void registerObserver(Observer ob) {list.add(ob);}
+
+	public synchronized void unregisterObserver(Observer ob) {
+		int index = list.indexOf(ob);
+		list.set(index, list.lastElement());
+		list.remove(list.size()-1);
+	}
+
+	public void notifyObservers(String msg) {
+		for (Observer ob: list)
+			ob.notify(getName()+msg);
+	}
 
 	/**
 	 * When an object implementing interface Runnable is used to create a thread,
@@ -55,25 +69,25 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 		while (!exit) {
 			try {
 				while (diet.canEat(getPan().getFood().getFoodType())) {
-					if (getLocation().getX() >= getPan().getFood().getLocation().getX()) {
+					if (location.getX() >= getPan().getFood().getLocation().getX()) {
 						this.x_dir = X_DIR_LEFT;
-						if (getLocation().getY() >= getPan().getFood().getLocation().getY())
-							setLocation(new Point(getLocation().getX() - horSpeed, getLocation().getY() - verSpeed));
+						if (location.getY() >= getPan().getFood().getLocation().getY())
+							location=new Point(location.getX() - horSpeed, location.getY() - verSpeed);
 					}
-					if (getLocation().getX() <= getPan().getFood().getLocation().getX()) {
+					if (location.getX() <= getPan().getFood().getLocation().getX()) {
 						this.x_dir = X_DIR_RIGHT;
-						if (getLocation().getY() <= getPan().getFood().getLocation().getY())
-							setLocation(new Point(getLocation().getX() + horSpeed, getLocation().getY() + verSpeed));
+						if (location.getY() <= getPan().getFood().getLocation().getY())
+							location=new Point(location.getX() + horSpeed, location.getY() + verSpeed);
 					}
-					if (getLocation().getX() <= getPan().getFood().getLocation().getX()) {
+					if (location.getX() <= getPan().getFood().getLocation().getX()) {
 						this.x_dir = X_DIR_RIGHT;
-						if (getLocation().getY() >= getPan().getFood().getLocation().getY())
-							setLocation(new Point(getLocation().getX() + horSpeed, getLocation().getY() - verSpeed));
+						if (location.getY() >= getPan().getFood().getLocation().getY())
+							location=new Point(location.getX() + horSpeed, location.getY() - verSpeed);
 					}
-					if (getLocation().getX() >= getPan().getFood().getLocation().getX()) {
+					if (location.getX() >= getPan().getFood().getLocation().getX()) {
 						this.x_dir = X_DIR_LEFT;
-						if (getLocation().getY() <= getPan().getFood().getLocation().getY())
-							setLocation(new Point(getLocation().getX() - horSpeed, getLocation().getY() + verSpeed));
+						if (location.getY() <= getPan().getFood().getLocation().getY())
+							location=new Point(location.getX() - horSpeed, location.getY() + verSpeed);
 					}
 					getPan().repaint();
 					getPan().manageZoo();
@@ -83,17 +97,17 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 				}
 			} catch (NullPointerException ignored) {}
 
-			if (getLocation().getX() >= getPan().getWidth() || getLocation().getX() <= 0) {
-				if (getLocation().getX() == 0) getLocation().setX(1);
+			if (location.getX() >= getPan().getWidth() ||location.getX() <= 0) {
+				if (location.getX() == 0) location.setX(1);
 				if (x_dir == X_DIR_RIGHT) setX_dir(X_DIR_LEFT);
 				else setX_dir(X_DIR_RIGHT);
 			}
-			if (getLocation().getY() >= getPan().getHeight() || getLocation().getY() <= 0) {
-				if (getLocation().getY() == 0) getLocation().setY(1);
+			if (location.getY() >= getPan().getHeight() || location.getY() <= 0) {
+				if (location.getY() == 0) location.setY(1);
 				if (y_dir == Y_DIR_UP) setY_dir(Y_DIR_DOWN);
 				else setY_dir(Y_DIR_UP);
 			}
-			setLocation(new Point(getLocation().getX() + horSpeed * x_dir, getLocation().getY() + verSpeed * y_dir));
+			location=new Point(location.getX() + horSpeed * x_dir, location.getY() + verSpeed * y_dir);
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
 					getPan().repaint();
@@ -110,7 +124,9 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 					} catch (InterruptedException e) {
 						e.printStackTrace(); }
 				}
+				notifyObservers(" is awake and hungry after "+SPEED+" hours of sleeping");
 			}
+
 		}
 	}
 
@@ -295,9 +311,9 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	public void drawObject (Graphics g)
 	{
 		if(getX_dir()==1) // animal goes to the right side
-			g.drawImage(img1, getLocation().getX()-size/2, getLocation().getY()-size/10, size/2, size, pan);
+			g.drawImage(img1, location.getX()-size/2, location.getY()-size/10, size/2, size, pan);
 		else // animal goes to the left side
-			g.drawImage(img2, getLocation().getX(), getLocation().getY()-size/10, size/2, size, pan);
+			g.drawImage(img2, location.getX(), location.getY()-size/10, size/2, size, pan);
 	}
 
 	/**
@@ -374,7 +390,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * 			location point of the animal.
 	 */
 	public Animal(String name, Point location)	{
-		super(location);
+		location = new Point(location);
 		this.name = name;
 		MessageUtility.logConstractor(getClass().getSimpleName(), getName());
 	}
@@ -490,7 +506,7 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 * Using template: [!] animalName: total distance: [distance], weight: [weight]
 	 * @return string of the object values.
 	 */
-	public String toString() { return "[!] " + this.name + ": total distance: " + getTotalDistance() + ", weight: " + getWeight(); }
+	public String toString() { return "[!] " + this.name + ": total distance: " + location.getTotalDistance() + ", weight: " + getWeight(); }
 
 	/**
 	 * A simple getter of EAT_DISTANCE.
@@ -498,5 +514,16 @@ public abstract class Animal extends Mobile implements IEdible ,IDrawable, IAnim
 	 */
 	public int getEAT_DISTANCE() {
 		return EAT_DISTANCE;
+	}
+
+	public boolean setLocation(Point other)
+	{
+		this.location = new Point(other);
+		return true;
+	}
+
+	public Point getLocation()
+	{
+		return location;
 	}
 }
