@@ -56,7 +56,7 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 
 	public void notifyObservers(String msg) {
 		for (Observer ob: list)
-			ob.notify(getName()+msg);
+			ob.notify(getAnimalName() + msg);
 	}
 
 	/**
@@ -124,7 +124,6 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 					} catch (InterruptedException e) {
 						e.printStackTrace(); }
 				}
-				notifyObservers(" is awake and hungry after "+ SPEED + " hours of sleeping"); // TODO: What is this?
 			}
 		}
 	}
@@ -152,7 +151,8 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	 * A simple synchronized method,
 	 * Allows us to put the animal thread in a waiting position.
 	 */
-	public synchronized void setSuspended() { this.threadSuspended = true; }
+	public synchronized void setSuspended() { this.threadSuspended = true;
+	notifyObservers(" is asleep now");}
 
 	/**
 	 * A simple synchronized method,
@@ -160,7 +160,8 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	 */
 	public synchronized void setResumed() {
 		this.threadSuspended = false;
-		notify(); }
+		notify();
+		notifyObservers(" is awake and hungry");}
 
 	/**
 	 * A simple synchronized method,
@@ -168,6 +169,7 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	 */
 	public synchronized void stop() {
 		exit = true;
+		notifyObservers(" is no longer exists");
 	}
 
 	/**
@@ -274,7 +276,7 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	 * @return (String) Name of animal.
 	 */
 	public String getAnimalName() {
-		return this.name;
+		return this.getClass().getSimpleName();
 	}
 
 	/**

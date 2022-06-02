@@ -22,6 +22,7 @@ public class AddAnimalDialog extends JDialog {
     private final String[] colors = {"Red", "Blue", "Natural"};
     private final JComboBox<String> cbColors = new JComboBox<>(colors);
     private boolean flag = true;
+    private final Observer o = new Controller();
 
     /**
      * A Ctor of AddAnimalDialog, make a dialog for adding an animal to the zoo.
@@ -112,6 +113,7 @@ public class AddAnimalDialog extends JDialog {
                     }
                     else dispose();
                     zooPanel.addToQueue(Animals.get(Animals.size()-1));
+                    Animals.get(Animals.size()-1).registerObserver(o);
 //                    SwingUtilities.invokeLater(new Runnable() {
 //                    public void run() {
 //                        Runnable runnable = new ZooPanel(Animals);
