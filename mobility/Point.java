@@ -170,7 +170,7 @@ public class Point implements Ilocatable{
 	 * @return The result of the calculation.
 	 */
 	public double calcDistance(Point other){
-		return Math.sqrt((Math.pow(location.getX()-other.getX(),2))+(Math.pow(location.getY()-other.getY(),2)));
+		return Math.sqrt((Math.pow(x-other.getX(),2))+(Math.pow(y-other.getY(),2)));
 	}
 
 	/**
