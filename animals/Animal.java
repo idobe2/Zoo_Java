@@ -59,11 +59,11 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 			ob.notify(getAnimalName() + msg);
 	}
 
-	public Memento getMemento()
-	{
-		notifyObservers(" is backed up");
-		return new Memento(this);
-	}
+//	public Memento getMemento()
+//	{
+//		notifyObservers(" is backed up");
+//		return new Memento(this);
+//	}
 
 	public void setMemento(Memento memento)
 	{
@@ -260,11 +260,9 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	 */
 	public boolean setX_dir(int x_dir) {
 		if (x_dir != X_DIR_LEFT && x_dir != X_DIR_RIGHT) {
-			MessageUtility.logSetter(getClass().getSimpleName(), "setX_dir", x_dir, false);
 			return false;
 		}
 		else this.x_dir = x_dir;
-		MessageUtility.logSetter(getClass().getSimpleName(), "setX_dir", x_dir, true);
 		return true; }
 
 	/**
@@ -274,11 +272,9 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	 */
 	public boolean setY_dir(int y_dir) {
 		if (y_dir != Y_DIR_DOWN && y_dir != Y_DIR_UP) {
-			MessageUtility.logSetter(getClass().getSimpleName(), "setY_dir", y_dir, false);
 			return false;
 		}
 		else this.y_dir = y_dir;
-		MessageUtility.logSetter(getClass().getSimpleName(), "setY_dir", y_dir, true);
 		return true; }
 
 	/**

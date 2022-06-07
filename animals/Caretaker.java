@@ -13,9 +13,9 @@ public class Caretaker {
     private Plant food = null;
 
     public void addMemento(ArrayList<Memento> mementos) {
-        if (stack.size() < MAX)
-            stack.add(mementos);
-        else System.out.println("You can't save more than 3 states!");
+        for (Memento memento : mementos)
+            memento.getAnimal().notifyObservers(" is backed up");
+        stack.add(mementos);
     }
 
     public ArrayList <Memento> getMemento() {
