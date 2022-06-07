@@ -180,6 +180,7 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	 * Allows us to put the animal thread back in a running position.
 	 */
 	public synchronized void setResumed() {
+		this.exit = false;
 		this.threadSuspended = false;
 		notify();
 		notifyObservers(" is awake and hungry");}
@@ -540,13 +541,13 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 
 	public boolean setLocation(Point other)
 	{
-		this.location = new Point(other);
+		this.location = other;
 		return true;
 	}
 
 	public Point getLocation()
 	{
-		return location;
+		return this.location;
 	}
 
 	public void setEatCount(int eatCount) {

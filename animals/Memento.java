@@ -11,6 +11,7 @@ public class Memento {
     private int eatCount, size, horSpeed, verSpeed, x_dir, y_dir;
     private Point location;
 
+    private Animal animal;
 //    public Memento(int size, int horSpeed, int verSpeed, String color, double weight, int eatCount, int x_dir,  int y_dir, Point location)
 //    {
 //        this.size = size;
@@ -26,6 +27,7 @@ public class Memento {
 
     public Memento(Animal other)
     {
+        this.animal = other;
         this.size = other.getSize();
         this.weight = other.getWeight();
         this.horSpeed = other.getHorSpeed();
@@ -37,6 +39,7 @@ public class Memento {
         this.eatCount = other.getEatCount();
     }
 
+    public Animal getAnimal() { return this.animal; }
     public int getSize() {
         return size;
     }

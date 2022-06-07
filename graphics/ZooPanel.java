@@ -25,6 +25,8 @@ public class ZooPanel extends JPanel implements Runnable {
     private ThreadPool pool;
     private static ZooPanel zooPanel = null;
 
+    //private final Observer o = new Controller();
+
     public static synchronized ZooPanel getInstance(ArrayList<Animal> animals)
     {
         if (zooPanel==null) {
@@ -186,6 +188,7 @@ public class ZooPanel extends JPanel implements Runnable {
                                             Animals.get(i).eat(Animals.get(j));
                                             Animals.get(i).eatInc();
                                             Animals.get(j).stop();
+                                            //Animals.get(j).unregisterObserver();
                                             Animals.remove(j);
                                             SwingUtilities.invokeLater(new Runnable() {
                                                 public void run() {

@@ -124,13 +124,10 @@ public class Point implements Ilocatable{
 		return false;
 	}
 	public boolean setLocation(Point other) {
-		if (this.location == null) {
-			this.location = new Point(other.getX(), other.getY());	}
-		else {
-			this.location.setX(other.getX()); this.location.setY(other.getY());
-		}
+		if (other == null)
+			return false;
+		else this.location = new Point(other);
 		return true;
-
 	}
 
 	/**

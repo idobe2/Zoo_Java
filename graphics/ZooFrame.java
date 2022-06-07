@@ -40,7 +40,9 @@ public class ZooFrame extends JFrame {
     private final JLabel labelAnimal = new JLabel();
     private final JLabel labelColor = new JLabel();
     private final Caretaker caretaker = new Caretaker();
-    private final ArrayList<Memento> mementos = new ArrayList<>();
+    private ArrayList<Memento> mementos = new ArrayList<>();
+
+    //private final Observer o = new Controller();
 
     /**
      * ZooFrame constructor - make a frame for all the used components.
@@ -330,7 +332,6 @@ public class ZooFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JFrame colorFrame = new JFrame("Color");
                 String[] animals = new String[Animals.size()];
-
                 for (int i = 0; i < Animals.size(); i++)
                     animals[i] = Animals.get(i).getClass().getSimpleName() + " - " + Animals.get(i).getColorToString();
                 JComboBox<String> cbAnimals = new JComboBox<>(animals);
@@ -394,10 +395,21 @@ public class ZooFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!caretaker.isEmpty()) {
-                    ArrayList<Memento> mementos = caretaker.getMemento();
+                    mementos = caretaker.getMemento();
+                    if (mementos.size()!=Animals.size())
+                        for (Memento memento : mementos)
+                           if (!Animals.contains(memento.getAnimal()))
+                           {
+                               Animals.add(memento.getAnimal());
+                               Animals.get(Animals.indexOf(memento.getAnimal())).setPan(zooPanel);
+                               Animals.get(Animals.indexOf(memento.getAnimal())).drawObject(zooPanel.getGraphics());
+                               Animals.get(Animals.indexOf(memento.getAnimal())).setResumed();
+                               zooPanel.repaint();
+                               zooPanel.addToQueue(Animals.get(Animals.indexOf(memento.getAnimal())));
+                               //Animals.get(Animals.indexOf(memento.getAnimal())).registerObserver(o);
+                           }
                     for (Animal animal : Animals) {
                         try {
-
                             animal.setMemento(mementos.get(Animals.indexOf(animal))); // getting index of current animal
                             //animal.loadImages(mementos.get(Animals.indexOf(animal)).getColor()); // No need
                         } catch (NullPointerException exception) {
