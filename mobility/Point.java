@@ -1,7 +1,5 @@
 package mobility;
 
-import utilities.MessageUtility;
-
 /**
  * A class that uses 2D axis for location estimation.
  * 

@@ -1,6 +1,8 @@
 package graphics;
 
 import animals.Animal;
+import animals.Caretaker;
+import animals.Memento;
 import mobility.Point;
 import plants.*;
 import javax.imageio.ImageIO;
@@ -37,6 +39,8 @@ public class ZooFrame extends JFrame {
     private final JComboBox<String> cbColors = new JComboBox<>(colors);
     private final JLabel labelAnimal = new JLabel();
     private final JLabel labelColor = new JLabel();
+    private final Caretaker caretaker = new Caretaker();
+    private final ArrayList<Memento> mementos = new ArrayList<>();
 
     /**
      * ZooFrame constructor - make a frame for all the used components.
@@ -56,7 +60,7 @@ public class ZooFrame extends JFrame {
         i3=new JMenuItem("Green");
         i4=new JMenuItem("None");
         i5=new JMenuItem("Help");
-        zooPanel = zooPanel.getInstance(Animals);
+        zooPanel = ZooPanel.getInstance(Animals);
         File.add(i1);
         i1.addActionListener(new ActionListener() {
             @Override
@@ -111,6 +115,10 @@ public class ZooFrame extends JFrame {
         infoButton.setBackground(Color.LIGHT_GRAY);
         JButton colorButton = new JButton("Color");
         colorButton.setBackground(Color.LIGHT_GRAY);
+        JButton backupButton = new JButton("Back up");
+        backupButton.setBackground(Color.LIGHT_GRAY);
+        JButton restoreButton = new JButton("Restore");
+        restoreButton.setBackground(Color.LIGHT_GRAY);
         JButton exitButton = new JButton("Exit");
         exitButton.setBackground(Color.LIGHT_GRAY);
         mainP.setLayout(new GridLayout(1,7));
@@ -360,6 +368,45 @@ public class ZooFrame extends JFrame {
                 c.addActionListener(ec -> colorFrame.dispose());
                 colorFrame.setSize(400,200);
                 colorFrame.setVisible(true);
+            }
+        });
+        /*--------------------BackUp--------------------*/
+        mainP.add(backupButton);
+        backupButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (caretaker.isAvailable()) {
+                    mementos.clear();
+                    for (Animal animal : Animals) {
+                        //animal.setMemento(new Memento(animal)); // Only for restore
+                        mementos.add(animal.getMemento());
+                    }
+                    caretaker.addMemento(mementos);
+                    //caretaker.addMemento(animal.getMemento());
+                    System.out.println("Back up succeeded!");
+                }
+                else System.out.println("You can't back up more than 3 times without restore");
+            }
+        });
+        /*--------------------Restore--------------------*/
+        mainP.add(restoreButton);
+        restoreButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!caretaker.isEmpty()) {
+                    ArrayList<Memento> mementos = caretaker.getMemento();
+                    for (Animal animal : Animals) {
+                        try {
+
+                            animal.setMemento(mementos.get(Animals.indexOf(animal))); // getting index of current animal
+                            //animal.loadImages(mementos.get(Animals.indexOf(animal)).getColor()); // No need
+                        } catch (NullPointerException exception) {
+                            System.out.println("You don't have any back ups!");
+                        }
+                    }
+                    System.out.println("Restore succeeded!");
+                }
+                else System.out.println("You can't restore because there is no back ups available");
             }
         });
         /*--------------------Exit--------------------*/

@@ -40,7 +40,7 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	private String name;
 	private double weight;
 	private IDiet diet;
-	protected Point location;
+	private Point location;
 	protected boolean threadSuspended = false;
 	private boolean exit = false;
 
@@ -57,6 +57,27 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	public void notifyObservers(String msg) {
 		for (Observer ob: list)
 			ob.notify(getAnimalName() + msg);
+	}
+
+	public Memento getMemento()
+	{
+		notifyObservers(" is backed up");
+		return new Memento(this);
+	}
+
+	public void setMemento(Memento memento)
+	{
+		setSize(memento.getSize());
+		setWeight(memento.getWeight());
+		setHorSpeed(memento.getHorSpeed());
+		setVerSpeed(memento.getVerSpeed());
+		setColor(memento.getColor());
+		setX_dir(memento.getX_dir());
+		setY_dir(memento.getY_dir());
+		setLocation(memento.getLocation());
+		setEatCount(memento.getEatCount());
+		loadImages(memento.getColor()); // Change color of animal
+		notifyObservers(" is restored");
 	}
 
 	/**
@@ -526,5 +547,9 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	public Point getLocation()
 	{
 		return location;
+	}
+
+	public void setEatCount(int eatCount) {
+		this.eatCount = eatCount;
 	}
 }

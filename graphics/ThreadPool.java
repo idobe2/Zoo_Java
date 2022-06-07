@@ -24,6 +24,7 @@ public class ThreadPool extends Component {
     public boolean addToPool(Runnable other)
     {
         try {   // TODO: How to limit the number of animals in queue?
+            this.linkedBlockingQueue.add(other);
             this.threadPoolExecutor.execute(other);
             return true;
         } catch (RejectedExecutionException e) {
