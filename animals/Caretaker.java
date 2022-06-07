@@ -1,5 +1,7 @@
 package animals;
 
+import plants.Plant;
+
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.Stack;
@@ -7,6 +9,8 @@ import java.util.Stack;
 public class Caretaker {
     private final Stack<ArrayList <Memento>> stack = new Stack<>();
     private static final int MAX = 3;
+
+    private Plant food = null;
 
     public void addMemento(ArrayList<Memento> mementos) {
         if (stack.size() < MAX)
@@ -32,4 +36,8 @@ public class Caretaker {
     {
         return stack.size() < MAX;
     }
+
+    public void setFood(Plant food) {this.food = food;}
+
+    public Plant getFood() { return food; }
 }

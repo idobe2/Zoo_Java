@@ -1,6 +1,7 @@
 package animals;
 
 import mobility.Point;
+import plants.Plant;
 
 import java.awt.image.BufferedImage;
 
@@ -10,20 +11,8 @@ public class Memento {
     private String col;
     private int eatCount, size, horSpeed, verSpeed, x_dir, y_dir;
     private Point location;
-
     private Animal animal;
-//    public Memento(int size, int horSpeed, int verSpeed, String color, double weight, int eatCount, int x_dir,  int y_dir, Point location)
-//    {
-//        this.size = size;
-//        this.weight = weight;
-//        this.horSpeed = horSpeed;
-//        this.verSpeed = verSpeed;
-//        this.col = color;
-//        this.x_dir = x_dir;
-//        this.y_dir = y_dir;
-//        this.location = location;
-//        this.eatCount = eatCount;
-//    }
+//    private Plant food;
 
     public Memento(Animal other)
     {
@@ -39,39 +28,33 @@ public class Memento {
         this.eatCount = other.getEatCount();
     }
 
+//    public void setFood(Plant food) { this.food = food; }
+//    public Plant getFood() { return this.food; }
     public Animal getAnimal() { return this.animal; }
     public int getSize() {
         return size;
     }
-
     public double getWeight() {
         return weight;
     }
-
     public String getColor() {
         return col;
     }
-
     public int getHorSpeed() {
         return horSpeed;
     }
-
     public int getVerSpeed() {
         return verSpeed;
     }
-
     public int getX_dir() {
         return x_dir;
     }
-
     public int getY_dir() {
         return y_dir;
     }
-
     public Point getLocation() {
         return location;
     }
-
     public int getEatCount() {
         return eatCount;
     }

@@ -24,7 +24,6 @@ public class ThreadPool extends Component {
             this.threadPoolExecutor.execute(other);
             return true;
         } catch (RejectedExecutionException e) {
-            //JOptionPane.showMessageDialog(null, "You cannot add more than " + corePoolSize + "animals");
             return false;
         }
     }

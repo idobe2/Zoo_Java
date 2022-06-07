@@ -378,15 +378,17 @@ public class ZooFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (caretaker.isAvailable()) {
                     mementos.clear();
+                    Memento memento = null;
                     for (Animal animal : Animals) {
-                        //animal.setMemento(new Memento(animal)); // Only for restore
-                        mementos.add(animal.getMemento());
+                        memento = new Memento(animal);
+                        mementos.add(memento);
                     }
                     caretaker.addMemento(mementos);
-                    //caretaker.addMemento(animal.getMemento());
-                    System.out.println("Back up succeeded!");
+                    if (zooPanel.getFood()!=null)
+                        caretaker.setFood(zooPanel.getFood());
+                    else caretaker.setFood(null);
                 }
-                else System.out.println("You can't back up more than 3 times without restore");
+                else JOptionPane.showMessageDialog(null, "You can not create more than 3 backups");
             }
         });
         /*--------------------Restore--------------------*/
@@ -396,29 +398,26 @@ public class ZooFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (!caretaker.isEmpty()) {
                     mementos = caretaker.getMemento();
-                    if (mementos.size()!=Animals.size())
+                    if (mementos.size() != Animals.size())
                         for (Memento memento : mementos)
-                           if (!Animals.contains(memento.getAnimal()))
-                           {
-                               Animals.add(memento.getAnimal());
-                               Animals.get(Animals.indexOf(memento.getAnimal())).setPan(zooPanel);
-                               Animals.get(Animals.indexOf(memento.getAnimal())).drawObject(zooPanel.getGraphics());
-                               Animals.get(Animals.indexOf(memento.getAnimal())).setResumed();
-                               zooPanel.repaint();
-                               zooPanel.addToQueue(Animals.get(Animals.indexOf(memento.getAnimal())));
-                               //Animals.get(Animals.indexOf(memento.getAnimal())).registerObserver(o);
-                           }
+                            if (!Animals.contains(memento.getAnimal())) {
+                                Animal restoreAnimal = memento.getAnimal();
+                                restoreAnimal.setPan(zooPanel);
+                                restoreAnimal.drawObject(zooPanel.getGraphics());
+                                restoreAnimal.setResumed();
+                                Animals.add(restoreAnimal);
+                                zooPanel.addToQueue(Animals.get(Animals.size() - 1));
+                            }
                     for (Animal animal : Animals) {
                         try {
                             animal.setMemento(mementos.get(Animals.indexOf(animal))); // getting index of current animal
-                            //animal.loadImages(mementos.get(Animals.indexOf(animal)).getColor()); // No need
-                        } catch (NullPointerException exception) {
-                            System.out.println("You don't have any back ups!");
-                        }
+                        } catch (NullPointerException ignored) {}
                     }
-                    System.out.println("Restore succeeded!");
+                    if (caretaker.getFood()!=null)
+                        zooPanel.setFood(foodType);
+                    repaint();
                 }
-                else System.out.println("You can't restore because there is no back ups available");
+                else JOptionPane.showMessageDialog(null, "No backups available!");
             }
         });
         /*--------------------Exit--------------------*/
