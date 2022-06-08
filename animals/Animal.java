@@ -43,28 +43,41 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	private Point location;
 	protected boolean threadSuspended = false;
 	private boolean exit = false;
+	private Vector<Observer> list = new Vector<>();
 
-	private Vector<Observer> list = new Vector<Observer>();
-
+	/**
+	 * This function is used to register
+	 * the observer to subject.
+	 * @param ob (Observer) to be registered.
+	 */
 	public void registerObserver(Observer ob) {list.add(ob);}
 
-	public synchronized void unregisterObserver(Observer ob) {
+	/**
+	 * This function is used to unregister
+	 * the observer from subject.
+	 * @param ob (Observer) to be unregistered.
+	 */
+	public void unregisterObserver(Observer ob) {
 		int index = list.indexOf(ob);
 		list.set(index, list.lastElement());
 		list.remove(list.size()-1);
 	}
 
+	/**
+	 * Notify all of its observers
+	 * if the object has changed.
+	 * @param msg
+	 */
 	public void notifyObservers(String msg) {
 		for (Observer ob: list)
 			ob.notify(getAnimalName() + msg);
 	}
 
-//	public Memento getMemento()
-//	{
-//		notifyObservers(" is backed up");
-//		return new Memento(this);
-//	}
-
+	/**
+	 * We use this function
+	 * to restore state of this object.
+	 * @param memento (Memento) object to restore state.
+	 */
 	public void setMemento(Memento memento)
 	{
 		setSize(memento.getSize());
