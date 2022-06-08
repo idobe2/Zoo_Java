@@ -51,6 +51,7 @@ public abstract class Chew extends Animal{
 	public void makeSound()
 	{
 		chew();
+		notifyObservers(" ate");
 	}
 
 }

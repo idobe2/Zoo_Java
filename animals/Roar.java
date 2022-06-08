@@ -54,6 +54,7 @@ public abstract class Roar extends Animal{
 	public void makeSound()
 	{
 		roar();
+		notifyObservers(" ate");
 	}
 	
 	/**

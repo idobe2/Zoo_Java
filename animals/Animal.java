@@ -14,7 +14,6 @@ import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 import java.util.Vector;
 
-
 /**
  * A class that contains all fields of an animal object,
  * including GUI components and implements runnable.
