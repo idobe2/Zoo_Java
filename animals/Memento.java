@@ -28,8 +28,6 @@ public class Memento {
         this.eatCount = other.getEatCount();
     }
 
-//    public void setFood(Plant food) { this.food = food; }
-//    public Plant getFood() { return this.food; }
     public Animal getAnimal() { return this.animal; }
     public int getSize() {
         return size;

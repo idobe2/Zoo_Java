@@ -13,7 +13,7 @@ import java.io.IOException;
  * The trunk length of elephants can be 
  * between 0.5 and 3 meters.
  * 
- * @version 1.2 19 May 2022
+ * @version 1.3 09 June 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Chew
  */

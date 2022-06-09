@@ -1,9 +1,17 @@
 package graphics;
 
 import animals.Animal;
-
 import java.util.ArrayList;
 
+/**
+ * This is an abstract factory class.
+ * We use it to create another layer of abstraction for animals type.
+ * Implementing IAbstractFactory.
+ *
+ * @version 1.3 09 June 2022
+ * @author Ido Ben Nun, Bar Cohen
+ * @see IAnimalDecorator
+ */
 public class AnimalFactory implements IAbstractFactory {
 
     @Override

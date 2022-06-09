@@ -14,7 +14,7 @@ import java.io.IOException;
  * Each time a lion eats,
  * it can get one more scar.
  * 
- * @version 1.2 19 May 2022
+ * @version 1.3 09 June 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see Roar
  */

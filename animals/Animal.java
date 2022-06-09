@@ -18,9 +18,9 @@ import java.util.Vector;
  * A class that contains all fields of an animal object,
  * including GUI components and implements runnable.
  * 
- * @version 1.2 19 May 2022
+ * @version 1.3 09 June 2022
  * @author Ido Ben Nun, Bar Cohen
- * @see Mobile
+ * @see Observable
  */
 public abstract class Animal extends Observable implements IEdible ,IDrawable, IAnimalBehavior, Runnable {
 
@@ -56,7 +56,7 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	 * the observer from subject.
 	 * @param ob (Observer) to be unregistered.
 	 */
-	public void unregisterObserver(Observer ob) {
+	public synchronized void unregisterObserver(Observer ob) {
 		int index = list.indexOf(ob);
 		list.set(index, list.lastElement());
 		list.remove(list.size()-1);
@@ -73,8 +73,8 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 	}
 
 	/**
-	 * We use this function
-	 * to restore state of this object.
+	 * We use this function to set a memento object,
+	 * in order to restore state of this object.
 	 * @param memento (Memento) object to restore state.
 	 */
 	public void setMemento(Memento memento)
@@ -177,7 +177,6 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 		setColor(color);
 		setX_dir(1); // Default X direction
 		setY_dir(1); // Default	Y direction
-		// 	setThread(new Thread(this));
 	}
 
 	/**
@@ -547,17 +546,30 @@ public abstract class Animal extends Observable implements IEdible ,IDrawable, I
 		return EAT_DISTANCE;
 	}
 
+	/**
+	 * A simple setter of location.
+	 * @param other (Point) location to be applied.
+	 * @return ture.
+	 */
 	public boolean setLocation(Point other)
 	{
 		this.location = other;
 		return true;
 	}
 
+	/**
+	 * A simple getter of location.
+	 * @return (Point) location.
+	 */
 	public Point getLocation()
 	{
 		return this.location;
 	}
 
+	/**
+	 * A simple setter of eatCount.
+	 * @param eatCount (Integer) eat counter.
+	 */
 	public void setEatCount(int eatCount) {
 		this.eatCount = eatCount;
 	}

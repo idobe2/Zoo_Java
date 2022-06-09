@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * A frame class that combined the menu bar,
  * ZooPanel  drawing objects and mainP - bottom panel.
  *
- * @version 1.2 19 May 2022
+ * @version 1.3 09 June 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see ZooPanel
  */
@@ -41,8 +41,6 @@ public class ZooFrame extends JFrame {
     private final JLabel labelColor = new JLabel();
     private final Caretaker caretaker = new Caretaker();
     private ArrayList<Memento> mementos = new ArrayList<>();
-
-    //private final Observer o = new Controller();
 
     /**
      * ZooFrame constructor - make a frame for all the used components.
@@ -166,9 +164,6 @@ public class ZooFrame extends JFrame {
                     factory.addHerbivore(zooPanel,Animals);
                     factoryFrame.dispose();
                 });
-                //if (Animals.size() < 10 )
-
-                //else JOptionPane.showMessageDialog(null, "You cannot add more than 10 animals");
             }
         });
         /*--------------------MoveAnimal(Saved)--------------------*/
@@ -326,6 +321,7 @@ public class ZooFrame extends JFrame {
                 infoFrame.setVisible(true);
             }
         });
+        /*--------------------Color--------------------*/
         mainP.add(colorButton);
         colorButton.addActionListener(new ActionListener() {
             @Override

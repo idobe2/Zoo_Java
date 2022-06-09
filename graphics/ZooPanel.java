@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * A class of ZooPanel, required to draw all objects on the center area.
  *
- * @version 1.2 19 May 2022
+ * @version 1.3 09 June 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see ZooFrame
  */
@@ -21,11 +21,8 @@ public class ZooPanel extends JPanel implements Runnable {
     protected Plant food = null;
     protected BufferedImage backgroundImage = null;
     protected Color backgroundColor;
-    //private Thread controller;
     private ThreadPool pool;
     private static ZooPanel zooPanel = null;
-
-    //private final Observer o = new Controller();
 
     public static synchronized ZooPanel getInstance(ArrayList<Animal> animals)
     {
@@ -40,25 +37,12 @@ public class ZooPanel extends JPanel implements Runnable {
      * starting the thread causes the object's run method to be called in that separately executing thread.
      */
     @Override
-    public void run() {
-        //Animals.get(Animals.size()-1).getThread().start();
-    }
+    public void run() {}
 
     public boolean addToQueue(Animal animal)
     {
         return this.pool.addToPool(animal);
     }
-
-    /**
-     * A getter of the controller thread.
-     * @return (Thread)
-     */
-    //public Thread getController() { return this.controller; }
-
-    /**
-     * A setter of the controller thread.
-     */
-   // public boolean setController(Thread controller) {this.controller = controller; return true; }
 
     public boolean setPool(ThreadPool pool)
     {
@@ -188,7 +172,6 @@ public class ZooPanel extends JPanel implements Runnable {
                                             Animals.get(i).eat(Animals.get(j));
                                             Animals.get(i).eatInc();
                                             Animals.get(j).stop();
-                                            //Animals.get(j).unregisterObserver();
                                             Animals.remove(j);
                                             SwingUtilities.invokeLater(new Runnable() {
                                                 public void run() {

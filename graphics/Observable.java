@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * We use this class instead of java.util.Observable built-in class.
  *
- *  @version 1.2 19 May 2022
+ *  @version 1.3 09 June 2022
  *  @author Ido Ben Nun, Bar Cohen
  *  @see Observer
  */
@@ -27,7 +27,7 @@ public class Observable implements Runnable {
      * the observer from subject.
      * @param ob (Observer) to be unregistered.
      */
-    public void unregisterObserver(Observer ob) {
+    public synchronized void unregisterObserver(Observer ob) {
         list.remove(ob);
     }
 

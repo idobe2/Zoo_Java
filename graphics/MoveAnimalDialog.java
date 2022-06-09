@@ -14,7 +14,7 @@ import mobility.Point;
  * and move it to new X and Y coordinates.
  * ------------------------Class is out of use------------------------
  *
- * @version 1.2 19 May 2022
+ * @version 1.3 09 June 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see AddAnimalDialog
  */

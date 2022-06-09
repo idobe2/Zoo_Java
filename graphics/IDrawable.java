@@ -6,7 +6,7 @@ import java.awt.*;
  * An interface made to combine the options of graphics.
  * Used with all drawing objects.
  *
- * @version 1.2 19 May 2022
+ * @version 1.3 09 June 2022
  * @author Ido Ben Nun, Bar Cohen
  * @see IAnimalBehavior
  */
