@@ -1,3 +1,3 @@
-# java-project
-Ido Ben Nun - 209202225
-Bar Cohen - 316164938
+# Zoo_Java
+GUI Application in Java.
+Using multithreading and design patterns.
